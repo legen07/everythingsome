@@ -1,0 +1,90 @@
+@import '_variables.scss';
+@import '_globals.scss';
+
+
+header{
+  position: absolute;
+  bottom: 1rem;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  .header-overlay{
+    display: flex;
+    gap: .5rem;
+    width: 100%;
+    
+    > *{
+      display: flex;
+      justify-content: center;
+      background-color: $sblue;
+      color: #fff;
+      padding: 9px 1rem;
+      border-radius: 4px;
+    }
+
+    .header-nav1{
+      width: 100%;
+    }
+  }
+}
+
+.main-card{
+  height: 100vh;
+
+  ::before{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset:  20% 30%;
+    background-image: linear-gradient(40deg, $fblue 20%, #fff 10%, #fff 80%, $oyellow 80%);
+    filter: blur(50px) ;
+  }
+
+  
+  .mcard-contents{
+    background-color: #fffa;
+    background-image: linear-gradient(40deg, #{$oyellow}45, #{$fblue}45);
+    padding: 2rem;
+    height: 100%;
+    display: grid;
+    
+    > *{
+      display: flex;
+      align-items: center;
+    }
+
+    .mcard-price{
+      font-weight: 700;
+      font-size: calc(100% * 3);
+      background: linear-gradient(90deg, $myellow, #38f);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mcard-images{
+      position: relative;
+
+      .mcard--image{
+        display: flex;
+        width: 300px;
+        box-shadow: 0 0 20px #4442;
+        overflow: hidden;
+
+        img{
+          border-radius: 9px;
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          height: 100%;
+        }
+      }
+    }
+
+    .mcard-description{
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  }
+}

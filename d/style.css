@@ -1,0 +1,81 @@
+body, ::before, ::after, * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "rubik", Arial, Helvetica, sans-serif;
+}
+
+header {
+  position: absolute;
+  bottom: 1rem;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+header .header-overlay {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+header .header-overlay > * {
+  display: flex;
+  justify-content: center;
+  background-color: #003F88;
+  color: #fff;
+  padding: 9px 1rem;
+  border-radius: 4px;
+}
+header .header-overlay .header-nav1 {
+  width: 100%;
+}
+
+.main-card {
+  height: 100vh;
+}
+.main-card ::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 20% 30%;
+  background-image: linear-gradient(40deg, #00296B 20%, #fff 10%, #fff 80%, #FDC500 80%);
+  filter: blur(50px);
+}
+.main-card .mcard-contents {
+  background-color: rgba(255, 255, 255, 0.6666666667);
+  background-image: linear-gradient(40deg, #FDC50045, #00296B45);
+  padding: 2rem;
+  height: 100%;
+  display: grid;
+}
+.main-card .mcard-contents > * {
+  display: flex;
+  align-items: center;
+}
+.main-card .mcard-contents .mcard-price {
+  font-weight: 700;
+  font-size: 300%;
+  background: linear-gradient(90deg, #FFD500, #38f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main-card .mcard-contents .mcard-images {
+  position: relative;
+}
+.main-card .mcard-contents .mcard-images .mcard--image {
+  display: flex;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(68, 68, 68, 0.1333333333);
+  overflow: hidden;
+}
+.main-card .mcard-contents .mcard-images .mcard--image img {
+  border-radius: 9px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 100%;
+}
+.main-card .mcard-contents .mcard-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "pump",
+  "version": "1.0.0",
+  "description": "Lets start with pump but the aim is to the something very big.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp watch"
+  },
+  "author": "Joe Legen",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-scss": "^1.4.0",
+    "pug": "^3.0.2",
+    "sass": "^1.69.5",
+    "scss": "^0.2.4"
+  }
+}
