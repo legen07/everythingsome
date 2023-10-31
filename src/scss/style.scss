@@ -6,6 +6,7 @@ header{
   position: absolute;
   bottom: 1rem;
   width: 90%;
+  max-width: 650px;
   left: 50%;
   transform: translateX(-50%);
   
@@ -17,74 +18,124 @@ header{
     > *{
       display: flex;
       justify-content: center;
-      background-color: $sblue;
+      background-color: $tblue;
+      // box-shadow: 0 0 30px #3332;
       color: #fff;
-      padding: 9px 1rem;
+      padding: 9px 2rem;
       border-radius: 4px;
     }
 
     .header-nav1{
       width: 100%;
+      display: grid;
+      justify-content: center;
+
+      img{
+        width: 2rem;
+      }
+    }
+
+    .header-nav2{
+      img{
+        width: 2rem;
+      }
     }
   }
 }
 
 .main-card{
   height: 100vh;
-
-  ::before{
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset:  20% 30%;
-    background-image: linear-gradient(40deg, $fblue 20%, #fff 10%, #fff 80%, $oyellow 80%);
-    filter: blur(50px) ;
-  }
-
+  max-width: 650px;
   
   .mcard-contents{
-    background-color: #fffa;
-    background-image: linear-gradient(40deg, #{$oyellow}45, #{$fblue}45);
+    background-image: linear-gradient($tblue, $fblue);
     padding: 2rem;
-    height: 100%;
+    height: 100vh;
     display: grid;
-    
-    > *{
-      display: flex;
-      align-items: center;
-    }
+    grid-template-rows: auto auto auto;
+    align-items: center;
 
     .mcard-price{
+      height: 10vh;
       font-weight: 700;
       font-size: calc(100% * 3);
-      background: linear-gradient(90deg, $myellow, #38f);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: $myellow;
+
+      hr{
+        border: none;
+        height: .5rem;
+        margin:0 0 0 1rem;
+        position: relative;
+        width: 30%;
+        align-self: end;
+        border-radius: 1rem;
+        background-color: $oyellow;
+      }
     }
 
     .mcard-images{
       position: relative;
-
-      .mcard--image{
-        display: flex;
-        width: 300px;
-        box-shadow: 0 0 20px #4442;
+      justify-content: center;
+      max-width: 55vh;
+      height: 50vh;
+      
+      > *:not(.m-east-west){
+        position: absolute;
+        box-shadow: 0 0 20px #555;
+        align-content: center;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         overflow: hidden;
+        border-radius: 6px;
+        
+        img{
+          width: 100%;
+          height: 100%;
+        }
+
+        &:not(.m-image2){
+          width: 80%;
+          aspect-ratio: 1;
+        }
+      }
+      
+      .m-image2{
+        width: 90%;
+        z-index: 1;
+      }
+      
+      .m-east-west{
+        z-index: 2;
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 -1rem;
 
         img{
-          border-radius: 9px;
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          height: 100%;
+          width: 18px; 
+        }
+
+        > *{
+          box-shadow: 0 0 10px #1116;
+          padding: .7rem;
+          border-radius: 4px;
+          overflow: hidden;
+          background-color: #4448;
         }
       }
     }
 
     .mcard-description{
-      font-size: 1.2rem;
-      line-height: 1.6;
+      height: 30vh;
+      font-weight: 900;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      color: #bbb;
     }
   }
 }
