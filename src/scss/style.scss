@@ -78,34 +78,7 @@ header{
       justify-content: center;
       max-width: 55vh;
       height: 50vh;
-      
-      > *:not(.m-east-west){
-        position: absolute;
-        box-shadow: 0 0 20px #555;
-        align-content: center;
-        margin: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        overflow: hidden;
-        border-radius: 6px;
-        
-        img{
-          width: 100%;
-          height: 100%;
-        }
 
-        &:not(.m-image2){
-          width: 80%;
-          aspect-ratio: 1;
-        }
-      }
-      
-      .m-image2{
-        width: 90%;
-        z-index: 1;
-      }
-      
       .m-east-west{
         z-index: 2;
         position: absolute;
@@ -127,6 +100,38 @@ header{
           overflow: hidden;
           background-color: #4448;
         }
+      }
+
+      .mcard-images-overlay{
+
+        > *{
+          position: absolute;
+          box-shadow: 0 0 20px #555;
+          align-content: center;
+          margin: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          overflow: hidden;
+          border-radius: 6px;
+          
+          img{
+            width: 100%;
+            height: 100%;
+          }
+  
+          &:not(.m-image2){
+            width: 80%;
+            aspect-ratio: 1;
+          }
+        }
+        
+        .m-image2{
+          width: 90%;
+          z-index: 1;
+          aspect-ratio: 1;
+        }
+  
       }
     }
 
