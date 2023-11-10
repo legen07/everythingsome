@@ -4,3 +4,18 @@ body, ::before, ::after, *{
   box-sizing: border-box;
   font-family: 'rubik', Arial, Helvetica, sans-serif ;
 }
+
+*::-webkit-scrollbar{
+  scroll-behavior: smooth;
+  display: none;
+}
+
+*{
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+body{
+  min-width: 300px;
+  overflow-x: hidden;
+}

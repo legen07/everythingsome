@@ -1,57 +1,49 @@
-let mainCard = document.querySelector('.mcard-contents');
-let mcardImages = document.querySelectorAll('.mcard-images-overlay > *');
-let eastWest = document.querySelector('.mcard-images .m-east-west');
+let mcardOverlay = document.querySelectorAll(".mcard-images-overlay > *");
+let mcardLength = mcardOverlay.length;
+let estWst = document.querySelectorAll('.m-east-west > *');
+mcardOverlay[0].classList = 'index-js';
 
-function estWstFunction(estWstParam){
-  let iLenght = mcardImages.length;
-  mcardImages.forEach(function(eachElement, index, all) {
-    let withoutfirst = [];
-    let elem = eachElement;
+function estWstFunction(estWstParam) {
+  for(let i = 0; i< mcardOverlay.length; i++){
+    let indexClass = mcardOverlay[i].className === 'index-js';
 
-    // if elements inside mcardImage does not have the index '0' and also children lenght === 0
-    if(eachElement.previousElementSibling && estWstParam === 'previous' && eachElement.childElementCount !== 0){
 
-      let withoutfirst = eachElement.splice
-      //take the firstElementChild of those elements and put them into their previous parent Sibblings
-      // eachElement.previousElementSibling.insertBefore(eachElement.firstElementChild, eachElement.previousElementSibling.firstChild);
-      // console.log('true');
-    } else if (estWstParam === 'next' && eachElement.childElementCount !== 0) {
+    if (indexClass) {
 
-      
-      // console.log(mcardImages[0].previousElementSibling);
-      // eachElement.insertBefore(eachElement.previousElementSibling.firstElementChild, eachElement.firstChild);
-    } /*else if (index === iLenght + 1){
-      // eastWest.firstElementChild.style.visibility = 'hidden';
-      // eastWest.lastElementChild.style.visibility = '';
-    } else if (mcardImages[iLenght-2].children.length === 0) {
-      eastWest.lastElementChild.style.visibility = 'hidden';
-      eastWest.firstElementChild.style.visibility = '';
-    }*/
-  })
-}
+      try{
+        if(mcardOverlay[i].previousElementSibling.previousElementSibling === null) {
+          estWst[0].classList.toggle('hidden-js');
+        } else if (mcardOverlay[i].nextElementSibling.nextElementSibling === null) {
+          estWst[1].classList.toggle('hidden-js');
+        }
+      } catch {}
 
-// let arr = [1, 2, 3, 4, 5, 6];
-// console.log(arr.shift());
-/*function estWstFunction() {
+    }
 
-  for(let i = 0; i < mcardImages.length; i++) {
-    console.log(mcardImages[i=i]);
+    if(indexClass && estWstParam === "east") {
+      mcardOverlay[i].className = '';
+      mcardOverlay[i].previousElementSibling.className = 'index-js';
+      estWst[1].classList.add('hidden-js');
+
+      return;
+    }
+    else if(indexClass && estWstParam === "west") {
+      mcardOverlay[i].className = '';
+      mcardOverlay[i].nextElementSibling.className = 'index-js';
+      estWst[0].classList.add('hidden-js');
+      return;
+    } 
   }
-}
+};
 
-console.log(estWstFunction());
+estWst[1].classList.add('hidden-js');
 
-*/
 
-document.addEventListener('click', function (e) {
-  
-  if(e.target.id === "m-east") {
-    estWstFunction('next');
-  } else if(e.target.id === 'm-west') {
-    estWstFunction('previous');
+document.addEventListener( 'click', e =>{
+  let d = e.target;
+  if(d.classList.contains('m-east')) {
+    estWstFunction("east");
+  } else if(d.classList.contains('m-west')) {
+    estWstFunction("west");
   }
-});
-
-
-mcardImages[2-1].style.left = "40%";
-mcardImages[2+1].style.left = "60%";
+})

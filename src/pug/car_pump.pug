@@ -14,13 +14,27 @@ html(lang="en")
   body 
     header
       .header-overlay
-        .header-nav1
-          img(src="images/icons/double-down.svg", alt="")
+        img(src="images/graphics/everythingsome-logo.svg", alt="")
+        span thing some
 
-        .header-nav2
-          img(src="images/icons/shopping-cart.svg", alt='cart')
+
+
+
+
 
     .main-card
+      .navigator
+        .navi-overlay
+          .navi-nav1
+            img(src="images/icons/double-down.svg", alt="learn more")
+
+          .navi-nav2
+            img(src="images/icons/shopping-cart.svg", alt='cart')
+
+        .navi-bottom 
+          .shallow 
+          .main 
+          .shallow
       .mcard-contents
 
         .mcard-price
@@ -29,25 +43,25 @@ html(lang="en")
 
         .mcard-images
           .m-east-west
-            a#m-east(href="javascript:void(0)") 
-              img(src="images/icons/west.svg", alt="")
-            a#m-west(href="javascript:void(0)") 
-              img(src="images/icons/east.svg", alt="")
+            a.m-east(href="javascript:void(0)") 
+              img.m-east(src="images/icons/west.svg", alt="")
+            a.m-west(href="javascript:void(0)")
+              img.m-west(src="images/icons/east.svg", alt="")
 
           .mcard-images-overlay
-            .m-image0 
+            div
               img(src="images/products/start.jpg", alt="")
 
-            .m-image1
+            div
               img(src="images/products/car_pump_graphical.webp", alt="")
 
-            .m-image2
+            div
               img(src="images/products/car_pump.webp", alt="")
 
-            .m-image3
+            div
               img(src="images/products/car_pump_graphical1.webp", alt="")
 
-            .m-image4
+            div
               img(src="images/products/end.jpg", alt="car pump" )
 
 
