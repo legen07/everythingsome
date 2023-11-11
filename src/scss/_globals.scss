@@ -13,9 +13,14 @@ body, ::before, ::after, *{
 *{
   scrollbar-width: none;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body{
   min-width: 300px;
   overflow-x: hidden;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 }

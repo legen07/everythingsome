@@ -3,6 +3,7 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="theme-color" content="#ffc900")
     title Car Pump
     link(rel="stylesheet", href="style.css")
     link(rel="preconnect" href="https://fonts.googleapis.com")
@@ -15,7 +16,7 @@ html(lang="en")
     header
       .header-overlay
         img(src="images/graphics/everythingsome-logo.svg", alt="")
-        span thing some
+        span ThingSome
 
 
 
@@ -25,16 +26,19 @@ html(lang="en")
     .main-card
       .navigator
         .navi-overlay
-          .navi-nav1
-            img(src="images/icons/double-down.svg", alt="learn more")
-
           .navi-nav2
             img(src="images/icons/shopping-cart.svg", alt='cart')
+          .navi-nav1
+            span learn more
+            img(src="images/icons/double-down.svg", alt="learn more")
 
         .navi-bottom 
           .shallow 
           .main 
           .shallow
+
+
+
       .mcard-contents
 
         .mcard-price
@@ -67,3 +71,27 @@ html(lang="en")
 
         .mcard-description
           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, possimus? Lorem ipsum dolor, sit amet consectet adipisicing elit. Provident vel incidunt fugiat cum, qui laudantium nam laboriosam quis veniam nulla.
+
+    
+
+    .article-card
+      .article-content 
+
+        .art-head 
+          h1 Portable Car Pump
+
+        .art-vitals 
+          .vit-brand
+            h3 brand | Model 
+
+          .vit-price 
+            h3 Price | Delivery
+
+          .vit-material
+            h3 Material | Dimensions
+            
+            .vit-mat-content 
+              - let units = ["Size", "Weight", "Product"];
+              - let values = ["40 x 20 cm", "40kg", "plastic"]; 
+              each n in values
+                p= n + units
