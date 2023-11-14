@@ -1,10 +1,6 @@
 @import '_variables.scss';
 @import '_globals.scss';
-
-body{
-  // display: grid;
-  // grid-template-columns: 1fr 1fr;
-}
+@import '_form.scss';
 
 
 header{
@@ -19,10 +15,7 @@ header{
   z-index: 9;
   box-shadow: inset 0 -5.9px 6px #3334;
 
-  // height: 1.5rem;
-
   .header-overlay{
-    // position: absolute;
     display: flex;
     justify-content: space-between;
     padding:.4rem 3rem;
@@ -46,7 +39,7 @@ header{
   width: 100%;
   bottom: 0;
   max-width: 650px;
-  
+
   .navi-overlay{
     width: 90%;
     display: flex;
@@ -54,11 +47,11 @@ header{
     flex-wrap: wrap;
     gap: .4rem;
     
-    &.js, &.go-js{
-      animation: naviJs 900ms ease-in-out;
+    &.js{
+      animation: naviJs 700ms ease-in-out;
     }
     &.go-js{
-      animation: naviRightJs 900ms ease-in-out reverse;
+      animation: naviRightJs 700ms ease-in-out reverse;
     }
 
     > *{
@@ -79,9 +72,6 @@ header{
       color: #000;
     }
 
-    >*::selection{
-      display: none;
-    }
     @keyframes naviJs {
       0%{
         transform: unset;
@@ -234,10 +224,10 @@ header{
     }
 
     .left.js{
-      height: 1rem;
+      height: .4rem;
       background-color: $oyellow;
       width: 180%;
-      border-radius: 50% 0 0 0;
+      border-radius:0 50% 0 0;
     }
   }
 }
@@ -245,7 +235,6 @@ header{
 
 
 .main-card{
-  // visibility: hidden;
   position: fixed;
   height: 100vh;
   min-height: 810px;
@@ -253,11 +242,10 @@ header{
   box-shadow: 0 0 10px #333;
   background-image: linear-gradient($tblue, $sblue);
   transition: transform ease-in-out 400ms;
-  // transform: translate();
 
   &.main-go-js{
     visibility: hidden;
-    transform: translateX(-90%);
+    transform: translateX(-90%) scale(60%);
   }
   &.main-come-js{
     visibility: visible;
@@ -267,7 +255,7 @@ header{
 
   .mcard-contents{
     padding: 2rem;
-    height: 100vh;
+    height: 95%;
     display: grid;
     grid-template-rows: auto auto auto;
     align-items: start;
@@ -398,7 +386,7 @@ header{
   padding: 2rem;
   height: 100vh;
   background-color: #fff;
-  transition: all ease-out 600ms;
+  transition: all ease-out 400ms;
 
   &.article-come-js{
     visibility: visible;
@@ -412,9 +400,13 @@ header{
   }
 
   .article-content{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-evenly;
+
     .art-head{
       text-align: center;
-      margin-bottom: 1rem;
     }
 
     .art-vitals{
@@ -423,7 +415,6 @@ header{
       margin: 0 -1rem;
       gap: .5rem;
 
-      
       > *{
         background-color: #eee;
         padding: 1rem;
@@ -443,7 +434,6 @@ header{
       .vit-material{
         display: flex;
         flex-direction: column;
-
         grid-template-rows: auto auto auto;
         grid-column-start: 1;
         grid-column-end: 3;

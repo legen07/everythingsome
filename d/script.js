@@ -52,30 +52,38 @@ function changePage(pageParam) {
   if(pageParam === "left" && naviNav1.firstElementChild.innerHTML === 'learn more'){
     articleCard.classList.toggle("article-come-js");
     mainCard.classList.toggle("main-go-js");
-    naviNav1.parentElement.classList.replace("*", "navi-overlay js");
+    naviNav1.parentElement.className = '';
+    naviNav1.parentElement.classList.add("navi-overlay", "js");
     naviNav1.classList.toggle("js");
     naviNav2.classList.toggle("js");
     naviNav1.firstElementChild.innerHTML = 'back';
-    bottomRight.classList.toggle('js');
+    bottomLeft.classList.remove('js');
+    bottomRight.classList.add('js');
 
     setTimeout( () => {
       naviNav1.parentElement.insertAdjacentElement("afterbegin", naviNav1);
-    }, 700)
+    }, 600)
+
+
   } else if(pageParam === "left" && naviNav1.firstElementChild.innerHTML === 'back'){
-    naviNav1.parentElement.classList.replace("*", "navi-overlay go-js" );
-    // naviNav1.classList.toggle("js");
-    // naviNav2.classList.toggle("js");
+    articleCard.classList.toggle("article-come-js");
+    mainCard.classList.toggle("main-go-js");
+    naviNav1.parentElement.className = '';
+    naviNav1.parentElement.classList.add("navi-overlay", "go-js");
+    naviNav1.classList.toggle("js");
+    naviNav2.classList.toggle("js");
     naviNav1.firstElementChild.innerHTML = 'learn more';
-    bottomRight.classList.toggle('js');
+    bottomLeft.classList.add('js');
+    bottomRight.classList.remove('js');
 
     setTimeout( () => {
       naviNav1.parentElement.insertAdjacentElement("beforeend", naviNav1);
-    }, 700)
+    }, 600);
   }
 }
 
 
-
+bottomLeft.classList.toggle('js');
 
 
 

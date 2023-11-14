@@ -66,11 +66,11 @@ header .header-overlay span {
   flex-wrap: wrap;
   gap: 0.4rem;
 }
-.navigator .navi-overlay.js, .navigator .navi-overlay.go-js {
-  animation: naviJs 900ms ease-in-out;
+.navigator .navi-overlay.js {
+  animation: naviJs 700ms ease-in-out;
 }
 .navigator .navi-overlay.go-js {
-  animation: naviRightJs 900ms ease-in-out reverse;
+  animation: naviRightJs 700ms ease-in-out reverse;
 }
 .navigator .navi-overlay > * {
   display: flex;
@@ -87,9 +87,6 @@ header .header-overlay span {
 .navigator .navi-overlay > *:active {
   background-color: #fff;
   color: #000;
-}
-.navigator .navi-overlay > *::selection {
-  display: none;
 }
 @keyframes naviJs {
   0% {
@@ -232,10 +229,10 @@ header .header-overlay span {
   border-radius: 50% 0 0 0;
 }
 .navigator .navi-bottom .left.js {
-  height: 1rem;
+  height: 0.4rem;
   background-color: #fdb500;
   width: 180%;
-  border-radius: 50% 0 0 0;
+  border-radius: 0 50% 0 0;
 }
 
 .main-card {
@@ -249,7 +246,7 @@ header .header-overlay span {
 }
 .main-card.main-go-js {
   visibility: hidden;
-  transform: translateX(-90%);
+  transform: translateX(-90%) scale(60%);
 }
 .main-card.main-come-js {
   visibility: visible;
@@ -257,7 +254,7 @@ header .header-overlay span {
 }
 .main-card .mcard-contents {
   padding: 2rem;
-  height: 100vh;
+  height: 95%;
   display: grid;
   grid-template-rows: auto auto auto;
   align-items: start;
@@ -371,7 +368,7 @@ header .header-overlay span {
   padding: 2rem;
   height: 100vh;
   background-color: #fff;
-  transition: all ease-out 600ms;
+  transition: all ease-out 400ms;
 }
 .article-card.article-come-js {
   visibility: visible;
@@ -383,9 +380,14 @@ header .header-overlay span {
   opacity: 0;
   transform: unset;
 }
+.article-card .article-content {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: space-evenly;
+}
 .article-card .article-content .art-head {
   text-align: center;
-  margin-bottom: 1rem;
 }
 .article-card .article-content .art-vitals {
   display: grid;
