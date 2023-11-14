@@ -25,6 +25,30 @@ body {
   user-select: none;
 }
 
+P {
+  line-height: 1.5;
+  font-family: "fira Sans", Helvetica, sans-serif;
+}
+
+.form-card {
+  visibility: hidden;
+  height: 100vh;
+  z-index: 99;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(119, 119, 119, 0.3333333333);
+}
+.form-card .form-content {
+  position: absolute;
+  height: 80%;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 10px 0 30px #444;
+}
+
 header {
   background-color: #fdc900;
   position: sticky;
@@ -445,6 +469,12 @@ header .header-overlay span {
   background-color: #fdc900;
   font-size: 0.8rem;
 }
+.article-card .article-content article {
+  position: relative;
+  padding: 2rem;
+  margin: 0 -2rem;
+  background-color: #f8f8f8;
+}
 
 @media screen and (max-width: 450px) {
   h3 {
@@ -452,5 +482,8 @@ header .header-overlay span {
   }
   span {
     font-size: 0.9rem;
+  }
+  P {
+    letter-spacing: 1;
   }
 }

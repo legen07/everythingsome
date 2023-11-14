@@ -1,0 +1,20 @@
+.form-card{
+  visibility: hidden;
+  height: 100vh;
+  z-index: 99;
+  position: absolute;
+  inset: 0;
+  background-color: #7775;
+  // backdrop-filter: blur(8px);
+
+  .form-content{
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    bottom: 0;
+    background-color: #fff;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 10px 0 30px #444;
+  }
+}
