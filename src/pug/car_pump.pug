@@ -21,28 +21,27 @@ html(lang="en")
 
 
 
-
-
-    .main-card
       .navigator
         .navi-overlay
           .navi-nav2
-            img(src="images/icons/shopping-cart.svg", alt='cart')
+            img.click-navi-nav2(src="images/icons/shopping-cart.svg", alt='cart')
           .navi-nav1
             span learn more
             img(src="images/icons/double-down.svg", alt="learn more")
 
-        .navi-bottom 
-          .shallow 
-          .main 
-          .shallow
+        .navi-bottom
+          .left 
+          .right
+
+
+    .main-card
 
 
 
       .mcard-contents
 
         .mcard-price
-          span Ghc 350.00
+          strong Ghc 350.00
             hr
 
         .mcard-images
@@ -80,18 +79,32 @@ html(lang="en")
         .art-head 
           h1 Portable Car Pump
 
-        .art-vitals 
+        .art-vitals
           .vit-brand
             h3 brand | Model 
 
           .vit-price 
             h3 Price | Delivery
 
+
           .vit-material
-            h3 Material | Dimensions
+            h3 properties | Dimensions
             
-            .vit-mat-content 
-              - let units = ["Size", "Weight", "Product"];
-              - let values = ["40 x 20 cm", "40kg", "plastic"]; 
-              each n in values
-                p= n + units
+            .vit-mat-content
+              div 
+                span size 
+                span weight
+                span power source
+
+              hr
+              div 
+                span 40" x 20" 
+                span 40kg
+                span 12v DC
+            .tags
+              span Metal 
+              span Plastic
+              span Electric
+              span pressure gauge
+
+        article Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis odio esse impedit et debitis mollitia, nostrum suscipit facilis explicabo ullam molestias incidunt! Exercitationem, tempore suscipit? Aut tempore officiis quos inventore. Mollitia, tempora rerum minus non delectus aspernatur porro unde illum quisquam corporis temporibus nemo eaque autem optio voluptatum ipsum quis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, deserunt illum obcaecati commodi nemo cupiditate ipsam doloribus et minima vero voluptatem provident dicta aliquam libero maxime alias numquam cum autem.
