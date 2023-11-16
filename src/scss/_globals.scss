@@ -16,6 +16,10 @@ body, ::before, ::after, *{
   -webkit-tap-highlight-color: transparent;
 }
 
+* img{
+  font-style: italic;
+}
+
 body{
   min-width: 300px;
   overflow-x: hidden;
@@ -28,4 +32,19 @@ body{
 P{
   line-height: 1.5;
   font-family:"fira Sans", Helvetica, sans-serif;
+  color: #000c;
+}
+
+span{
+  font-weight: 100;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+button{
+  border: none;
+  cursor: pointer;
 }

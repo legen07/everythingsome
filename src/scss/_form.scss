@@ -4,17 +4,96 @@
   z-index: 99;
   position: absolute;
   inset: 0;
-  background-color: #7775;
-  // backdrop-filter: blur(8px);
+  background-color: #aaa5;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
 
+  .form-card-close{
+    display: flex;
+    height: 5%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
+  
+  &.js{
+    visibility: visible;
+    opacity: 1;
+
+    .form-content{
+      transform: unset;
+    }
+  }
+  
   .form-content{
+    transform: translateY(110%);
     position: absolute;
-    height: 80%;
+    height: 95%;
     width: 100%;
     bottom: 0;
     background-color: #fff;
-    backdrop-filter: blur(10px);
     border-radius: 1rem 1rem 0 0;
-    box-shadow: 10px 0 30px #444;
+    box-shadow: 10px 0 20px #bbb;
+    padding: 1rem;
+    transition: all 300ms ease-in-out;
+
+    .form-brief{
+      width: 100%;
+      
+      .form-brief-content{
+        z-index: 999;
+        box-shadow: 0 0 10px #ccc;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background-color: #ddd;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        .brief-brief{
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          justify-content: space-around;
+
+          > span{
+            translate: -20%;
+          }
+
+          .price-maths{
+            width: 70%;
+            display: flex;
+            justify-content: space-evenly;
+
+            button{
+              font-size: 1.5rem;
+              padding: 0 8px;
+              border-radius: 4px;
+            }
+          }
+        }
+
+        span{
+          text-align: center;
+        }
+
+        img{
+          width: 100%;
+          height: 140px;
+        }
+      }
+
+      .brief-total{
+        position: relative;
+        text-align: center;
+        background-color: $myellow;
+        width: 90%;
+        font-size: .9rem;
+        left: 50%;
+        translate: -50%;
+        padding: 4px;
+        border-radius: 0 0 1rem 1rem ;
+        box-shadow: inset 0 3px 5px #ccc;
+      }
+    }
   }
 }

@@ -1,4 +1,8 @@
 @media screen and (max-width: 450px) {
+  h1{
+    font-size: 2rem;
+  }
+  
   h3{
     font-size: 1rem;
   }
@@ -9,5 +13,40 @@
 
   P{
     letter-spacing: 1;
+  }
+
+  .main-card, .article-card {
+    padding: .4rem;
+
+    .article-content{
+      height: 95vh;
+      min-width: fit-content;
+    }
+  }
+
+
+}
+
+
+@media screen and (max-height: 700px) {
+  .article-card{
+    margin: 1.8rem 0;
+
+    .article-content{
+      display: grid;
+      grid-auto-flow: row;
+      
+
+      .art-head{
+        font-size: 1.7rem;
+      }
+
+      .art-vitals{
+        
+        h3{
+          padding: .2rem .5rem;
+        }
+      }
+    }
   }
 }

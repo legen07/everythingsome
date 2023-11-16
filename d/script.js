@@ -40,6 +40,9 @@ function estWstFunction(estWstParam) {
 estWst[1].classList.add('hidden-js');
 
 
+//////////////////////////////////////////////////////////////////
+// navigation bottom animations //////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 let articleCard = document.querySelector('.article-card');
 let mainCard = document.querySelector('.main-card');
@@ -64,7 +67,6 @@ function changePage(pageParam) {
       naviNav1.parentElement.insertAdjacentElement("afterbegin", naviNav1);
     }, 600)
 
-
   } else if(pageParam === "left" && naviNav1.firstElementChild.innerHTML === 'back'){
     articleCard.classList.toggle("article-come-js");
     mainCard.classList.toggle("main-go-js");
@@ -82,31 +84,58 @@ function changePage(pageParam) {
   }
 }
 
-
 bottomLeft.classList.toggle('js');
 
 
 
+///////////////////////////////////////////////////////////////////////
+// Form manupulations
+let form = document.querySelector('.form-card');
+
+// Clonging an first image in carousel then shortcuting it into the form brief 
 
 
 
-// parent to get to kids. 
+let formBrief = document.querySelector('.form-brief-content');
+let mImgCloned = mcardOverlay[0].firstElementChild.cloneNode(true);
+mImgCloned.className = 'cloned-img';
 
+formBrief.insertAdjacentElement('afterbegin', mImgCloned);
+
+
+
+
+/////////////////////////////////////////////////
+///// Click event Listener //////////////////////
 document.addEventListener( 'click', e =>{
   let d = e.target;
 
-  // console.log(pToKid(e.target.className));
-  if(d.classList.contains('m-east')) {
-    estWstFunction("east");
-  } else if(d.classList.contains('m-west')) {
-    estWstFunction("west");
-  }
-  
-  else if(d.classList.contains('navi-nav1')) {
+  // MAIN PAGE IMAGES MANUPULATIONS EVENTS
+  if(d.classList.contains('m-east'))
+  estWstFunction("east");
+
+  else if(d.classList.contains('m-west'))
+  estWstFunction("west");
+
+
+// bottom navigation event and animation
+  if(each.classList.contains('navi-nav1')) 
     changePage("left");
-  } else if(d.classList.contains('navi-nav2')) {
-    console.log('ohh my goodness');
+
+  else if(d.classList.contains('navi-nav2'))
     changePage("right");
+
+
+/// 
+if (each.classList.contains("fo")){
+      if (d.classList.contains('fo')) {
+        form.classList.add('js');
+      }
+    
+    
+  } 
+
+  else if (d.classList.contains("fc")) {
+    form.classList.remove('js'); 
   }
 });
-console.log(naviNav1.firstElementChild.innerHTML);

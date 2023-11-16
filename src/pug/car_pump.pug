@@ -23,11 +23,10 @@ html(lang="en")
 
 
 
-
       .navigator
         .navi-overlay
-          .navi-nav2
-            img.click-navi-nav2(src="images/icons/shopping-cart.svg", alt='cart')
+          a.navi-nav2(href="javascript:void(0)")
+            img.fo(src="images/icons/shopping-cart.svg", alt='cart')
           .navi-nav1
             span learn more
             img(src="images/icons/double-down.svg", alt="learn more")
@@ -83,20 +82,23 @@ html(lang="en")
         .art-vitals
           .vit-brand
             h3 brand | Model 
-            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui laborum nesciunt iste culpa dolorum vitae ad debitis officia esse vel.
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
           .vit-price 
             h3 Price | Delivery
 
             .vit-price-content
-              div 
-                span product
-                span delivery
+              table
+                tr.product
+                  td Product 
+                  td Ghs 220
               
-              hr
-              div 
-                span ghc 220.00
-                span ghc 30.00
+              table
+                tr 
+                  td Delivery
+                  td Ghs 30
+
+            span total = 250gh
 
 
           .vit-material
@@ -120,8 +122,61 @@ html(lang="en")
               span pressure gauge
 
         article
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis odio esse impedit et debitis mollitia, nostrum suscipit facilis explicabo ullam molestias incidunt! Exercitationem, tempore suscipit? Aut tempore officiis quos inventore. Mollitia, tempora rerum minus non delectus aspernatur porro unde illum quisquam corporis temporibus nemo eaque autem optio voluptatum ipsum quis? 
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis odio esse impedit et debitis mollitia, nostrum suscipit facilis explicabo ullam molestias incidunt! Exercitationem,
 
     .form-card
+      .form-card-close.fc
+        a.fc(href="javascript:void(0)")  X
       .form-content
-        form(action="")
+        .form-brief 
+          .form-brief-content
+
+            .brief-brief 
+              h3 Portable Car Pump 
+              span Price
+
+              .price-maths
+                button -
+                div 1
+                button +
+
+          .brief-total 
+            span Total = price x span
+
+        p We will call you first after your order is place to go over details before delivery.
+
+        form(action="" method="POSt")
+
+          .form-date
+            label(for="date") We are always available deliver anyday.
+            input#date(type="date" name="date" placeholder="date from javascript will be here")
+            a(href="javascript:void(0)")
+
+          hr
+
+          .form-name-phone 
+            div 
+              label(for="name") Full name
+              input#name(type="text" name="Name")
+
+            div
+              label(for="tel") Phone number
+              input#tel(type="tel" name="Phone number")
+
+          hr
+          p We deliver nationwide
+
+          .form-location
+            div 
+              label(for="location") Town/City
+              input#location(type="location" name="Location")
+            div 
+              label(for="address") Street Address
+              input#address(type="address" name="address")
+
+          .form-prefer 
+            label(for="prefer") Order preference
+            input#prefer(type="prefer" name="Preference")
+
+          .form-submit 
+            input(type="submit")
