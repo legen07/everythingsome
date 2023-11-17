@@ -17,7 +17,7 @@ function estWstFunction(estWstParam) {
         } else if (mcardOverlay[i].nextElementSibling.nextElementSibling === null) {
           estWst[1].classList.toggle('hidden-js');
         }
-      } catch {}
+      } catch {};
 
     }
 
@@ -89,18 +89,36 @@ bottomLeft.classList.toggle('js');
 
 
 ///////////////////////////////////////////////////////////////////////
-// Form manupulations
+// Form manupulations//////////////////////////////////////////////////
 let form = document.querySelector('.form-card');
+let divInp = document.querySelectorAll("div input");
 
 // Clonging an first image in carousel then shortcuting it into the form brief 
-
-
-
 let formBrief = document.querySelector('.form-brief-content');
 let mImgCloned = mcardOverlay[0].firstElementChild.cloneNode(true);
-mImgCloned.className = 'cloned-img';
+  mImgCloned.className = 'cloned-img';
 
-formBrief.insertAdjacentElement('afterbegin', mImgCloned);
+  formBrief.insertAdjacentElement('afterbegin', mImgCloned);
+
+let dateInput = document.querySelector('.form-date input');
+let dateBtn = document.querySelector('a.fd');
+function dateFunction () {
+  let todayDate = Date();
+  let slicedDate = todayDate.slice(0, 11);
+  if(dateBtn.textContent === "today") {
+    dateInput.toggleAttribute("type");
+    dateInput.setAttribute('placeholder', slicedDate)
+    dateBtn.textContent = 'select date';
+    dateInput.setAttribute('disabled', 'true')
+  }
+  else if (dateBtn.textContent === "select date") {
+    dateInput.toggleAttribute("placeholder");
+    dateBtn.textContent = 'today';
+    dateInput.setAttribute('type', 'date')
+    dateInput.removeAttribute('disabled')
+  }
+}
+
 
 
 
@@ -111,31 +129,47 @@ document.addEventListener( 'click', e =>{
   let d = e.target;
 
   // MAIN PAGE IMAGES MANUPULATIONS EVENTS
-  if(d.classList.contains('m-east'))
-  estWstFunction("east");
+  if(d.classList.contains('m-east') )
+    estWstFunction("east");
 
   else if(d.classList.contains('m-west'))
-  estWstFunction("west");
+    estWstFunction("west");
 
 
 // bottom navigation event and animation
-  if(each.classList.contains('navi-nav1')) 
+  if(d.classList.contains('navi-nav1') || d.classList.contains('nav-e'))
     changePage("left");
 
-  else if(d.classList.contains('navi-nav2'))
+  else if(d.classList.contains('navi-nav2') || d.classList.contains('nav-e'))
     changePage("right");
 
 
-/// 
-if (each.classList.contains("fo")){
-      if (d.classList.contains('fo')) {
-        form.classList.add('js');
-      }
-    
-    
-  } 
+/// Opening forms 
+  if (d.classList.contains('fo') || d.classList.contains('fo1'))
+    form.classList.add('js');
 
-  else if (d.classList.contains("fc")) {
-    form.classList.remove('js'); 
-  }
+  else if (d.classList.contains("fc"))
+    form.classList.remove('js');
+
+  if (d.classList.contains('fd'))
+    dateFunction();
+
+  /// input styles 
+
+  divInp.forEach((each, index) => {
+    
+    if (d.classList.contains('di'))
+      d.parentElement.classList.add('js');
+    if (each.parentElement.classList.contains('js'))
+      each.parentElement.classList.remove('js');
+
+    if (each.value.length >= 1) {
+      console.log('shitty sthiity bad bitch', each)
+      each.parentElement.className = 'done-js';
+    } else if (each.value.length < 1){
+      each.parentElement.className = '';
+    }
+  })
+
+  // while
 });

@@ -25,11 +25,11 @@ html(lang="en")
 
       .navigator
         .navi-overlay
-          a.navi-nav2(href="javascript:void(0)")
+          a.fo.navi-nav2(href="javascript:void(0)")
             img.fo(src="images/icons/shopping-cart.svg", alt='cart')
           .navi-nav1
-            span learn more
-            img(src="images/icons/double-down.svg", alt="learn more")
+            span.nav-e learn more
+            img.nav-e(src="images/icons/double-down.svg", alt="learn more")
 
         .navi-bottom
           .left 
@@ -126,9 +126,9 @@ html(lang="en")
 
     .form-card
       .form-card-close.fc
-        a.fc(href="javascript:void(0)")  X
+        a.fc(href="javascript:void(0)")  x
       .form-content
-        .form-brief 
+        .form-brief
           .form-brief-content
 
             .brief-brief 
@@ -145,38 +145,39 @@ html(lang="en")
 
         p We will call you first after your order is place to go over details before delivery.
 
-        form(action="" method="POSt")
+        form(action="#" method="POSt")
 
           .form-date
             label(for="date") We are always available deliver anyday.
-            input#date(type="date" name="date" placeholder="date from javascript will be here")
-            a(href="javascript:void(0)")
+            input#date(type="date" name="date" )
+            a.fd(href="javascript:void(0)") today
 
-          hr
+          //- hr
 
           .form-name-phone 
-            div 
+            div
               label(for="name") Full name
-              input#name(type="text" name="Name")
+              input#name.di(type="text" name="Name")
 
             div
               label(for="tel") Phone number
-              input#tel(type="tel" name="Phone number")
+              input#tel.di(type="tel" name="Phone number")
 
-          hr
+          //- hr
           p We deliver nationwide
 
           .form-location
-            div 
-              label(for="location") Town/City
-              input#location(type="location" name="Location")
+            div
+              label(for="location") Town/city
+              input#location.di(type="location" name="Location" )
             div 
               label(for="address") Street Address
-              input#address(type="address" name="address")
+              input#address.di(type="address" name="address")
 
           .form-prefer 
-            label(for="prefer") Order preference
-            input#prefer(type="prefer" name="Preference")
+            div
+              label(for="prefer")
+              input#prefer.di(type="prefer" name="Preference")
 
-          .form-submit 
-            input(type="submit")
+          
+          input(type="submit" value="submit")

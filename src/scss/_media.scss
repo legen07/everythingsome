@@ -18,6 +18,10 @@
   .main-card, .article-card {
     padding: .4rem;
 
+    .mcard-contents{
+      padding: 1rem;
+    }
+
     .article-content{
       height: 95vh;
       min-width: fit-content;
