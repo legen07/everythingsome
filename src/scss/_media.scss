@@ -68,3 +68,64 @@
     }
   }
 }
+@media screen and (min-width: 620px) {
+
+  body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+
+    .navigator{
+      bottom: 1rem;
+      max-width: unset;
+      
+      .navi-overlay{
+        justify-content: center; 
+        
+        .navi-nav1{
+          display: none;
+        }
+        
+        .navi-nav2{
+          justify-self: center;
+          width: 100%;
+          height: 3rem;
+          box-shadow: 0 0 20px #5555;
+          width: 90%;
+        }
+        
+      }
+      .navi-bottom{
+        display: none;
+      }
+    }
+  }
+
+  .main-card{
+    position: relative;
+    max-width: unset;
+    width: auto;
+  }
+
+  .article-card{
+    position: relative;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(100%) translateX(0%);
+  }
+
+  .form-card{
+    display: grid;
+
+    .form-card-close{
+      transform: scale(1000%);
+    }
+    
+    .form-content{
+      justify-self: center;
+      max-width: 600px;
+
+    }
+  }
+}

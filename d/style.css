@@ -303,11 +303,10 @@ button {
   width: 80%;
 }
 
-meta[name=theme-color] {
-  background-color: #ffffff;
-  color: #6ff444;
+@font-face {
+  font-family: PermanentMarker;
+  src: url(images/font/PermanentMarker.ttf);
 }
-
 header {
   background-color: #fdc900;
   position: sticky;
@@ -323,16 +322,21 @@ header {
 header .header-overlay {
   display: flex;
   justify-content: space-between;
+  align-items: start;
   padding: 0.4rem 3rem;
 }
 header .header-overlay img {
-  width: 5rem;
+  width: 4rem;
   top: 0;
-  filter: drop-shadow(0 0 4px rgba(68, 68, 68, 0.5333333333));
+  filter: drop-shadow(0 0 4px rgba(68, 68, 68, 0.6666666667));
 }
-header .header-overlay span {
-  font-weight: 700;
-  font-size: 1.2rem;
+header .header-overlay strong {
+  display: block;
+  color: #00509D;
+  font-family: "PermanentMarker", Rubik, Helvetica, sans-serif;
+  font-size: 27px;
+  top: 50%;
+  transform: translateY(-30%);
 }
 
 .navigator {
@@ -529,7 +533,7 @@ header .header-overlay span {
 .main-card {
   height: 100vh;
   min-height: 810px;
-  max-width: 550px;
+  max-width: 600px;
   box-shadow: 0 0 10px #333;
   background-image: linear-gradient(#00509D, #003F88);
   transition: transform ease-in-out 400ms;
@@ -851,5 +855,54 @@ header .header-overlay span {
   }
   .form-card .form-content form {
     gap: 2rem;
+  }
+}
+@media screen and (min-width: 620px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  body .navigator {
+    bottom: 1rem;
+    max-width: unset;
+  }
+  body .navigator .navi-overlay {
+    justify-content: center;
+  }
+  body .navigator .navi-overlay .navi-nav1 {
+    display: none;
+  }
+  body .navigator .navi-overlay .navi-nav2 {
+    justify-self: center;
+    width: 100%;
+    height: 3rem;
+    box-shadow: 0 0 20px rgba(85, 85, 85, 0.3333333333);
+    width: 90%;
+  }
+  body .navigator .navi-bottom {
+    display: none;
+  }
+  .main-card {
+    position: relative;
+    max-width: unset;
+    width: auto;
+  }
+  .article-card {
+    position: relative;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(100%) translateX(0%);
+  }
+  .form-card {
+    display: grid;
+  }
+  .form-card .form-card-close {
+    transform: scale(1000%);
+  }
+  .form-card .form-content {
+    justify-self: center;
+    max-width: 600px;
   }
 }

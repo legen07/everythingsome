@@ -2,12 +2,10 @@
 @import '_globals.scss';
 @import '_form.scss';
 
-meta[name='theme-color'] {
-  // content: #ffffff;
-  background-color: #ffffff;
-  color: #6ff444
+@font-face {
+  font-family: PermanentMarker;
+  src: url(images/font/PermanentMarker.ttf);
 }
-
 
 header{
   background-color: $myellow;
@@ -24,16 +22,22 @@ header{
   .header-overlay{
     display: flex;
     justify-content: space-between;
+    align-items: start;
     padding:.4rem 3rem;
 
     img{
-      width: 5rem;
+      width: 4rem;
       top: 0;
-      filter: drop-shadow(0 0 4px #4448);
+      filter: drop-shadow(0 0 4px #444a);
     }
-    span{
-      font-weight: 700;
-      font-size: 1.2rem;
+    strong{
+      display: block;
+      // position: relative;
+      color: $tblue;
+      font-family: "PermanentMarker", Rubik, Helvetica, sans-serif;
+      font-size: 27px;
+      top: 50%;
+      transform: translateY(-30%);
     }
   }
 }
@@ -253,7 +257,7 @@ header{
   // position: absolute;
   height: 100vh;
   min-height: 810px;
-  max-width: 550px;
+  max-width: 600px;
   box-shadow: 0 0 10px #333;
   background-image: linear-gradient($tblue, $sblue);
   transition: transform ease-in-out 400ms;
