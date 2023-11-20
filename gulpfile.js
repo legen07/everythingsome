@@ -20,9 +20,7 @@ const pug = require('gulp-pug');
 
 function html() {
   return src('./src/pug/*.pug')
-    .pipe(pug({
-      pretty: true
-    }))
+    .pipe(pug())
     .pipe(dest('./d'));
 }
 
