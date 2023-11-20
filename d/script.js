@@ -1,4 +1,3 @@
-
 let mcardOverlay = document.querySelectorAll(".mcard-images-overlay > *");
 let mcardLength = mcardOverlay.length;
 let estWst = document.querySelectorAll('.m-east-west > *');
@@ -77,7 +76,7 @@ function changePage(pageParam) {
     naviNav1.firstElementChild.innerHTML = 'learn more';
     bottomLeft.classList.add('js');
     bottomRight.classList.remove('js');
-
+    
     setTimeout( () => {
       naviNav1.parentElement.insertAdjacentElement("beforeend", naviNav1);
     }, 600);
@@ -88,10 +87,59 @@ bottomLeft.classList.toggle('js');
 
 
 
-///////////////////////////////////////////////////////////////////////
-// Form manupulations//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// Form manupulations///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 let form = document.querySelector('.form-card');
 let divInp = document.querySelectorAll("div input");
+divInp = [...divInp];
+divInp.shift();
+
+
+////////////////////////////////////////////////////////////////////////
+////// PLUS AND MINUS FUNCTION  ////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+let digit = document.querySelector('.brief-brief p');
+let units = document.querySelector('.brief-brief .price-maths div');
+let total = document.querySelector('.brief-total strong');
+let unitNum = 1;
+let bulkErrMsg =  document.querySelector('.bulk-err-msg');
+form.appendChild(bulkErrMsg);
+
+function plusAndMinus (pnmParam) {
+  let digitNum = Number(digit.textContent);
+  unitNum = Number(units.textContent);
+  let totalNum = Number(total.textContent);
+  
+  if(pnmParam === 'plus' && unitNum < 4) {
+    total.textContent = totalNum + digitNum;
+    units.textContent = unitNum + 1;
+    if (unitNum >= 3) {
+      units.nextElementSibling.style.color = '#aaa';
+      bulkErrMsg.classList.add('js');
+      setTimeout( function() {
+        bulkErrMsg.classList.remove('js');
+      }, 9000)
+    }
+    units.previousElementSibling.style.color = '#000';
+  } else if (pnmParam === 'minus' && unitNum > 1) {
+    if(unitNum <= 2) {
+      units.previousElementSibling.style.color = '#aaa';
+    }
+    units.nextElementSibling.style.color = '#000';
+    total.textContent = totalNum - digitNum;
+    units.textContent = unitNum - 1;
+  }
+}
+
+if (unitNum < 2) {
+  console.log('color change should be triggeres');
+  units.previousElementSibling.style.color = '#aaa';
+} 
+
+
+
 
 // Clonging an first image in carousel then shortcuting it into the form brief 
 let formBrief = document.querySelector('.form-brief-content');
@@ -119,10 +167,15 @@ function dateFunction () {
   }
 }
 
+let requiredField = document.querySelectorAll('input[required]')
+requiredField.forEach( each => {
+  let span = document.createElement('span');
+  span.className = "required-field";
+  each.parentElement.insertAdjacentElement('beforeend', span);
+  span.textContent = 'required';
+})
 
-
-
-
+  
 /////////////////////////////////////////////////
 ///// Click event Listener //////////////////////
 document.addEventListener( 'click', e =>{
@@ -154,6 +207,13 @@ document.addEventListener( 'click', e =>{
   if (d.classList.contains('fd'))
     dateFunction();
 
+  /// Plus and minus inside the briefed form information. 
+  if (d.classList.contains('plus')) 
+    plusAndMinus('plus');
+  else if (d.classList.contains('minus'))
+    plusAndMinus('minus');
+
+
   /// input styles 
 
   divInp.forEach((each, index) => {
@@ -164,12 +224,22 @@ document.addEventListener( 'click', e =>{
       each.parentElement.classList.remove('js');
 
     if (each.value.length >= 1) {
-      console.log('shitty sthiity bad bitch', each)
       each.parentElement.className = 'done-js';
     } else if (each.value.length < 1){
       each.parentElement.className = '';
     }
   })
 
-  // while
 });
+
+////////////////////////////////////
+//Scroll event Listener ////////////
+
+window.addEventListener('scroll', scrol => {
+  let fortyMedia = window.matchMedia("(max-height: 700px)");
+  if (fortyMedia.matches && window.scrollY > 100) {
+    naviNav2.parentElement.classList.add('scroll-js');
+  } else if (window.scrollY < 110) {
+    naviNav2.parentElement.classList.remove('scroll-js');
+  }
+})

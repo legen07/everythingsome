@@ -20,6 +20,10 @@ html(lang="en")
       .header-overlay
         img(src="images/graphics/everythingsome-logo.svg", alt="")
         span ThingSome
+        
+      .error-msgs 
+        .bulk-err-msg 
+          span Bulk purchase? Complete form first. We’ll discuss quantities during our follow-up call.
 
 
 
@@ -41,7 +45,7 @@ html(lang="en")
       .mcard-contents
 
         .mcard-price
-          strong Ghc 350.00
+          strong Ghc 340.00
             hr
 
         .mcard-images
@@ -53,23 +57,23 @@ html(lang="en")
 
           .mcard-images-overlay
             div
-              img(src="images/products/start.jpg", alt="")
+              img(src="images/products/car_pump_with_accesories.webp", alt="")
 
             div
-              img(src="images/products/car_pump_graphical.webp", alt="")
+              img(src="images/products/car_pump_graphical.jpg", alt="")
 
             div
-              img(src="images/products/car_pump.webp", alt="")
+              img(src="images/products/car_pump.jpg", alt="")
 
             div
-              img(src="images/products/car_pump_graphical1.webp", alt="")
+              img(src="images/products/car_pump_graphical1.jpg", alt="")
 
             div
-              img(src="images/products/end.jpg", alt="car pump" )
+              img(src="images/products/car_pump_full_package.jpg", alt="car pump" )
 
 
         .mcard-description
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, possimus? Lorem ipsum dolor, sit amet consectet adipisicing elit. Provident vel incidunt fugiat cum, qui laudantium nam laboriosam quis veniam nulla.
+          p Air Compressor Electric Car Motorcycle Tire Inflator Pump Portable Emergency Mini 12V 300 PSI for cars, Bicycles, and Motorcycles.
 
     
 
@@ -82,7 +86,7 @@ html(lang="en")
         .art-vitals
           .vit-brand
             h3 brand | Model 
-            p Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            p Portable Emergency Mini Tyre Air Compressor.
 
           .vit-price 
             h3 Price | Delivery
@@ -91,14 +95,14 @@ html(lang="en")
               table
                 tr.product
                   td Product 
-                  td Ghs 220
+                  td Ghs 310
               
               table
                 tr 
                   td Delivery
                   td Ghs 30
 
-            span total = 250gh
+            span total = 340gh
 
 
           .vit-material
@@ -112,72 +116,76 @@ html(lang="en")
 
               hr
               div 
-                span 40" x 20" 
-                span 40kg
-                span 12v DC
+                span 40" x 20"
+                span 423g
+                span 12V
             .tags
               span Metal 
               span Plastic
               span Electric
-              span pressure gauge
+              span Pressure gauge
+              span 2 nozzles adapters
+              span Black
 
         article
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis odio esse impedit et debitis mollitia, nostrum suscipit facilis explicabo ullam molestias incidunt! Exercitationem,
+          p It can be simply powered through a cigarette lighter in your vehicle, easy to use. It has a long cord with cigarette lighter plug, great mobility for Road-side assistance. It can inflate ball, bike tires, motorcycle, or even car tires.
 
     .form-card
       .form-card-close.fc
-        a.fc(href="javascript:void(0)")  x
+        a.fc(href="javascript:void(0)")
+          span.fc x
       .form-content
         .form-brief
+          h2 Order Form 
           .form-brief-content
 
             .brief-brief 
               h3 Portable Car Pump 
-              span Price
+              p 340
 
               .price-maths
-                button -
+                button.minus -
                 div 1
-                button +
+                button.plus +
 
           .brief-total 
-            span Total = price x span
+            b Total = Ghc &nbsp;
+            strong 340
 
         p We will call you first after your order is place to go over details before delivery.
 
         form(action="#" method="POSt")
-
+        
           .form-date
-            label(for="date") We are always available deliver anyday.
-            input#date(type="date" name="date" )
+            label(for="date") 
+              span Same-day delivery.
+              strong select date
             a.fd(href="javascript:void(0)") today
+            input#date(type="date" name="date" )
 
           //- hr
 
           .form-name-phone 
             div
               label(for="name") Full name
-              input#name.di(type="text" name="Name")
+              input#name.di(type="text" name="Name" required autofocus='true')
 
             div
               label(for="tel") Phone number
-              input#tel.di(type="tel" name="Phone number")
+              input#tel.di(type="tel" name="Phone number" required)
 
           //- hr
-          p We deliver nationwide
+          .strong-location
+            strong We deliver throughout Ghana.
+            span indicate your location and we will deliver within 24hours
 
           .form-location
             div
               label(for="location") Town/city
-              input#location.di(type="location" name="Location" )
+              input#location.di(type="location" name="Location" required)
             div 
               label(for="address") Street Address
               input#address.di(type="address" name="address")
-
-          .form-prefer 
-            div
-              label(for="prefer")
-              input#prefer.di(type="prefer" name="Preference")
 
           
           input(type="submit" value="submit")

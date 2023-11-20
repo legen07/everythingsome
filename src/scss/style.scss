@@ -2,6 +2,12 @@
 @import '_globals.scss';
 @import '_form.scss';
 
+meta[name='theme-color'] {
+  // content: #ffffff;
+  background-color: #ffffff;
+  color: #6ff444
+}
+
 
 header{
   background-color: $myellow;
@@ -32,7 +38,6 @@ header{
   }
 }
 
-
 .navigator{
   display: grid;
   position: fixed;
@@ -46,6 +51,10 @@ header{
     justify-self: center;
     flex-wrap: wrap;
     gap: .4rem;
+    opacity: 1;
+    visibility: visible;
+    transform: unset;
+    transition: all 200ms ease-in-out;
     
     &.js{
       animation: naviJs 700ms ease-in-out;
@@ -54,10 +63,16 @@ header{
       animation: naviRightJs 700ms ease-in-out reverse;
     }
 
+    &.scroll-js{
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-30%) scale(80%);
+    }
+
     > *{
       display: flex;
-      background-color: $tblue;
-      color: #fff;
+      background-color: #fff;
+      // color: #fff;
       padding: 9px .9rem;
       border-radius: 4px;
       cursor: pointer;
@@ -172,10 +187,10 @@ header{
         transform: rotate(270deg);
         margin: -.2rem;
       }
-
+      
       &.js{
-        background-color: #fff;
-        color: #000;
+        background-color: $tblue;
+        color: #fff;
         box-shadow: 0 0 10px #ddd;
         flex-direction: row-reverse;
 
@@ -187,6 +202,7 @@ header{
 
     .navi-nav2{
       justify-content: center;
+      color: #fff;
       flex-grow: 1;
 
       img{
@@ -195,7 +211,7 @@ header{
       }
 
       &.js{
-        background-color: #fff;
+        background-color: $tblue;
         box-shadow: 0 0 10px #ddd;
       }
     }
@@ -235,7 +251,7 @@ header{
 
 .main-card{
   // position: absolute;
-  height: 110vh;
+  height: 100vh;
   min-height: 810px;
   max-width: 550px;
   box-shadow: 0 0 10px #333;
@@ -253,7 +269,7 @@ header{
 
 
   .mcard-contents{
-    padding: 2rem;
+    padding:0 2rem;
     height: 95%;
     display: grid;
     grid-template-rows: auto auto auto;
@@ -262,6 +278,7 @@ header{
     .mcard-price{
       min-height: 5vh;
       height: 10vh;
+      align-self: end;
       font-weight: 700;
       font-size: calc(100% * 2.3);
       color: $yyellow;
@@ -285,7 +302,7 @@ header{
       place-self: center;
       max-width: 45vh;
       margin: -1rem;
-      height: 50vh;
+      height: 45vh;
 
       .m-east-west{
         z-index: 4;
@@ -367,11 +384,14 @@ header{
     }
 
     .mcard-description{
-      height: 30vh;
+      // height: 30vh;
       font-weight: 800;
       font-size: 1.2rem;
       line-height: 1.5;
-      color: #ccc;
+
+      p{
+        color: #bbb;
+      }
     }
   }
 }
@@ -527,6 +547,31 @@ header{
 
 
 
+.bulk-err-msg {
+  visibility: hidden;
+  opacity: 0;
+  border: solid 2px #f307;
+  position: fixed;
+  top: 2rem;
+  border-radius: 9px;
+  width: 80%;
+  height: auto;
+  z-index: 99999;
+  padding: 9px;
+  background-color: #eee9;
+  backdrop-filter: blur(15px);
+  left: 50%;
+  translate: -100%;
+  transition: all 500ms ease-in-out;
+  color: #a00;
+
+  &.js{
+    visibility: visible;
+    opacity: 1;
+    left: 50%;
+    translate: -50%;
+  }
+}
 
 
 

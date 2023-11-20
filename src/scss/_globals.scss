@@ -46,7 +46,6 @@ a{
   transition: color 150ms ease-in-out;
 
   &:hover{
-    filter: grayscale(14px);
     color: #333;
   }
 }

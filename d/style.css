@@ -46,7 +46,6 @@ a {
   transition: color 150ms ease-in-out;
 }
 a:hover {
-  filter: grayscale(14px);
   color: #333;
 }
 
@@ -59,7 +58,7 @@ button {
   width: 100%;
   text-align: center;
   visibility: hidden;
-  height: 100vh;
+  height: 100lvh;
   z-index: 99;
   position: fixed;
   inset: 0;
@@ -69,9 +68,16 @@ button {
 }
 .form-card .form-card-close {
   display: flex;
-  height: 5%;
+  height: 50%;
   justify-content: center;
   align-items: center;
+}
+.form-card .form-card-close a {
+  display: block;
+  height: 100%;
+}
+.form-card .form-card-close a span {
+  align-self: center;
   font-size: 2rem;
 }
 .form-card.js {
@@ -83,7 +89,8 @@ button {
 }
 .form-card .form-content {
   display: grid;
-  grid-template-rows: 1fr 1fr 6fr;
+  grid-template-rows: 1fr 4rem 3fr;
+  align-items: space-between;
   transform: translateY(110%);
   position: absolute;
   height: 95%;
@@ -97,7 +104,11 @@ button {
 .form-card .form-content .form-brief {
   width: 100%;
 }
+.form-card .form-content .form-brief h2 {
+  font-size: 2.5rem;
+}
 .form-card .form-content .form-brief .form-brief-content {
+  margin-top: 1rem;
   z-index: 999;
   box-shadow: 0 0 10px #ccc;
   display: grid;
@@ -113,8 +124,12 @@ button {
   padding: 10px;
   justify-content: space-around;
 }
-.form-card .form-content .form-brief .form-brief-content .brief-brief > span {
-  translate: -20%;
+.form-card .form-content .form-brief .form-brief-content .brief-brief > p {
+  display: block;
+  position: relative;
+  left: -20%;
+  translate: 50%;
+  font-size: 1.2rem;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths {
   width: 70%;
@@ -134,8 +149,10 @@ button {
   height: 120px;
 }
 .form-card .form-content .form-brief .brief-total {
+  display: flex;
   position: relative;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   background-color: #fdc900;
   width: 90%;
   font-size: 0.9rem;
@@ -145,21 +162,52 @@ button {
   border-radius: 0 0 1rem 1rem;
   box-shadow: inset 0 3px 5px #ccc;
 }
-.form-card .form-content p {
+.form-card .form-content p, .form-card .form-content span {
+  display: block;
   align-self: center;
+  font-size: 0.8rem;
+}
+.form-card .form-content strong {
+  font-size: 1.2rem;
 }
 .form-card .form-content form {
   display: grid;
   align-items: start;
+  align-self: end;
   padding-bottom: 2rem;
-  gap: 1rem;
+  gap: 1.2rem;
+}
+.form-card .form-content form .form-date {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+  gap: 5px 1rem;
+}
+.form-card .form-content form .form-date label {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-self: center;
+}
+.form-card .form-content form .form-date input {
+  width: 150px !important;
+  border: solid 1px #333 !important;
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 6px 1rem;
+}
+.form-card .form-content form .form-date input[type=date] {
+  width: 70px;
+}
+.form-card .form-content form .form-date a {
+  background-color: #00509D;
+  padding: 4px 1rem;
 }
 .form-card .form-content form input:not(input[type=submit]) {
   width: 100%;
   height: 1.8rem;
   padding: 5px 1rem;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   background-color: rgba(0, 0, 0, 0);
 }
 .form-card .form-content form input::placeholder {
@@ -179,7 +227,7 @@ button {
 .form-card .form-content form .form-name-phone div.js label,
 .form-card .form-content form .form-location div.js label,
 .form-card .form-content form .form-prefer div.js label {
-  transform: scale(70%) translate(-10%);
+  transform: scale(65%) translate(-20%, -25%);
   color: rgba(68, 68, 68, 0.6);
 }
 .form-card .form-content form .form-name-phone div.js input,
@@ -197,7 +245,7 @@ button {
 .form-card .form-content form .form-name-phone div.done-js label,
 .form-card .form-content form .form-location div.done-js label,
 .form-card .form-content form .form-prefer div.done-js label {
-  transform: scale(70%) translate(-10%);
+  transform: scale(65%) translate(-20%, -25%);
 }
 .form-card .form-content form .form-name-phone div.done-js input,
 .form-card .form-content form .form-location div.done-js input,
@@ -208,43 +256,26 @@ button {
 .form-card .form-content form .form-name-phone div,
 .form-card .form-content form .form-location div,
 .form-card .form-content form .form-prefer div {
-  border: solid 2px rgba(68, 68, 68, 0.1333333333);
+  border: solid 1px rgba(68, 68, 68, 0.1333333333);
   border-radius: 6px;
-  overflow: hidden;
-  height: 3rem;
-  background-color: #efefef;
+  height: 2.7rem;
+  background-color: #fbfbfb;
   position: relative;
 }
 .form-card .form-content form .form-name-phone div label,
 .form-card .form-content form .form-location div label,
 .form-card .form-content form .form-prefer div label {
   position: absolute;
-  font-size: 1.1rem;
+  color: #666;
   transition: all ease-in-out 200ms;
-  transform: scale(100%) translate(10%, 50%);
+  transform: scale(100%) translate(15%, 60%);
 }
 .form-card .form-content form input:focus {
   border: rgba(0, 0, 0, 0);
   outline: rgba(0, 0, 0, 0);
 }
-.form-card .form-content form .form-date {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-evenly;
-  gap: 5px 1rem;
-  width: 100%;
-}
-.form-card .form-content form .form-date label {
-  grid-column: 1/span 2;
-  justify-self: center;
-}
-.form-card .form-content form .form-date input {
-  width: 100%;
-  border: solid 1px #333;
-}
-.form-card .form-content form .form-date a {
-  background-color: #00509D;
-  padding: 4px 1rem;
+.form-card .form-content form .strong-location {
+  margin-top: 2rem;
 }
 .form-card .form-content form .form-name-phone, .form-card .form-content form .form-location {
   display: flex;
@@ -256,6 +287,13 @@ button {
   display: grid;
   width: 50%;
 }
+.form-card .form-content form .required-field {
+  display: block;
+  position: absolute;
+  translate: 1rem 1.2rem;
+  color: #f72;
+  bottom: 0;
+}
 .form-card .form-content form input[type=submit] {
   justify-self: center;
   border: none;
@@ -263,6 +301,11 @@ button {
   padding: 0.7rem 1rem;
   background-color: #fdb500;
   width: 80%;
+}
+
+meta[name=theme-color] {
+  background-color: #ffffff;
+  color: #6ff444;
 }
 
 header {
@@ -305,6 +348,10 @@ header .header-overlay span {
   justify-self: center;
   flex-wrap: wrap;
   gap: 0.4rem;
+  opacity: 1;
+  visibility: visible;
+  transform: unset;
+  transition: all 200ms ease-in-out;
 }
 .navigator .navi-overlay.js {
   animation: naviJs 700ms ease-in-out;
@@ -312,10 +359,14 @@ header .header-overlay span {
 .navigator .navi-overlay.go-js {
   animation: naviRightJs 700ms ease-in-out reverse;
 }
+.navigator .navi-overlay.scroll-js {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-30%) scale(80%);
+}
 .navigator .navi-overlay > * {
   display: flex;
-  background-color: #00509D;
-  color: #fff;
+  background-color: #fff;
   padding: 9px 0.9rem;
   border-radius: 4px;
   cursor: pointer;
@@ -428,8 +479,8 @@ header .header-overlay span {
   margin: -0.2rem;
 }
 .navigator .navi-overlay .navi-nav1.js {
-  background-color: #fff;
-  color: #000;
+  background-color: #00509D;
+  color: #fff;
   box-shadow: 0 0 10px #ddd;
   flex-direction: row-reverse;
 }
@@ -438,6 +489,7 @@ header .header-overlay span {
 }
 .navigator .navi-overlay .navi-nav2 {
   justify-content: center;
+  color: #fff;
   flex-grow: 1;
 }
 .navigator .navi-overlay .navi-nav2 img {
@@ -445,7 +497,7 @@ header .header-overlay span {
   margin: -0.2rem;
 }
 .navigator .navi-overlay .navi-nav2.js {
-  background-color: #fff;
+  background-color: #00509D;
   box-shadow: 0 0 10px #ddd;
 }
 .navigator .navi-bottom {
@@ -475,7 +527,7 @@ header .header-overlay span {
 }
 
 .main-card {
-  height: 110vh;
+  height: 100vh;
   min-height: 810px;
   max-width: 550px;
   box-shadow: 0 0 10px #333;
@@ -491,7 +543,7 @@ header .header-overlay span {
   transform: unset;
 }
 .main-card .mcard-contents {
-  padding: 2rem;
+  padding: 0 2rem;
   height: 95%;
   display: grid;
   grid-template-rows: auto auto auto;
@@ -500,6 +552,7 @@ header .header-overlay span {
 .main-card .mcard-contents .mcard-price {
   min-height: 5vh;
   height: 10vh;
+  align-self: end;
   font-weight: 700;
   font-size: 230%;
   color: #fdd800;
@@ -521,7 +574,7 @@ header .header-overlay span {
   place-self: center;
   max-width: 45vh;
   margin: -1rem;
-  height: 50vh;
+  height: 45vh;
 }
 .main-card .mcard-contents .mcard-images .m-east-west {
   z-index: 4;
@@ -590,11 +643,12 @@ header .header-overlay span {
   transform: scale(100%);
 }
 .main-card .mcard-contents .mcard-description {
-  height: 30vh;
   font-weight: 800;
   font-size: 1.2rem;
   line-height: 1.5;
-  color: #ccc;
+}
+.main-card .mcard-contents .mcard-description p {
+  color: #bbb;
 }
 
 .article-card {
@@ -723,6 +777,31 @@ header .header-overlay span {
   background-color: #f8f8f8;
 }
 
+.bulk-err-msg {
+  visibility: hidden;
+  opacity: 0;
+  border: solid 2px rgba(255, 51, 0, 0.4666666667);
+  position: fixed;
+  top: 2rem;
+  border-radius: 9px;
+  width: 80%;
+  height: auto;
+  z-index: 99999;
+  padding: 9px;
+  background-color: rgba(238, 238, 238, 0.6);
+  backdrop-filter: blur(15px);
+  left: 50%;
+  translate: -100%;
+  transition: all 500ms ease-in-out;
+  color: #a00;
+}
+.bulk-err-msg.js {
+  visibility: visible;
+  opacity: 1;
+  left: 50%;
+  translate: -50%;
+}
+
 @media screen and (max-width: 450px) {
   h1 {
     font-size: 2rem;
@@ -740,7 +819,8 @@ header .header-overlay span {
     padding: 0.4rem;
   }
   .main-card .mcard-contents, .article-card .mcard-contents {
-    padding: 1rem;
+    height: 95vh;
+    padding: 0 0.8rem;
   }
   .main-card .article-content, .article-card .article-content {
     height: 95vh;
@@ -760,5 +840,16 @@ header .header-overlay span {
   }
   .article-card .article-content .art-vitals h3 {
     padding: 0.2rem 0.5rem;
+  }
+}
+@media screen and (min-height: 740px) {
+  .form-card .form-card-close {
+    opacity: 0;
+  }
+  .form-card .form-content {
+    height: 85lvh;
+  }
+  .form-card .form-content form {
+    gap: 2rem;
   }
 }
