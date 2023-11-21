@@ -9,6 +9,7 @@
   "author": "Joe Legen",
   "license": "MIT",
   "dependencies": {
+    "css-minify": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.1.0",
