@@ -11,7 +11,7 @@ html(lang="en")
     link(href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet")
 
     link(rel="icon", href="images/icons/favicon.svg")
-    script(src="script.min.js" defer)
+    script( type='module', src="script.min.js" defer)
 
 
 
@@ -19,21 +19,27 @@ html(lang="en")
     header
       .header-overlay
         img(src="images/graphics/everythingsome-logo.svg", alt="")
+
+        a.ho(href="javascript:void(0)")
+          img(src="images/icons/hamburger.svg", class='ho', alt="")  
+
         strong nibies
         
       .error-msgs 
         .bulk-err-msg 
           span Bulk purchase? Complete form first. We’ll discuss quantities during our follow-up call.
 
+      .header-content
 
 
       .navigator
         .navi-overlay
           a.fo.navi-nav2(href="javascript:void(0)")
             img.fo(src="images/icons/shopping-cart.svg", alt='cart')
-          .navi-nav1
-            span.nav-e learn more
-            img.nav-e(src="images/icons/double-down.svg", alt="learn more")
+            span 0
+          .navi-nav1.nl
+            span.nl learn more
+            img.nl(src="images/icons/double-down.svg", alt="learn more")
 
         .navi-bottom
           .left 
@@ -45,8 +51,8 @@ html(lang="en")
       .mcard-contents
 
         .mcard-price
-          strong Ghc 340.00
-            hr
+          strong Gh&#8373; 340.00
+          hr
 
         .mcard-images
           .m-east-west
@@ -135,26 +141,12 @@ html(lang="en")
         a.fc(href="javascript:void(0)")
           span.fc x
       .form-content
+        h2 Order Form
         .form-brief
-          h2 Order Form 
-          .form-brief-content
 
-            .brief-brief 
-              h3 Portable Car Pump 
-              p 340
-
-              .price-maths
-                button.minus -
-                div 1
-                button.plus +
-
-          .brief-total 
-            b Total = Ghc &nbsp;
-            strong 340
-
-        p We will call you first after your order is place to go over details before delivery.
 
         form(action="https://submit-form.com/T77OrB2V" method="POSt")
+          p We will call you first after your order is place to go over details before delivery.
         
           .form-date
             label(for="date")
@@ -168,7 +160,7 @@ html(lang="en")
           .form-name-phone 
             div
               label(for="name") Full name
-              input#name.di(type="text" name="Name" required autofocus='true')
+              input#name.di(type="text" name="Name" required autofocus)
 
             div
               label(for="tel") Phone number
@@ -187,5 +179,5 @@ html(lang="en")
               label(for="address") Street Address
               input#address.di(type="address" name="address")
 
-          
+
           input(type="submit" value="submit")

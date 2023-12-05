@@ -5,12 +5,12 @@ body, ::before, ::after, * {
   font-family: "rubik", Arial, Helvetica, sans-serif;
 }
 
-*::-webkit-scrollbar {
+*:not(.form-brief):-webkit-scrollbar {
   scroll-behavior: smooth;
   display: none;
 }
 
-* {
+*:not(.form-brief) {
   scrollbar-width: none;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
@@ -23,9 +23,9 @@ body, ::before, ::after, * {
 body {
   min-width: 300px;
   overflow-x: hidden;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -58,13 +58,14 @@ button {
   width: 100%;
   text-align: center;
   visibility: hidden;
-  height: 100lvh;
+  height: 100dvh;
   z-index: 99;
   position: fixed;
   inset: 0;
-  background-color: rgba(85, 85, 85, 0.4666666667);
   opacity: 0;
+  background-color: rgba(51, 51, 51, 0.2);
   transition: all 400ms ease-in-out;
+  backdrop-filter: blur(5px);
 }
 .form-card .form-card-close {
   display: flex;
@@ -89,8 +90,7 @@ button {
 }
 .form-card .form-content {
   display: grid;
-  grid-template-rows: 1fr 4rem 3fr;
-  align-items: space-between;
+  grid-template-rows: 3.7rem 1fr 6fr;
   transform: translateY(110%);
   position: absolute;
   height: 95%;
@@ -100,71 +100,68 @@ button {
   border-radius: 1rem 1rem 0 0;
   padding: 1rem;
   transition: all 300ms ease-in-out;
+  box-shadow: 0px -5px 25px rgba(51, 51, 51, 0.2);
+}
+.form-card .form-content h2 {
+  font-size: 2.5rem;
 }
 .form-card .form-content .form-brief {
   width: 100%;
-}
-.form-card .form-content .form-brief h2 {
-  font-size: 2.5rem;
+  height: 130%;
+  position: relative;
+  align-items: center;
+  overflow-x: auto;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
 }
 .form-card .form-content .form-brief .form-brief-content {
-  margin-top: 1rem;
-  z-index: 999;
-  box-shadow: 0 0 10px #ccc;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  background-color: #ddd;
-  border-radius: 1rem;
-  overflow: hidden;
+  width: 230px;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief {
-  text-align: start;
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  justify-content: space-around;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 100px;
+  box-shadow: 0 0 10px #ccc;
+  background-color: #ddd;
 }
-.form-card .form-content .form-brief .form-brief-content .brief-brief > p {
-  display: block;
-  position: relative;
-  left: -20%;
-  translate: 50%;
-  font-size: 1.2rem;
+.form-card .form-content .form-brief .form-brief-content .brief-brief *:not(img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.form-card .form-content .form-brief .form-brief-content .brief-brief img {
+  width: 40%;
+  aspect-ratio: 1;
+}
+.form-card .form-content .form-brief .form-brief-content .brief-brief .brief-side {
+  padding: 10px;
+  display: grid;
+  width: 100%;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths {
-  width: 70%;
-  display: flex;
-  justify-content: space-evenly;
+  width: 90%;
+  justify-content: space-between;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths button {
   font-size: 1.5rem;
   padding: 0 8px;
   border-radius: 4px;
 }
-.form-card .form-content .form-brief .form-brief-content span {
-  text-align: center;
-}
-.form-card .form-content .form-brief .form-brief-content img {
-  width: 100%;
-  height: 120px;
-}
 .form-card .form-content .form-brief .brief-total {
-  display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
   background-color: #fdc900;
   width: 90%;
   font-size: 0.9rem;
   left: 50%;
   translate: -50%;
-  padding: 4px;
   border-radius: 0 0 1rem 1rem;
   box-shadow: inset 0 3px 5px #ccc;
 }
 .form-card .form-content p, .form-card .form-content span {
   display: block;
-  align-self: center;
   font-size: 0.8rem;
 }
 .form-card .form-content strong {
@@ -172,9 +169,8 @@ button {
 }
 .form-card .form-content form {
   display: grid;
-  align-items: start;
+  align-content: space-evenly;
   align-self: end;
-  padding-bottom: 2rem;
   gap: 1.2rem;
 }
 .form-card .form-content form .form-date {
@@ -307,7 +303,12 @@ button {
   font-family: PermanentMarker;
   src: url(images/font/PermanentMarker.ttf);
 }
+body.js {
+  overflow: hidden;
+}
+
 header {
+  overflow: hidden;
   background-color: #fdc900;
   position: sticky;
   top: 0;
@@ -318,12 +319,17 @@ header {
   grid-column-end: 3;
   z-index: 9;
   box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
+  transition: all 300ms ease-in-out;
 }
 header .header-overlay {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  padding: 0.4rem 3rem;
+  gap: 1rem;
+  padding: 0.4rem 2rem 0 2rem;
+}
+header .header-overlay a img {
+  width: 2rem;
 }
 header .header-overlay img {
   width: 4rem;
@@ -337,6 +343,106 @@ header .header-overlay strong {
   font-size: 27px;
   top: 50%;
   transform: translateY(-30%);
+}
+header .header-content {
+  opacity: 0;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: grid;
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  grid-template-columns: 45% 45%;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+  transform: scale(130%) translateY(50%);
+  transition: all 300ms ease-in-out;
+}
+header .header-content .product {
+  position: relative;
+  cursor: pointer;
+}
+header .header-content .product .product-back {
+  height: 100%;
+}
+header .header-content .product .product-back .pro-img {
+  border-radius: 6px;
+  height: 20vh;
+  position: relative;
+  overflow: hidden;
+}
+header .header-content .product .product-back .pro-img img {
+  width: 100%;
+  height: 120%;
+}
+header .header-content .product .product-back .pro-name {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(51, 51, 51, 0.4666666667);
+  color: #fff;
+  backdrop-filter: blur(3px);
+  padding: 7px 0.5rem;
+}
+header .header-content .product .product-back .pro-name h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 0 0 1rem 1rem;
+}
+header .header-content .product .product-back .pro-price, header .header-content .product .product-back .pro-cart {
+  position: absolute;
+}
+header .header-content .product .product-back .pro-cart {
+  padding: 0rem 0.4rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  top: -0.5rem;
+  right: -0.5rem;
+  z-index: 99;
+  background-color: #00509D;
+  transition: background-color ease-in-out 400ms;
+  animation: cartPulse ease-in-out 800ms infinite;
+}
+header .header-content .product .product-back .pro-cart:hover, header .header-content .product .product-back .pro-cart :target {
+  background-color: #fdb500;
+}
+@keyframes cartPulse {
+  from {
+    box-shadow: unset;
+  }
+  50% {
+    box-shadow: 0 0 0px 3px #00509D99;
+    transform: scale(107%);
+  }
+  to {
+    box-shadow: 0 0 0px 5px #00509D55;
+  }
+}
+header .header-content .product .product-back .pro-cart img {
+  width: 1rem;
+}
+header .header-content .product .product-back .pro-price {
+  background-color: #fdc900;
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 4px #fdb500, -2px -2px 2px 1px #fdd800;
+  top: 0;
+  margin: -4px -4px;
+  border-radius: 3px;
+  padding: 2px 8px;
+  text-align: center;
+}
+header.js {
+  height: 96dvh;
+  box-shadow: 0 9px 15px rgba(34, 34, 34, 0.3333333333);
+  background-color: #fdc900;
+}
+header.js .header-content {
+  opacity: 1;
+  transform: scale(100%);
 }
 
 .navigator {
@@ -371,8 +477,9 @@ header .header-overlay strong {
 .navigator .navi-overlay > * {
   display: flex;
   background-color: #fff;
-  padding: 9px 0.9rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 4px;
+  box-shadow: 0 0 10px rgba(68, 68, 68, 0.3333333333);
   cursor: pointer;
   transition: all ease-in-out 600ms;
 }
@@ -471,6 +578,13 @@ header .header-overlay strong {
     transform: unset;
   }
 }
+.navigator .navi-overlay .settings-nav {
+  width: 30%;
+  background-image: url(images/icons/settings.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+}
 .navigator .navi-overlay .navi-nav1 {
   width: 40%;
   align-items: center;
@@ -492,13 +606,35 @@ header .header-overlay strong {
   transform: rotate(90deg);
 }
 .navigator .navi-overlay .navi-nav2 {
-  justify-content: center;
   color: #fff;
   flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+.navigator .navi-overlay .navi-nav2 > * {
+  transition: left 200ms ease-in-out;
+  position: relative;
+}
+.navigator .navi-overlay .navi-nav2.cart img {
+  left: 10%;
+}
+.navigator .navi-overlay .navi-nav2.cart span {
+  visibility: visible;
+  left: 75%;
 }
 .navigator .navi-overlay .navi-nav2 img {
+  left: 50%;
+  translate: -50%;
   width: 1.6rem;
   margin: -0.2rem;
+}
+.navigator .navi-overlay .navi-nav2 span {
+  left: 50%;
+  visibility: hidden;
+  background-color: #00509D;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 7px #fff;
 }
 .navigator .navi-overlay .navi-nav2.js {
   background-color: #00509D;
@@ -531,12 +667,15 @@ header .header-overlay strong {
 }
 
 .main-card {
-  height: 100vh;
-  min-height: 810px;
+  height: 100lvh;
+  min-height: 800px;
   max-width: 600px;
   box-shadow: 0 0 10px #333;
-  background-image: linear-gradient(#00509D, #003F88);
   transition: transform ease-in-out 400ms;
+  background-image: linear-gradient(#00509D, #003F88);
+  background-size: 200%, 100%;
+  background-repeat: no-repeat, repeat;
+  background-position: 30dey;
 }
 .main-card.main-go-js {
   visibility: hidden;
@@ -635,7 +774,7 @@ header .header-overlay strong {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: all 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: all 500ms linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
   transform: scale(70%);
 }
 .main-card .mcard-contents .mcard-images .mcard-images-overlay > *.index-js {
@@ -691,15 +830,15 @@ header .header-overlay strong {
   gap: 0.5rem;
 }
 .article-card .article-content .art-vitals > * {
-  background-color: #f8f8f8;
+  background-color: #f0f0f0;
   padding: 1rem;
   border-radius: 9px;
-  box-shadow: inset 0 0 20px #eee;
+  box-shadow: inset 0 0 15px #d8d8d8;
 }
 .article-card .article-content .art-vitals > * h3 {
   padding: 7px 10px;
   border-radius: 1rem;
-  box-shadow: 0 -10px 10px #ffffff, 0 10px 10px #eee;
+  box-shadow: 0 -5px 10px #ffffff, 0 5px 10px #e0e0e0;
   margin: 0 -5px;
   margin-bottom: 1rem;
   text-align: center;
@@ -830,6 +969,9 @@ header .header-overlay strong {
     height: 95vh;
     min-width: fit-content;
   }
+  .form-card .form-content {
+    padding: 0.4rem;
+  }
 }
 @media screen and (max-height: 700px) {
   .article-card {
@@ -857,11 +999,15 @@ header .header-overlay strong {
     gap: 2rem;
   }
 }
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 640px) {
   body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
+  }
+  body header .header-content {
+    grid-template-columns: 30% 30% 30%;
+    gap: 2rem;
   }
   body .navigator {
     bottom: 1rem;
@@ -871,14 +1017,17 @@ header .header-overlay strong {
     justify-content: center;
   }
   body .navigator .navi-overlay .navi-nav1 {
-    display: none;
+    visibility: hidden;
+    width: 0;
+    opacity: 0;
+  }
+  body .navigator .navi-overlay .navi-nav1.settings-nav {
+    visibility: visible;
+    width: 30%;
+    opacity: 1;
   }
   body .navigator .navi-overlay .navi-nav2 {
-    justify-self: center;
-    width: 100%;
-    height: 3rem;
     box-shadow: 0 0 20px rgba(85, 85, 85, 0.3333333333);
-    width: 90%;
   }
   body .navigator .navi-bottom {
     display: none;

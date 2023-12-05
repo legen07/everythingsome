@@ -28,6 +28,12 @@
       min-width: fit-content;
     }
   }
+
+  .form-card{
+    .form-content{
+      padding: .4rem;
+    }
+  }
 }
 
 
@@ -68,12 +74,20 @@
     }
   }
 }
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 640px) {
 
   body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
+
+    header{
+
+      .header-content{
+        grid-template-columns: 30% 30% 30%;
+        gap: 2rem;
+      }
+    }
 
     .navigator{
       bottom: 1rem;
@@ -83,15 +97,19 @@
         justify-content: center; 
         
         .navi-nav1{
-          display: none;
+          visibility: hidden;
+          width: 0;
+          opacity: 0;
+        }
+
+        .navi-nav1.settings-nav{
+          visibility: visible;
+          width: 30%;
+          opacity: 1;
         }
         
         .navi-nav2{
-          justify-self: center;
-          width: 100%;
-          height: 3rem;
           box-shadow: 0 0 20px #5555;
-          width: 90%;
         }
         
       }

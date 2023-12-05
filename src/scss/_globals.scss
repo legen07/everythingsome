@@ -5,12 +5,12 @@ body, ::before, ::after, *{
   font-family: 'rubik', Arial, Helvetica, sans-serif;
 }
 
-*::-webkit-scrollbar{
+*:not(.form-brief):-webkit-scrollbar{
   scroll-behavior: smooth;
   display: none;
 }
 
-*{
+*:not(.form-brief){
   scrollbar-width: none;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
@@ -23,9 +23,9 @@ body, ::before, ::after, *{
 body{
   min-width: 300px;
   overflow-x: hidden;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none; 
   user-select: none;
 }
 
