@@ -100,7 +100,7 @@ bottomLeft.classList.toggle('js');
 
 let cartList = [];
 let form = doc('.form-card');
-let divInp = docsAll("div input");
+let divInp = docs("div input");
 divInp = [...divInp];
 divInp.shift();
 
@@ -141,7 +141,7 @@ function dateFunction () {
   }
 }
 
-let requiredField = docsAll('input[required]')
+let requiredField = docs('input[required]')
 requiredField.forEach( each => {
   let span = document.createElement('span');
   span.className = "required-field";
@@ -259,7 +259,7 @@ function copiedToCart(d) {
   } else if (!cartList.includes(proNameContent)) {
     doc('.form-brief').insertAdjacentElement("afterbegin", createDivBrief);
   } else {
-    docsAll('.form-brief').forEach(each => {
+    docs('.form-brief').forEach(each => {
       if (each.querySelector('.brief-brief h3').textContent === proNameContent) {
         plusAndMinus('plus', doc('.brief-brief .plus'));
       }
@@ -397,7 +397,7 @@ function productOpener(d) {
 
   let _PPC = productList.products[clickedId];
 
-  let mCardElements = [...docsAll(' .art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material')];
+  let mCardElements = [...docs(' .art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material')];
 
   for(let i = 0; i < _PPC.images.length; i++) {
     let eachEle = document.createElement('img');
