@@ -4,7 +4,7 @@ export let productList = {
     CameraBulb :{
       proName : 'Camera Bulb',
 
-      proPrice : 340,
+      proPrice : `&#8373; 340`,
 
       proBrief : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium debitis pariatur omnis vel ea tenetur perferendis et autem unde, quasi ducimus quibusdam veritatis,',
       
@@ -16,7 +16,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////
 
     headPhone : {
-      proPrice : `Gh&#8373; 340`,
+      proPrice : `&#8373; 340`,
       
       proBrief : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       
@@ -31,16 +31,16 @@ export let productList = {
 
     /////////////////////////////////////////////////////////////////////
 
-    'RubberSealant' : {
-      'proName' : 'Camera Bulb',
+    RubberSealant : {
+      proName : 'Toilet roll',
 
-      'proPrice' : 340,
+      proPrice : `&#8373; 340`,
 
-      'proBrief' : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium debitis pariatur omnis vel ea tenetur perferendis et autem unde, quasi ducimus quibusdam veritatis,',
+      proBrief : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium debitis pariatur omnis vel ea tenetur perferendis et autem unde, quasi ducimus quibusdam veritatis,',
       
-      'proDescription' : ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium debitis pariatur omnis vel ea tenetur perferendis et autem unde, quasi ducimus quibusdam veritatis, officia architecto quod necessitatibus enim optio repellendus eveniet officiis ab repellat. Cum qui omnis maxime eaque, et repudiandae aliquam nesciunt nam earum nemo rerum nostrum provident?',
+      proDescription : ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium debitis pariatur omnis vel ea tenetur perferendis et autem unde, quasi ducimus quibusdam veritatis, officia architecto quod necessitatibus enim optio repellendus eveniet officiis ab repellat. Cum qui omnis maxime eaque, et repudiandae aliquam nesciunt nam earum nemo rerum nostrum provident?',
 
-      'images': ['car_pump_full_package.jpg', 'car_pump_graphical.jpg', 'car_pump_graphical1.jpg', 'car_pump.jpg']
+      images: ['car_pump_full_package.jpg', 'car_pump_graphical.jpg', 'car_pump_graphical1.jpg', 'car_pump.jpg']
     }, 
 
     /////////////////////////////////////////////////////////////////////

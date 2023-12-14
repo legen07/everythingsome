@@ -1,3 +1,5 @@
+let cartList = [];
+
 function doc(param) {
   return document.querySelector(param);
 }
@@ -92,30 +94,33 @@ function changePage(pageParam) {
 bottomLeft.classList.toggle('js');
 
 
-
 ///////////////////////////////////////////////////////////////////////
 // Form manupulations//////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 
 
-let cartList = [];
+
 let form = doc('.form-card');
 let divInp = docs("div input");
 divInp = [...divInp];
+console.log(divInp);
 divInp.shift();
+let formBrief = doc('.form-brief');
+
+let proPrice_TC = [...doc('.mcard-price strong').textContent];
+proPrice_TC = proPrice_TC.splice(2, Infinity).join('');
 
 function formOpener() {
   form.classList.add('js');
 
-  console.log(cartList.length);
-
   if (cartList.length < 1) {
   
-  let createDivBrief = document.createElement('div');
-  createDivBrief.classList.add('form-brief-content');
-  createDivBrief.innerHTML = `<div class="brief-brief"> ${doc('.mcard-images-overlay div').innerHTML} <div class="brief-side"><h3>${doc('.article-content .art-head h1').textContent}</h3><div><span>₵ </span><span class="digit"> </span></div><div class="price-maths"><button class="minus" style="color: rgb(170, 170, 170);">-</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = ₵ &nbsp;</b><strong>${doc('.mcard-price strong').textContent}</strong></div>`;
+    let createDivBrief = document.createElement('div');
+    createDivBrief.classList.add('form-brief-content', 'pro-from-none');
+    createDivBrief.innerHTML = `<div class="brief-brief"> ${doc('.mcard-images-overlay div').innerHTML} <div class="brief-side"><h3>${doc('.article-content .art-head h1').textContent}</h3><div><span class="digit">${proPrice_TC}</span></div><div class="price-maths"><button class='minus'>remove</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = &nbsp;</b><strong>${proPrice_TC}</strong></div>`;
 
-  formBriefContent.insertAdjacentElement('afterbegin', createDivBrief);
+    formBrief.appendChild(createDivBrief);
+    cartList.push(doc('.article-content .art-head h1').textContent);
   }
 }
 
@@ -152,23 +157,20 @@ requiredField.forEach( each => {
 //////////////////////////////////////////////////////////////
 ///////// header expansion function //////////////////////////
 //////////////////////////////////////////////////////////////
-let navigation = doc('.navi-overlay');
 let header = doc('header');
 
 function headExpandFoo() {
 
-  // if (naviNav1.classList.contains('nl')){
+  window.scrollTo( {
+    top: -1000, 
+    behavior: 'instant'
+  })
+
+  setTimeout( function () {
     header.classList.toggle('js');
-
-    window.scrollTo( {
-      top: -1000, 
-      behavior: 'instant'
-    })
-
-    setTimeout( function () {
-      naviNav2.parentElement.classList.toggle('scroll-js');
-    }, 200);
-  // }
+    naviNav2.parentElement.classList.toggle('scroll-js');
+    document.body.classList.toggle('js');
+  }, 200);
 }
 
 
@@ -176,110 +178,90 @@ function headExpandFoo() {
 ////// PLUS AND MINUS FUNCTION  //////////////////////////////
 //////////////////////////////////////////////////////////////
 
-
 function plusAndMinus(pnmParam, d) {
-  
+  let fourParents = d.parentElement.parentElement.parentElement.parentElement;
+  let index = cartList.findIndex(item => item = fourParents.querySelector('.brief-brief h3').textContent);
   if (cartList.length > 0) {
   
     let digit = d.parentElement.parentElement.querySelector('.brief-side .digit');
     let units = d.parentElement.parentElement.querySelector('.brief-side .price-maths div');
-    let total = d.parentElement.parentElement.parentElement.parentElement.querySelector('.brief-total strong');
+    let total = fourParents.querySelector('.brief-total strong');
     let unitNum = 1;
     let bulkErrMsg =  doc('.bulk-err-msg');
     form.appendChild(bulkErrMsg);
-
-  console.log('plus and minus function');
   
-  let digitNum = Number(digit.textContent);
-  unitNum = Number(units.textContent);
-  let totalNum = Number(total.textContent);
-  
-  if(pnmParam === 'plus' && unitNum < 4) {
-    total.textContent = totalNum + digitNum;
-    units.textContent = unitNum + 1;
-    if (unitNum >= 3) {
-      units.nextElementSibling.style.color = '#aaa';
-      bulkErrMsg.classList.add('js');
-      setTimeout( function() {
-        bulkErrMsg.classList.remove('js');
-      }, 9000)
+    let digitNum = Number(digit.textContent.replace(/\D/g, ''));
+    unitNum = Number(units.textContent);
+    let totalNum = Number(total.textContent.replace(/\D/g, ''));
+    
+    
+    if(pnmParam === 'plus' && unitNum < 4) {
+      total.textContent = `₵ ${totalNum + digitNum}`;
+      units.textContent = unitNum + 1;
+      units.previousElementSibling.textContent = '-';
+      units.previousElementSibling.style.cssText = 'font-size: 1.5rem; padding: 0 6px';
+      if (unitNum >= 3) {
+        units.nextElementSibling.style.color = '#aaa';
+        bulkErrMsg.classList.add('js');
+        setTimeout( function() {
+          bulkErrMsg.classList.remove('js');
+        }, 9000)
+      }
+      cartList.unshift(fourParents.querySelector('.brief-brief h3').textContent)
+      units.previousElementSibling.style.color = '#000';
+    } else if (pnmParam === 'minus' && unitNum > 1) {
+      // removeFromCart();
+      units.nextElementSibling.style.color = '#000';
+      total.textContent = totalNum - digitNum;
+      units.textContent = unitNum - 1;
+      if (unitNum <= 2) {
+        units.previousElementSibling.style.cssText ='#f44';
+        units.previousElementSibling.textContent = 'remove';
+      }
+
+     
+
+      cartList.splice(index, 1)
+
+    } else if (unitNum <= 1) {
+      fourParents.remove();
+      console.log(cartList, 'this is the la');
+      cartList.splice(index, 1)
+
+      if (cartList.length < 1) {
+        form.classList.remove('js');
+      }
     }
-    units.previousElementSibling.style.color = '#000';
-  } else if (pnmParam === 'minus' && unitNum > 1) {
-    if(unitNum <= 2) {
-      units.previousElementSibling.style.color = '#aaa';
-    }
-    units.nextElementSibling.style.color = '#000';
-    total.textContent = totalNum - digitNum;
-    units.textContent = unitNum - 1;
   }
-} else {
-  console.log('nothing nothing');
 }
-}
-
-try{
-  if (unitNum < 2) {
-    units.previousElementSibling.style.color = '#aaa';
-  }
-} catch {}
-
-
 
 
 function copiedToCart(d) {
   
-  let createDivBrief = document.createElement('div');
-  createDivBrief.classList.add('form-brief-content');
-  createDivBrief.innerHTML ='<div class="brief-brief"><div class="brief-side"><h3></h3><div><span>₵ </span><span class="digit"> </span></div><div class="price-maths"><button class="minus" style="color: rgb(170, 170, 170);">-</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = ₵ &nbsp;</b><strong></strong></div>';
-  
   function dF(ele) {
     return d.parentElement.parentElement.querySelector(ele);
   }
-  function cF(ele) {
-    return createDivBrief.querySelector(ele);
-  }  
-
-
+  let eachPrice_tC = Number(dF('.pro-price strong').textContent.replace(/\D/g, ''));
   let proNameContent = dF('.pro-name h2').textContent;
+  let createDivBrief = document.createElement('div');
+  createDivBrief.classList.add('form-brief-content');
+  createDivBrief.innerHTML =`<div class="brief-brief">${dF('.pro-img img').outerHTML}<div class="brief-side"><h3>${proNameContent}</h3><div><span> </span><span class="digit">${eachPrice_tC}</span></div><div class="price-maths"><button class="minus">remove</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = &nbsp;</b><strong>${eachPrice_tC}</strong></div>`;
 
-  let clonedProImg = dF('.pro-img img').cloneNode(true);
-  cF('.brief-brief').insertAdjacentElement('afterbegin', clonedProImg);
-  cF('.brief-brief h3').textContent = proNameContent;
-  let priceProduct = dF('.pro-price strong').textContent.slice(1, 6);
-  cF('.brief-brief span.digit').textContent = priceProduct;
-  cF('.brief-total strong').textContent = priceProduct;
+  docs('.form-brief-content').forEach(each => {
 
-  if ( Number(doc('.brief-brief .digit')) > 3) {
-      bulkErrMsg.classList.add('js');
-      setTimeout( function() {
-        bulkErrMsg.classList.remove('js');
-      }, 9000);
-      return;
-  } else if (!cartList.includes(proNameContent)) {
+    if (each.querySelector('.brief-side h3').textContent === proNameContent) {
+      plusAndMinus('plus', doc('.brief-brief .plus'));
+    }
+  })
+
+  if (!cartList.includes(proNameContent)) {
     doc('.form-brief').insertAdjacentElement("afterbegin", createDivBrief);
-  } else {
-    docs('.form-brief').forEach(each => {
-      if (each.querySelector('.brief-brief h3').textContent === proNameContent) {
-        plusAndMinus('plus', doc('.brief-brief .plus'));
-      }
-    })
+    cartList.unshift(proNameContent);
   }
-  cartList.unshift(proNameContent);
 
-
-  naviNav2.classList.add('cart'); 
+  naviNav2.classList.add('cart');
   naviNav2.lastElementChild.textContent =  cartList.length;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -311,8 +293,13 @@ document.addEventListener( 'click', e =>{
   if (d.classList.contains('fo') || d.classList.contains('fo1'))
     formOpener();
 
-  else if (d.classList.contains("fc"))
+  else if (d.classList.contains("fc") ) {
+    if (doc('.pro-from-none')) {
+      cartList.shift();
+      doc('.pro-from-none').remove();
+    }
     form.classList.remove('js');
+  }
 
   if (d.classList.contains('fd'))
     dateFunction();
@@ -324,9 +311,8 @@ document.addEventListener( 'click', e =>{
     plusAndMinus('plus', d);
   }
 
-
+  ///////////////////////////////////////////////
   /// input styles 
-
   divInp.forEach((each, index) => {
     
     if (d.classList.contains('di'))
@@ -352,8 +338,10 @@ document.addEventListener( 'click', e =>{
   if(d.classList.contains('po')) {
     productOpener(d);
   }
+  console.log(cartList);
 });
 ////// CLICK EVENTS END HERE 
+////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
 
@@ -397,7 +385,7 @@ function productOpener(d) {
 
   let _PPC = productList.products[clickedId];
 
-  let mCardElements = [...docs(' .art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material')];
+  let mCardElements = [...docs('.art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material')];
 
   for(let i = 0; i < _PPC.images.length; i++) {
     let eachEle = document.createElement('img');

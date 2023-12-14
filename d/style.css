@@ -63,7 +63,7 @@ button {
   position: fixed;
   inset: 0;
   opacity: 0;
-  background-color: rgba(51, 51, 51, 0.2);
+  background-color: rgba(51, 51, 51, 0.4);
   transition: all 400ms ease-in-out;
   backdrop-filter: blur(5px);
 }
@@ -107,7 +107,7 @@ button {
 }
 .form-card .form-content .form-brief {
   width: 100%;
-  height: 130%;
+  height: 150%;
   position: relative;
   align-items: center;
   overflow-x: auto;
@@ -117,6 +117,7 @@ button {
 }
 .form-card .form-content .form-brief .form-brief-content {
   width: 230px;
+  position: relative;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief {
   display: flex;
@@ -132,6 +133,9 @@ button {
   justify-content: center;
   justify-items: center;
 }
+.form-card .form-content .form-brief .form-brief-content .brief-brief h3 {
+  font-size: 1rem;
+}
 .form-card .form-content .form-brief .form-brief-content .brief-brief img {
   width: 40%;
   aspect-ratio: 1;
@@ -142,6 +146,7 @@ button {
   width: 100%;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths {
+  min-width: 110px;
   width: 90%;
   justify-content: space-between;
 }
@@ -149,6 +154,13 @@ button {
   font-size: 1.5rem;
   padding: 0 8px;
   border-radius: 4px;
+  background-color: #eee;
+}
+.form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths .minus {
+  color: #f44;
+  padding: 5px;
+  font-size: 0.9rem;
+  letter-spacing: -1px;
 }
 .form-card .form-content .form-brief .brief-total {
   position: relative;
@@ -159,6 +171,9 @@ button {
   translate: -50%;
   border-radius: 0 0 1rem 1rem;
   box-shadow: inset 0 3px 5px #ccc;
+}
+.form-card .form-content .form-brief .brief-total strong {
+  font-size: 1rem;
 }
 .form-card .form-content p, .form-card .form-content span {
   display: block;
@@ -303,6 +318,31 @@ button {
   font-family: PermanentMarker;
   src: url(images/font/PermanentMarker.ttf);
 }
+.preloader {
+  visibility: visible;
+  position: fixed;
+  transition: all ease-in-out 400ms;
+  transform: unset;
+  opacity: 1;
+}
+.preloader div {
+  animation: preloader ease-in-out 500ms infinite;
+}
+
+.preloader.js {
+  visibility: hidden;
+  transform: translateY(-30%);
+  opacity: 0;
+}
+
+@keyframes preloader {
+  from {
+    transform: rotate(190);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 body.js {
   overflow: hidden;
 }
@@ -319,7 +359,7 @@ header {
   grid-column-end: 3;
   z-index: 9;
   box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
-  transition: all 300ms ease-in-out;
+  transition: height 200ms ease-in-out;
 }
 header .header-overlay {
   display: flex;
@@ -345,7 +385,6 @@ header .header-overlay strong {
   transform: translateY(-30%);
 }
 header .header-content {
-  opacity: 0;
   width: 100%;
   max-width: 1000px;
   height: auto;
@@ -357,7 +396,7 @@ header .header-content {
   justify-content: space-evenly;
   row-gap: 2rem;
   transform: scale(130%) translateY(50%);
-  transition: all 300ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 header .header-content .product {
   position: relative;
@@ -441,7 +480,6 @@ header.js {
   background-color: #fdc900;
 }
 header.js .header-content {
-  opacity: 1;
   transform: scale(100%);
 }
 

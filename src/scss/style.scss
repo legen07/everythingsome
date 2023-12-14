@@ -7,6 +7,35 @@
   src: url(images/font/PermanentMarker.ttf);
 }
 
+.preloader{
+  visibility: visible;
+  position: fixed;
+  transition: all ease-in-out 400ms ;
+  transform: unset;
+  opacity: 1;
+
+  div{
+    animation: preloader ease-in-out 500ms infinite ; 
+  }
+}
+
+.preloader.js {
+  visibility: hidden;
+  transform: translateY(-30%);
+  opacity: 0;
+}
+
+@keyframes preloader {
+  from{
+
+    transform: rotate(190);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 body.js{
   overflow: hidden;
 }
@@ -23,7 +52,7 @@ header{
   grid-column-end: 3;
   z-index: 9;
   box-shadow: inset 0 -5.9px 6px #3334;
-  transition: all 300ms ease-in-out;
+  transition: height 200ms ease-in-out;
 
   
   .header-overlay{
@@ -56,7 +85,6 @@ header{
   }
 
   .header-content{
-    opacity: 0;
     width: 100%;
     max-width: 1000px;
     height: auto;
@@ -68,7 +96,7 @@ header{
     justify-content: space-evenly;
     row-gap: 2rem;
     transform: scale(130%) translateY(50%);
-    transition: all 300ms ease-in-out;
+    transition: transform 200ms ease-in-out;
     
     .product{
       position: relative;
@@ -167,7 +195,6 @@ header{
     background-color: $myellow;
   
     .header-content{
-      opacity: 1;
       transform: scale(100%); 
     }
   }

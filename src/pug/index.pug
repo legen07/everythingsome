@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="theme-color" content="#ffc900")
-    title Car Pump
+    title Nibies
     link(rel="stylesheet", href="style.min.css")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
@@ -15,7 +15,24 @@ html(lang="en")
 
 
 
-  body 
+  body
+    .preloader(style='background-image: linear-gradient(#fdc900 50%, #003F88 50%); inset: -60%; z-index: 9999; display: flex; justify-content: center; align-items: center;')
+      div(style='mix-blend-mode: difference; height: 3rem; width: 3rem; border: solid 2px; border-top: solid 2px white; border-radius: 50%;')
+
+    script.
+      let p = document.querySelector('.preloader');
+      if (document.readyState === 'loading' || document.readyState === 'interactive'){
+        console.log('readyState');
+        p.classList.remove('js');
+      }
+      window.onload = function(){
+        p.classList.add('js');
+      }
+
+      setTimeout(function() {
+        p.classList.add('js');
+      },3000 )
+
     header
       .header-overlay
         img(src="images/graphics/everythingsome-logo.svg", alt="")
@@ -51,7 +68,7 @@ html(lang="en")
       .mcard-contents
 
         .mcard-price
-          strong Gh&#8373; 340.00
+          strong Gh&#8373; 340
           hr
 
         .mcard-images
