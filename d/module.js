@@ -178,7 +178,7 @@ export let productList = {
       
       proBrief : 'Portable, waterproof, and suitable for camping and family travel with manual air pump.',
       
-      proName : 'Inflable Bed',
+      proName : 'Inflatable Bed',
 
       
       brandNModel : `
