@@ -32,11 +32,13 @@ body {
 P {
   line-height: 1.5;
   font-family: "fira Sans", Helvetica, sans-serif;
-  color: rgba(0, 0, 0, 0.8);
+  color: #444;
 }
 
-span {
+span, tr, td {
   font-weight: 100;
+  font-size: 0.9rem;
+  color: #444;
 }
 
 a {
@@ -111,9 +113,11 @@ button {
   position: relative;
   align-items: center;
   overflow-x: auto;
+  margin: 0 -1rem;
   display: grid;
   grid-auto-flow: column;
   gap: 1rem;
+  padding: 1rem;
 }
 .form-card .form-content .form-brief .form-brief-content {
   width: 230px;
@@ -124,7 +128,7 @@ button {
   border-radius: 1rem;
   overflow: hidden;
   height: 100px;
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 5px 6px -2px rgba(136, 136, 136, 0.6);
   background-color: #ddd;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief *:not(img) {
@@ -134,7 +138,12 @@ button {
   justify-items: center;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief h3 {
-  font-size: 1rem;
+  display: inline-block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief img {
   width: 40%;
@@ -170,7 +179,7 @@ button {
   left: 50%;
   translate: -50%;
   border-radius: 0 0 1rem 1rem;
-  box-shadow: inset 0 3px 5px #ccc;
+  box-shadow: inset 0 3px 5px rgba(136, 136, 136, 0.4);
 }
 .form-card .form-content .form-brief .brief-total strong {
   font-size: 1rem;
@@ -397,10 +406,19 @@ header .header-content {
   row-gap: 2rem;
   transform: scale(130%) translateY(50%);
   transition: transform 200ms ease-in-out;
+  perspective: 900px;
 }
 header .header-content .product {
   position: relative;
   cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+header .header-content .product:hover {
+  box-shadow: 0 0 10px rgba(17, 17, 17, 0.4666666667);
+}
+header .header-content .product:active {
+  box-shadow: 0 10px 10px -4px rgba(17, 17, 17, 0.3333333333);
+  transform: rotateX(6deg);
 }
 header .header-content .product .product-back {
   height: 100%;
@@ -427,7 +445,7 @@ header .header-content .product .product-back .pro-name {
 }
 header .header-content .product .product-back .pro-name h2 {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 12px;
   border-radius: 0 0 1rem 1rem;
 }
 header .header-content .product .product-back .pro-price, header .header-content .product .product-back .pro-cart {
@@ -636,9 +654,10 @@ header.js .header-content {
 }
 .navigator .navi-overlay .navi-nav1.js {
   background-color: #00509D;
-  color: #fff;
-  box-shadow: 0 0 10px #ddd;
   flex-direction: row-reverse;
+}
+.navigator .navi-overlay .navi-nav1.js span {
+  color: #fff;
 }
 .navigator .navi-overlay .navi-nav1.js img {
   transform: rotate(90deg);
@@ -678,6 +697,9 @@ header.js .header-content {
   background-color: #00509D;
   box-shadow: 0 0 10px #ddd;
 }
+.navigator .navi-overlay .navi-nav1.js, .navigator .navi-overlay .navi-nav2.js {
+  box-shadow: 0 5px 8px -4px #00296B;
+}
 .navigator .navi-bottom {
   display: flex;
   gap: 0.2rem;
@@ -705,8 +727,8 @@ header.js .header-content {
 }
 
 .main-card {
-  height: 100lvh;
-  min-height: 800px;
+  height: 98lvh;
+  min-height: 730px;
   max-width: 600px;
   box-shadow: 0 0 10px #333;
   transition: transform ease-in-out 400ms;
@@ -724,8 +746,8 @@ header.js .header-content {
   transform: unset;
 }
 .main-card .mcard-contents {
-  padding: 0 2rem;
-  height: 95%;
+  padding: 1rem 2rem;
+  height: 100%;
   display: grid;
   grid-template-rows: auto auto auto;
   align-items: start;
@@ -736,6 +758,7 @@ header.js .header-content {
   align-self: end;
   font-weight: 700;
   font-size: 230%;
+  align-self: center;
   color: #fdd800;
 }
 .main-card .mcard-contents .mcard-price hr {
@@ -743,7 +766,7 @@ header.js .header-content {
   height: 0.5rem;
   margin: 0 0 0 1rem;
   position: relative;
-  width: 30%;
+  width: 5rem;
   align-self: end;
   border-radius: 1rem;
   background-color: #fdb500;
@@ -751,8 +774,9 @@ header.js .header-content {
 }
 .main-card .mcard-contents .mcard-images {
   position: relative;
+  align-self: flex-start;
   width: 100%;
-  place-self: center;
+  justify-self: center;
   max-width: 45vh;
   margin: -1rem;
   height: 45vh;
@@ -824,9 +848,22 @@ header.js .header-content {
   transform: scale(100%);
 }
 .main-card .mcard-contents .mcard-description {
+  align-self: flex-start;
   font-weight: 800;
   font-size: 1.2rem;
   line-height: 1.5;
+}
+.main-card .mcard-contents .mcard-description h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 900;
+  color: #000;
+}
+@media screen and (max-height: 680px) {
+  .main-card .mcard-contents .mcard-description h1 {
+    font-size: 1.5rem;
+  }
 }
 .main-card .mcard-contents .mcard-description p {
   color: #bbb;
@@ -839,8 +876,9 @@ header.js .header-content {
   transform: scale(60%) translateX(130%);
   top: 0;
   padding: 2rem;
-  height: 100vh;
+  height: 100lvh;
   background-color: #fff;
+  overflow-y: scroll;
   transition: all ease-out 400ms;
 }
 .article-card.article-come-js {
@@ -856,11 +894,14 @@ header.js .header-content {
 .article-card .article-content {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 100%;
+  min-height: 700px;
   justify-content: space-evenly;
 }
 .article-card .article-content .art-head {
+  align-self: center;
   text-align: center;
+  min-height: 6rem;
 }
 .article-card .article-content .art-vitals {
   display: grid;
@@ -881,27 +922,38 @@ header.js .header-content {
   margin-bottom: 1rem;
   text-align: center;
 }
-.article-card .article-content .art-vitals .vit-price .vit-price-content {
-  display: block;
-  width: 100%;
-}
-.article-card .article-content .art-vitals .vit-price .vit-price-content table {
+.article-card .article-content .art-vitals table {
   border-spacing: 0;
   width: 100%;
 }
-.article-card .article-content .art-vitals .vit-price .vit-price-content td {
+.article-card .article-content .art-vitals table tbody {
+  display: table;
+  width: 100%;
+}
+.article-card .article-content .art-vitals table td {
   width: 50%;
   margin-bottom: 8px;
   padding-bottom: 0.2rem;
 }
-.article-card .article-content .art-vitals .vit-price .vit-price-content tr.product td {
-  border-bottom: solid 1px #666;
+.article-card .article-content .art-vitals table tr.ran1 td {
+  border-bottom: solid 1px #ccc;
 }
-.article-card .article-content .art-vitals .vit-price .vit-price-content td:nth-child(1) {
-  border-right: solid 1px #333;
+.article-card .article-content .art-vitals table td:nth-child(1) {
+  border-right: solid 1px #ccc;
 }
-.article-card .article-content .art-vitals .vit-price .vit-price-content td:nth-child(2) {
+.article-card .article-content .art-vitals table td:nth-child(2) {
   padding-left: 6px;
+}
+.article-card .article-content .art-vitals .tags span {
+  padding: 3px 12px;
+  box-shadow: 0 7px 9px #fdb500, 2px 3px #f83;
+  border-radius: 15px;
+  background-color: #fdc900;
+  font-size: 0.8rem;
+}
+.article-card .article-content .art-vitals .vit-price .vit-price-content {
+  display: block;
+  width: 100%;
 }
 .article-card .article-content .art-vitals .vit-price span {
   display: block;
@@ -915,21 +967,15 @@ header.js .header-content {
   top: 4px;
 }
 .article-card .article-content .art-vitals .vit-material {
-  display: flex;
-  flex-direction: column;
-  grid-template-rows: auto auto auto;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 .article-card .article-content .art-vitals .vit-material .vit-mat-content {
-  justify-content: space-evenly;
-  display: flex;
+  justify-self: center;
+  display: grid;
 }
-.article-card .article-content .art-vitals .vit-material .vit-mat-content > * {
-  display: block;
-}
-.article-card .article-content .art-vitals .vit-material .vit-mat-content > * span {
-  display: block;
+.article-card .article-content .art-vitals .vit-material .vit-mat-content tbody {
+  justify-self: center;
 }
 .article-card .article-content .art-vitals .vit-material > span {
   margin-bottom: auto;
@@ -944,24 +990,17 @@ header.js .header-content {
   gap: 10px;
   margin-top: 1rem;
 }
-.article-card .article-content .art-vitals .vit-material .tags > * {
-  padding: 3px 12px;
-  box-shadow: 0 7px 9px #fdb500, 2px 3px #f83;
-  border-radius: 15px;
-  background-color: #fdc900;
-  font-size: 0.8rem;
-}
 .article-card .article-content article {
   position: relative;
   padding: 2rem;
-  margin: 0 -2rem;
+  margin: 0 -1rem;
   background-color: #f8f8f8;
 }
 
 .bulk-err-msg {
   visibility: hidden;
   opacity: 0;
-  border: solid 2px rgba(255, 51, 0, 0.4666666667);
+  border: solid 3px rgba(255, 51, 0, 0.4666666667);
   position: fixed;
   top: 2rem;
   border-radius: 9px;
@@ -969,11 +1008,11 @@ header.js .header-content {
   height: auto;
   z-index: 99999;
   padding: 9px;
-  background-color: rgba(238, 238, 238, 0.6);
-  backdrop-filter: blur(15px);
+  background-color: rgba(255, 238, 238, 0.8);
+  backdrop-filter: blur(45px);
   left: 50%;
   translate: -100%;
-  transition: all 500ms ease-in-out;
+  transition: all ease-in-out 500ms;
   color: #a00;
 }
 .bulk-err-msg.js {
@@ -985,7 +1024,7 @@ header.js .header-content {
 
 @media screen and (max-width: 450px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   h3 {
     font-size: 1rem;
@@ -997,23 +1036,21 @@ header.js .header-content {
     letter-spacing: 1;
   }
   .main-card, .article-card {
-    padding: 0.4rem;
+    padding: 2rem 0.4rem;
   }
   .main-card .mcard-contents, .article-card .mcard-contents {
-    height: 95vh;
     padding: 0 0.8rem;
   }
   .main-card .article-content, .article-card .article-content {
-    height: 95vh;
     min-width: fit-content;
   }
   .form-card .form-content {
     padding: 0.4rem;
   }
 }
-@media screen and (max-height: 700px) {
-  .article-card {
-    margin: 1.8rem 0;
+@media screen and (max-height: 900px) {
+  .mcard-contents .mcard-description h1 {
+    font-size: 1rem;
   }
   .article-card .article-content {
     display: grid;
@@ -1027,6 +1064,9 @@ header.js .header-content {
   }
 }
 @media screen and (min-height: 740px) {
+  h1 {
+    font-size: 2rem;
+  }
   .form-card .form-card-close {
     opacity: 0;
   }

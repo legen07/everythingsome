@@ -1,5 +1,6 @@
 let cartList = [];
 
+
 function doc(param) {
   return document.querySelector(param);
 }
@@ -73,7 +74,7 @@ function changePage(pageParam) {
     setTimeout( () => {
       naviNav1.parentElement.insertAdjacentElement("afterbegin", naviNav1);
     }, 600)
-
+    
   } else if(pageParam === "left" && naviNav1.firstElementChild.innerHTML === 'back'){
     articleCard.classList.toggle("article-come-js");
     mainCard.classList.toggle("main-go-js");
@@ -103,7 +104,6 @@ bottomLeft.classList.toggle('js');
 let form = doc('.form-card');
 let divInp = docs("div input");
 divInp = [...divInp];
-console.log(divInp);
 divInp.shift();
 let formBrief = doc('.form-brief');
 
@@ -155,20 +155,20 @@ requiredField.forEach( each => {
 });
 
 //////////////////////////////////////////////////////////////
-///////// header expansion function //////////////////////////
+///////// header expansion function /////////////////////////
 //////////////////////////////////////////////////////////////
 let header = doc('header');
 
 function headExpandFoo() {
 
   window.scrollTo( {
-    top: -1000, 
+    top: -1000,
     behavior: 'instant'
   })
 
   setTimeout( function () {
     header.classList.toggle('js');
-    naviNav2.parentElement.classList.toggle('scroll-js');
+    // naviNav2.parentElement.classList.toggle('scroll-js');
     document.body.classList.toggle('js');
   }, 200);
 }
@@ -182,14 +182,14 @@ function plusAndMinus(pnmParam, d) {
   let fourParents = d.parentElement.parentElement.parentElement.parentElement;
   let index = cartList.findIndex(item => item = fourParents.querySelector('.brief-brief h3').textContent);
   if (cartList.length > 0) {
-  
+    
     let digit = d.parentElement.parentElement.querySelector('.brief-side .digit');
     let units = d.parentElement.parentElement.querySelector('.brief-side .price-maths div');
     let total = fourParents.querySelector('.brief-total strong');
     let unitNum = 1;
     let bulkErrMsg =  doc('.bulk-err-msg');
     form.appendChild(bulkErrMsg);
-  
+    
     let digitNum = Number(digit.textContent.replace(/\D/g, ''));
     unitNum = Number(units.textContent);
     let totalNum = Number(total.textContent.replace(/\D/g, ''));
@@ -225,7 +225,6 @@ function plusAndMinus(pnmParam, d) {
 
     } else if (unitNum <= 1) {
       fourParents.remove();
-      console.log(cartList, 'this is the la');
       cartList.splice(index, 1)
 
       if (cartList.length < 1) {
@@ -234,7 +233,6 @@ function plusAndMinus(pnmParam, d) {
     }
   }
 }
-
 
 function copiedToCart(d) {
   
@@ -275,23 +273,23 @@ document.addEventListener( 'click', e =>{
 
   // MAIN PAGE IMAGES MANUPULATIONS EVENTS
   if(d.classList.contains('m-east') )
-    estWstFunction("east");
+  estWstFunction("east");
 
   else if(d.classList.contains('m-west'))
-    estWstFunction("west");
+  estWstFunction("west");
 
 
 // bottom navigation event and animation
   if(d.classList.contains('nl'))
     changePage("left");
-
+  
   // else if(d.classList.contains('nr'))
     // changePage("right");
 
-
+    
 /// Opening forms 
   if (d.classList.contains('fo') || d.classList.contains('fo1'))
-    formOpener();
+  formOpener();
 
   else if (d.classList.contains("fc") ) {
     if (doc('.pro-from-none')) {
@@ -302,7 +300,7 @@ document.addEventListener( 'click', e =>{
   }
 
   if (d.classList.contains('fd'))
-    dateFunction();
+  dateFunction();
 
   /// Plus and minus inside the briefed form information. 
   if (d.classList.contains('minus')) {
@@ -310,7 +308,7 @@ document.addEventListener( 'click', e =>{
   } else if (d.classList.contains('plus')) {
     plusAndMinus('plus', d);
   }
-
+  
   ///////////////////////////////////////////////
   /// input styles 
   divInp.forEach((each, index) => {
@@ -332,13 +330,11 @@ document.addEventListener( 'click', e =>{
   if(d.classList.contains('ho'))
     headExpandFoo();
 
-  if(d.classList.contains('pc')) 
-    copiedToCart(d);
+  if(d.classList.contains('pc'))
+  copiedToCart(d);
 
-  if(d.classList.contains('po')) {
+  if(d.classList.contains('po'))
     productOpener(d);
-  }
-  console.log(cartList);
 });
 ////// CLICK EVENTS END HERE 
 ////////////////////////////////////////////////////////
@@ -350,9 +346,9 @@ document.addEventListener( 'click', e =>{
 
 window.addEventListener('scroll', scrol => {
   let fortyMedia = window.matchMedia("(max-height: 700px)");
-  if (fortyMedia.matches && window.scrollY > 100) {
+  if (fortyMedia.matches && window.scrollY > 1) {
     naviNav2.parentElement.classList.add('scroll-js');
-  } else if (window.scrollY < 110) {
+  } else if (window.scrollY < 2) {
     try{
       naviNav2.parentElement.classList.remove('scroll-js');
     }  catch{}
@@ -362,19 +358,17 @@ window.addEventListener('scroll', scrol => {
 
 import {productList} from './module.js';
 
-// console.log(productList.products);
-
 Object.entries(productList.products).map( ([keys, element]) => {
   let name = element.proName;
   let price = element.proPrice;
   let brief = element.proBrief;
   let images = element.images;
 
-  let div = document.createElement('div');
+  let div = document.createElement('d');
   div.classList.add('product', 'po');
   div.setAttribute('id', keys);
   div.innerHTML = `<div class="product-back"> <div class="pro-img"> <img class="po" src="images/products/${images[0]}"><div class="pro-name"><h2>${name}</h2></div></div> <div class="pro-price"><strong>${price}</strong></div><div class="pro-cart pc"><div class="pc">+</div></div></div>`;
-
+  
   doc('.header-content').appendChild(div);
 });
 
@@ -384,19 +378,37 @@ function productOpener(d) {
   let clickedId = clickedProduct.getAttribute('id');
 
   let _PPC = productList.products[clickedId];
-
-  let mCardElements = [...docs('.art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material')];
-
-  for(let i = 0; i < _PPC.images.length; i++) {
+  
+  let mCardElements = [...docs('.art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material, .vit-brand')];
+  
+  for(let i = 0; i < 6; i++) {
     let eachEle = document.createElement('img');
     let eachPPC = _PPC.images[i];
     eachEle.setAttribute('src', `./images/products/${eachPPC}`);
-    mcardOverlay[i].replaceChildren(eachEle);
+    if (mcardOverlay[i] !==  undefined)
+      mcardOverlay[i].replaceChildren(eachEle);
 
     mCardElements[i].innerHTML = Object.values(_PPC)[i];
-    console.log(Object.values(_PPC)[i]);
-    // console.log(mCardElements[i]);
   }
+  let ghc = [...doc('.mcard-price strong').textContent]
+  ghc.unshift('Gh');
+  doc('.mcard-price strong').textContent = ghc.join('');
+  window.location.hash = clickedId;
 
+  doc('.mcard-description h1').textContent = (doc('.art-head h1').textContent);
   headExpandFoo();
+  artPricechange();
+}
+  
+function artPricechange() {
+  doc('.vit-price .ran2').textContent = ` ${doc('.mcard-price strong').textContent.replace(/Gh/g, '')}`;
+
+  doc('.vit-price span').textContent = doc('.vit-price span').textContent.replace(/\b\d+\b/g, Number(doc('.vit-price .ran2').textContent.replace(/\D/g, '')) + 30);
+}
+  
+window.onload = function() {
+  productOpener(doc((window.location.hash)).querySelector('img'));
+  setTimeout(function() {headExpandFoo()}, 300);
+
+  artPricechange();
 }

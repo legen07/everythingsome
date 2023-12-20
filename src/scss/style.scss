@@ -97,11 +97,21 @@ header{
     row-gap: 2rem;
     transform: scale(130%) translateY(50%);
     transition: transform 200ms ease-in-out;
+    perspective: 900px;
     
     .product{
       position: relative;
       cursor: pointer;
+      transition: all 250ms ease-in-out;
+
+      &:hover{
+        box-shadow: 0 0 10px #1117;
+      }
       
+      &:active{
+        box-shadow: 0 10px 10px -4px #1115;
+        transform: rotateX(6deg);
+      }
       
       .product-back{
         height: 100%;
@@ -130,7 +140,7 @@ header{
 
           h2{
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 12px;
             border-radius: 0 0 1rem 1rem;
           }
         }
@@ -346,6 +356,7 @@ header{
       background-size: 2rem;
     }
 
+    
     .navi-nav1{
       width: 40%;
       align-items: center;
@@ -360,10 +371,12 @@ header{
       
       &.js{
         background-color: $tblue;
-        color: #fff;
-        box-shadow: 0 0 10px #ddd;
         flex-direction: row-reverse;
-
+        
+        span{
+          color: #fff ;
+        }
+        
         img{
           transform: rotate(90deg);
         }
@@ -375,7 +388,7 @@ header{
       flex-grow: 1;
       display: flex;
       position: relative;
-
+      
       > *{
         transition: left 200ms ease-in-out;
         position: relative;
@@ -399,7 +412,7 @@ header{
         width: 1.6rem;
         margin: -.2rem;
       }
-
+      
       span{
         left: 50%;
         visibility: hidden;
@@ -408,11 +421,14 @@ header{
         border-radius: 1rem;
         box-shadow: 0 0 7px #fff;
       }
-
+      
       &.js{
         background-color: $tblue;
         box-shadow: 0 0 10px #ddd;
       }
+    }
+    .navi-nav1.js, .navi-nav2.js{
+      box-shadow: 0 5px 8px -4px $fblue;
     }
   }
 
@@ -446,11 +462,9 @@ header{
   }
 }
 
-
-
 .main-card{
-  height: 100lvh;
-  min-height: 800px;
+  height: 98lvh;
+  min-height: 730px;
   max-width: 600px;
   box-shadow: 0 0 10px #333;
   transition: transform ease-in-out 400ms;
@@ -468,10 +482,9 @@ header{
     transform: unset;
   }
 
-
   .mcard-contents{
-    padding:0 2rem;
-    height: 95%;
+    padding:1rem 2rem;
+    height: 100%;
     display: grid;
     grid-template-rows: auto auto auto;
     align-items: start;
@@ -482,6 +495,7 @@ header{
       align-self: end;
       font-weight: 700;
       font-size: calc(100% * 2.3);
+      align-self: center;
       color: $yyellow;
 
       hr{
@@ -489,7 +503,7 @@ header{
         height: .5rem;
         margin:0 0 0 1rem;
         position: relative;
-        width: 30%;
+        width: 5rem;
         align-self: end;
         border-radius: 1rem;
         background-color: $oyellow;
@@ -499,8 +513,9 @@ header{
 
     .mcard-images{
       position: relative;
+      align-self: flex-start;
       width: 100%;
-      place-self: center;
+      justify-self: center;
       max-width: 45vh;
       margin: -1rem;
       height: 45vh;
@@ -516,7 +531,7 @@ header{
         margin: 0 -1rem;
         
         img{
-          width: 18px; 
+          width: 18px;
         }
         
         > *{
@@ -585,10 +600,24 @@ header{
     }
 
     .mcard-description{
-      // height: 30vh;
+      align-self: flex-start;
       font-weight: 800;
       font-size: 1.2rem;
       line-height: 1.5;
+
+      h1{
+        font-size: 1.8rem;
+        text-align: center;
+        text-decoration: underline;
+        font-weight: 900;
+        color: #000;
+      }
+
+      @media screen and (max-height: 680px) {
+        h1{
+          font-size: 1.5rem;
+        }
+      }
 
       p{
         color: #bbb;
@@ -604,10 +633,11 @@ header{
   transform: scale(60%) translateX(130%);
   top: 0;
   padding: 2rem;
-  height: 100vh;
+  height: 100lvh;
   background-color: #fff;
+  overflow-y: scroll;
   transition: all ease-out 400ms;
-
+  
   &.article-come-js{
     visibility: visible;
     opacity: 1;
@@ -622,11 +652,14 @@ header{
   .article-content{
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100%;
+    min-height: 700px;
     justify-content: space-evenly;
 
     .art-head{
+      align-self: center;
       text-align: center;
+      min-height: 6rem;
     }
 
     .art-vitals{
@@ -650,33 +683,47 @@ header{
         }
       }
 
+      table{
+        border-spacing: 0;
+        width: 100%;
+
+        tbody{
+          display: table;
+          width: 100%;
+        }
+        
+        td{
+          width: 50%;
+          margin-bottom: 8px;
+          padding-bottom: .2rem;
+        }
+        
+        tr.ran1 {
+          td{
+            border-bottom: solid 1px #ccc;
+          }
+        }
+
+        td:nth-child(1){
+          border-right: solid 1px #ccc;
+        }
+        td:nth-child(2){
+          padding-left: 6px;
+        }
+      }
+
+      .tags span{
+        padding: 3px 12px;
+        box-shadow: 0 7px 9px $oyellow, 2px 3px #f83;
+        border-radius: 15px;
+        background-color: #{$myellow} ;
+        font-size: .8rem
+      }
+
       .vit-price{
         .vit-price-content{
           display: block;
           width: 100%;
-
-          table{
-            border-spacing: 0;
-            width: 100%;
-          }
-          td{
-            width: 50%;
-            margin-bottom: 8px;
-            padding-bottom: .2rem;
-          }
-          
-          tr.product {
-            td{
-              border-bottom: solid 1px #666;
-            }
-          }
-
-          td:nth-child(1){
-            border-right: solid 1px #333;
-          }
-          td:nth-child(2){
-            padding-left: 6px;
-          }
         }
 
         span{
@@ -685,7 +732,7 @@ header{
           padding: 3px 12px;
           box-shadow: 0 7px 9px $oyellow, 2px 3px #f83;
           border-radius: 15px;
-          background-color: #{$myellow} ;
+          background-color: #{$myellow};
           position: relative;
           width: 100%;
           top: 4px;
@@ -693,22 +740,16 @@ header{
       }
 
       .vit-material{
-        display: flex;
-        flex-direction: column;
-        grid-template-rows: auto auto auto;
         grid-column-start: 1;
         grid-column-end: 3;
         
         .vit-mat-content{
-          justify-content: space-evenly;
-          display: flex;
+          justify-self: center;
+          display: grid;
+          // width: 80%;
 
-          > *{
-            display: block;
-
-            span{
-              display: block;
-            }
+          tbody {
+            justify-self: center;
           }
         }
 
@@ -726,13 +767,6 @@ header{
           gap: 10px;
           margin-top: 1rem;
           
-          > *{
-            padding: 3px 12px;
-            box-shadow: 0 7px 9px $oyellow, 2px 3px #f83;
-            border-radius: 15px;
-            background-color: #{$myellow} ;
-            font-size: .8rem
-          }
         }
       }
     }
@@ -740,18 +774,16 @@ header{
     article{
       position: relative;
       padding: 2rem;
-      margin: 0 -2rem;
+      margin: 0 -1rem;
       background-color: #f8f8f8;
     }
   }
 }
 
-
-
 .bulk-err-msg {
   visibility: hidden;
   opacity: 0;
-  border: solid 2px #f307;
+  border: solid 3px #f307;
   position: fixed;
   top: 2rem;
   border-radius: 9px;
@@ -759,11 +791,11 @@ header{
   height: auto;
   z-index: 99999;
   padding: 9px;
-  background-color: #eee9;
-  backdrop-filter: blur(15px);
+  background-color: #feec;
+  backdrop-filter: blur(45px);
   left: 50%;
   translate: -100%;
-  transition: all 500ms ease-in-out;
+  transition: all ease-in-out 500ms;
   color: #a00;
 
   &.js{
@@ -771,6 +803,7 @@ header{
     opacity: 1;
     left: 50%;
     translate: -50%;
+    // transition: all 500ms 100ms ease-in-out;
   }
 }
 

@@ -5,13 +5,13 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="theme-color" content="#ffc900")
     title Nibies
-    link(rel="stylesheet", href="style.min.css")
+    link(rel="stylesheet", href="style.css")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet")
 
     link(rel="icon", href="images/icons/favicon.svg")
-    script( type='module', src="script.min.js" defer)
+    script( type='module', src="script.js" defer)
 
 
 
@@ -21,8 +21,7 @@ html(lang="en")
 
     script.
       let p = document.querySelector('.preloader');
-      if (document.readyState === 'loading' || document.readyState === 'interactive'){
-        console.log('readyState');
+      if (document.readyState === 'loading'){
         p.classList.remove('js');
       }
       window.onload = function(){
@@ -47,7 +46,6 @@ html(lang="en")
           span Bulk purchase? Complete form first. We’ll discuss quantities during our follow-up call.
 
       .header-content
-
 
       .navigator
         .navi-overlay
@@ -83,19 +81,20 @@ html(lang="en")
               img(src="images/products/car_pump_with_accesories.webp", alt="")
 
             div
-              img(src="images/products/car_pump_graphical.jpg", alt="")
+              img(src="images/products/car_pump_mouth.webp", alt="")
 
             div
-              img(src="images/products/car_pump.jpg", alt="")
+              img(src="images/products/car_pump-1.webp", alt="")
 
             div
-              img(src="images/products/car_pump_graphical1.jpg", alt="")
+              img(src="images/products/car_pump_accessories.webp", alt="")
 
             div
-              img(src="images/products/car_pump_full_package.jpg", alt="car pump" )
+              img(src="images/products/car_pump_full_package.webp", alt="car pump" )
 
 
         .mcard-description
+          h1
           p Air Compressor Electric Car Motorcycle Tire Inflator Pump Portable Emergency Mini 12V 300 PSI for cars, Bicycles, and Motorcycles.
 
     
@@ -108,7 +107,7 @@ html(lang="en")
 
         .art-vitals
           .vit-brand
-            h3 brand | Model 
+            h3 brand | Model
             p Portable Emergency Mini Tyre Air Compressor.
 
           .vit-price 
@@ -116,20 +115,18 @@ html(lang="en")
 
             .vit-price-content
               table
-                tr.product
+                tr.ran1
                   td Product 
-                  td Ghs 310
-              
-              table
+                  td.ran2 &#8373; 31
                 tr 
                   td Delivery
-                  td Ghs 30
+                  td.deli-fee &#8373; 30
 
-            span total = 340gh
+            span Total = &#8373; 340
 
 
           .vit-material
-            h3 properties | Dimensions
+            h3 Materials | Dimensions
             
             .vit-mat-content
               div 
@@ -174,7 +171,7 @@ html(lang="en")
 
           //- hr
 
-          .form-name-phone 
+          .form-name-phone
             div
               label(for="name") Full name
               input#name.di(type="text" name="Name" required autofocus)

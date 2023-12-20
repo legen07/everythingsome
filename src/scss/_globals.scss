@@ -32,11 +32,13 @@ body{
 P{
   line-height: 1.5;
   font-family:"fira Sans", Helvetica, sans-serif;
-  color: #000c;
+  color: #444;
 }
 
-span{
+span, tr,td{
   font-weight: 100;
+  font-size: .9rem;
+  color: #444;
 }
 
 a{

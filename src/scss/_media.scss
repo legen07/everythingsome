@@ -1,8 +1,8 @@
 @media screen and (max-width: 450px) {
   h1{
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
-  
+
   h3{
     font-size: 1rem;
   }
@@ -16,15 +16,13 @@
   }
 
   .main-card, .article-card {
-    padding: .4rem;
+    padding: 2rem .4rem;
 
     .mcard-contents{
-      height: 95vh;
-      padding: 0 .8rem;      
+      padding: 0 .8rem;
     }
 
     .article-content{
-      height: 95vh;
       min-width: fit-content;
     }
   }
@@ -37,21 +35,29 @@
 }
 
 
-@media screen and (max-height: 700px) {
-  .article-card{
-    margin: 1.8rem 0;
+@media screen and (max-height: 900px) {
 
+  
+  .mcard-contents{
+    .mcard-description{
+      h1{
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .article-card{
+    // margin: 1.8rem 0;
+    
     .article-content{
       display: grid;
       grid-auto-flow: row;
-      
 
       .art-head{
         font-size: 1.7rem;
       }
 
       .art-vitals{
-        
         h3{
           padding: .2rem .5rem;
         }
@@ -61,6 +67,9 @@
 }
 
 @media screen and (min-height: 740px) {
+  h1 {
+    font-size: 2rem;
+  }
   .form-card{
     .form-card-close{
       opacity: 0;
@@ -75,7 +84,6 @@
   }
 }
 @media screen and (min-width: 640px) {
-
   body{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -143,7 +151,6 @@
     .form-content{
       justify-self: center;
       max-width: 600px;
-
     }
   }
 }
