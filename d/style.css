@@ -405,20 +405,27 @@ header .header-content {
   justify-content: space-evenly;
   row-gap: 2rem;
   transform: scale(130%) translateY(50%);
-  transition: transform 200ms ease-in-out;
+  transition: transform 300ms ease-in-out;
   perspective: 900px;
 }
 header .header-content .product {
   position: relative;
   cursor: pointer;
-  transition: all 250ms ease-in-out;
+  transition: all 150ms ease-in-out;
 }
 header .header-content .product:hover {
-  box-shadow: 0 0 10px rgba(17, 17, 17, 0.4666666667);
+  box-shadow: 0 10px 8px -3px rgba(17, 17, 17, 0.2666666667);
+  transform: rotateX(5deg);
 }
 header .header-content .product:active {
   box-shadow: 0 10px 10px -4px rgba(17, 17, 17, 0.3333333333);
   transform: rotateX(6deg);
+}
+header .header-content .product.js .product-back .pro-img {
+  box-shadow: 0 9px 16px rgba(68, 68, 68, 0.5333333333);
+}
+header .header-content .product.js .product-back .pro-img img {
+  filter: grayscale(10);
 }
 header .header-content .product .product-back {
   height: 100%;
@@ -512,12 +519,22 @@ header.js .header-content {
   width: 90%;
   display: flex;
   justify-self: center;
+  justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
   gap: 0.4rem;
   opacity: 1;
   visibility: visible;
   transform: unset;
   transition: all 200ms ease-in-out;
+}
+.navigator .navi-overlay.remove .navi-nav2 {
+  align-self: flex-end;
+}
+.navigator .navi-overlay.remove .navi-nav1 {
+  width: 0;
+  left: 4rem;
+  visibility: hidden;
 }
 .navigator .navi-overlay.js {
   animation: naviJs 700ms ease-in-out;
@@ -646,6 +663,7 @@ header.js .header-content {
   align-items: center;
   justify-content: space-between;
   font-size: 0.8rem;
+  position: relative;
 }
 .navigator .navi-overlay .navi-nav1 img {
   width: 1.6rem;
@@ -665,6 +683,7 @@ header.js .header-content {
 .navigator .navi-overlay .navi-nav2 {
   color: #fff;
   flex-grow: 1;
+  height: 2.3rem;
   display: flex;
   position: relative;
 }
@@ -678,6 +697,7 @@ header.js .header-content {
 .navigator .navi-overlay .navi-nav2.cart span {
   visibility: visible;
   left: 75%;
+  color: #fff;
 }
 .navigator .navi-overlay .navi-nav2 img {
   left: 50%;

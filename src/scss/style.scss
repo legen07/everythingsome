@@ -96,21 +96,31 @@ header{
     justify-content: space-evenly;
     row-gap: 2rem;
     transform: scale(130%) translateY(50%);
-    transition: transform 200ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     perspective: 900px;
-    
+
     .product{
       position: relative;
       cursor: pointer;
-      transition: all 250ms ease-in-out;
+      transition: all 150ms ease-in-out;
 
       &:hover{
-        box-shadow: 0 0 10px #1117;
+        box-shadow: 0 10px 8px -3px #1114;
+        transform: rotateX(5deg);
       }
       
-      &:active{
+      &:active {
         box-shadow: 0 10px 10px -4px #1115;
         transform: rotateX(6deg);
+      }
+      &.js{
+        .product-back .pro-img{
+          box-shadow: 0 9px 16px #4448;
+          
+          img {
+            filter: grayscale(10);
+          }
+        }
       }
       
       .product-back{
@@ -221,12 +231,28 @@ header{
     width: 90%;
     display: flex;
     justify-self: center;
+    justify-content: center;
+    align-content: center;
     flex-wrap: wrap;
     gap: .4rem;
     opacity: 1;
     visibility: visible;
     transform: unset;
     transition: all 200ms ease-in-out;
+
+    
+    &.remove {
+      
+      .navi-nav2{
+        align-self: flex-end;
+      }
+
+      .navi-nav1{
+        width: 0;
+        left: 4rem;
+        visibility: hidden;
+      }
+    }
     
     &.js{
       animation: naviJs 700ms ease-in-out;
@@ -362,7 +388,9 @@ header{
       align-items: center;
       justify-content: space-between;
       font-size: .8rem;
+      position: relative;
       
+
       img{
         width: 1.6rem;
         transform: rotate(270deg);
@@ -386,6 +414,7 @@ header{
     .navi-nav2{
       color: #fff;
       flex-grow: 1;
+      height: 2.3rem;
       display: flex;
       position: relative;
       
@@ -403,6 +432,7 @@ header{
         span{
           visibility: visible;
           left: 75%;
+          color: #fff;
         }
       }
 

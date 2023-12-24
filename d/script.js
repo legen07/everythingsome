@@ -168,7 +168,7 @@ function headExpandFoo() {
 
   setTimeout( function () {
     header.classList.toggle('js');
-    // naviNav2.parentElement.classList.toggle('scroll-js');
+    naviNav1.parentElement.classList.toggle('remove');
     document.body.classList.toggle('js');
   }, 200);
 }
@@ -218,8 +218,6 @@ function plusAndMinus(pnmParam, d) {
         units.previousElementSibling.style.cssText ='#f44';
         units.previousElementSibling.textContent = 'remove';
       }
-
-     
 
       cartList.splice(index, 1)
 
@@ -271,44 +269,60 @@ function copiedToCart(d) {
 document.addEventListener( 'click', e =>{
   let d = e.target;
 
-  // MAIN PAGE IMAGES MANUPULATIONS EVENTS
-  if(d.classList.contains('m-east') )
-  estWstFunction("east");
+  switch (true) {
+    case d.classList.contains("m-west"):
+      estWstFunction("west");
+      break
+    case d.classList.contains("m-east"):
+      estWstFunction('east');
+      break
 
-  else if(d.classList.contains('m-west'))
-  estWstFunction("west");
+    case d.classList.contains("nl"):
+      changePage("left");
+      break
 
+    /// form Opener and Closing event
+    case d.classList.contains("fo") || d.classList.contains("fo1"):
+      formOpener();
+      break;
+    case d.classList.contains("fc"):
+      if (doc('.pro-from-none')) {
+        cartList.shift();
+        doc('.pro-from-none').remove();
+      }
+      form.classList.remove('js');
+      break
 
-// bottom navigation event and animation
-  if(d.classList.contains('nl'))
-    changePage("left");
-  
-  // else if(d.classList.contains('nr'))
-    // changePage("right");
-
+    /// form date event
+    case d.classList.contains("fd"):
+      dateFunction();
+      break
     
-/// Opening forms 
-  if (d.classList.contains('fo') || d.classList.contains('fo1'))
-  formOpener();
+    /// Plus and minus inside the brief form information
+    case d.classList.contains("minus"):
+      plusAndMinus("minus", d);
+      break
+    case d.classList.contains("plus"):
+      plusAndMinus("plus", d);
+      break
 
-  else if (d.classList.contains("fc") ) {
-    if (doc('.pro-from-none')) {
-      cartList.shift();
-      doc('.pro-from-none').remove();
-    }
-    form.classList.remove('js');
+      ///////////////////////////////////////////////
+      //hahmburger move's event
+    case d.classList.contains("ho"):
+      headExpandFoo();
+      break
+    case d.classList.contains("pc"):
+      copiedToCart(d);
+      break
+
+    case d.classList.contains("po"):
+      productOpener(d);
+      break
+
+
+    default: 
+      break;
   }
-
-  if (d.classList.contains('fd'))
-  dateFunction();
-
-  /// Plus and minus inside the briefed form information. 
-  if (d.classList.contains('minus')) {
-    plusAndMinus('minus', d);
-  } else if (d.classList.contains('plus')) {
-    plusAndMinus('plus', d);
-  }
-  
   ///////////////////////////////////////////////
   /// input styles 
   divInp.forEach((each, index) => {
@@ -325,16 +339,6 @@ document.addEventListener( 'click', e =>{
     }
   })
 
-  ///////////////////////////////////////////////
-  //hahmburger move's event
-  if(d.classList.contains('ho'))
-    headExpandFoo();
-
-  if(d.classList.contains('pc'))
-  copiedToCart(d);
-
-  if(d.classList.contains('po'))
-    productOpener(d);
 });
 ////// CLICK EVENTS END HERE 
 ////////////////////////////////////////////////////////
@@ -372,6 +376,8 @@ Object.entries(productList.products).map( ([keys, element]) => {
   doc('.header-content').appendChild(div);
 });
 
+let product = docs(".header-content .product");
+
 
 function productOpener(d) {
   let clickedProduct = d.parentElement.parentElement.parentElement;
@@ -398,17 +404,38 @@ function productOpener(d) {
   doc('.mcard-description h1').textContent = (doc('.art-head h1').textContent);
   headExpandFoo();
   artPricechange();
+
+  product.forEach(each => {
+    if (each.classList.contains('js')) {
+      each.classList.remove('js');
+    }
+  });
+  clickedProduct.classList.add('js');
 }
-  
+
+//////////////////////////////////////////////////////////////////////
 function artPricechange() {
   doc('.vit-price .ran2').textContent = ` ${doc('.mcard-price strong').textContent.replace(/Gh/g, '')}`;
 
   doc('.vit-price span').textContent = doc('.vit-price span').textContent.replace(/\b\d+\b/g, Number(doc('.vit-price .ran2').textContent.replace(/\D/g, '')) + 30);
 }
-  
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+////////// THE DOINGS WHEN THE PAGE IS LOADED ////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 window.onload = function() {
+  switch (true) {
+    case window.location.hash === "":
+      window.location.hash = 'blender';
+      break
+
+    default: 
+      break;
+  }
+
   productOpener(doc((window.location.hash)).querySelector('img'));
-  setTimeout(function() {headExpandFoo()}, 300);
+  setTimeout(function() {headExpandFoo()}, 600);
 
   artPricechange();
 }
