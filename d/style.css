@@ -356,6 +356,17 @@ body.js {
   overflow: hidden;
 }
 
+aside {
+  display: none;
+  width: 100%;
+  background-color: #f6f6f6;
+  z-index: -9;
+}
+aside svg {
+  transform: rotate(60deg) scale(300%) translate(-10%, 20%);
+  fill: #ffffff;
+}
+
 header {
   overflow: hidden;
   background-color: #fdc900;
@@ -492,7 +503,7 @@ header .header-content .product .product-back .pro-cart img {
 header .header-content .product .product-back .pro-price {
   background-color: #fdc900;
   color: rgba(0, 0, 0, 0.6);
-  box-shadow: 2px 2px 4px #fdb500, -2px -2px 2px 1px #fdd800;
+  box-shadow: 2px 2px 0px #fdb500;
   top: 0;
   margin: -4px -4px;
   border-radius: 3px;
@@ -503,9 +514,11 @@ header.js {
   height: 96dvh;
   box-shadow: 0 9px 15px rgba(34, 34, 34, 0.3333333333);
   background-color: #fdc900;
+  overflow-y: auto;
 }
 header.js .header-content {
   transform: scale(100%);
+  padding: 3rem 0;
 }
 
 .navigator {
@@ -513,7 +526,6 @@ header.js .header-content {
   position: fixed;
   width: 100%;
   bottom: 0;
-  max-width: 650px;
 }
 .navigator .navi-overlay {
   width: 90%;
@@ -528,13 +540,8 @@ header.js .header-content {
   transform: unset;
   transition: all 200ms ease-in-out;
 }
-.navigator .navi-overlay.remove .navi-nav2 {
-  align-self: flex-end;
-}
 .navigator .navi-overlay.remove .navi-nav1 {
-  width: 0;
-  left: 4rem;
-  visibility: hidden;
+  display: none;
 }
 .navigator .navi-overlay.js {
   animation: naviJs 700ms ease-in-out;
@@ -554,7 +561,7 @@ header.js .header-content {
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(68, 68, 68, 0.3333333333);
   cursor: pointer;
-  transition: all ease-in-out 600ms;
+  transition: all ease-in-out 300ms;
 }
 .navigator .navi-overlay > *:hover {
   transform: scale(104%);
@@ -750,7 +757,7 @@ header.js .header-content {
   height: 98lvh;
   min-height: 730px;
   max-width: 600px;
-  box-shadow: 0 0 10px #333;
+  box-shadow: 0 0 10px 3px rgba(51, 51, 51, 0.2666666667);
   transition: transform ease-in-out 400ms;
   background-image: linear-gradient(#00509D, #003F88);
   background-size: 200%, 100%;
@@ -894,6 +901,7 @@ header.js .header-content {
   visibility: hidden;
   opacity: 0;
   transform: scale(60%) translateX(130%);
+  box-shadow: 0 0 10px 3px rgba(51, 51, 51, 0.2666666667);
   top: 0;
   padding: 2rem;
   height: 100lvh;
@@ -1109,7 +1117,6 @@ header.js .header-content {
   }
   body .navigator {
     bottom: 1rem;
-    max-width: unset;
   }
   body .navigator .navi-overlay {
     justify-content: center;
@@ -1151,5 +1158,50 @@ header.js .header-content {
   .form-card .form-content {
     justify-self: center;
     max-width: 600px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  body {
+    grid-template-columns: 1fr 2fr 2fr;
+  }
+  header {
+    grid-column-start: 2;
+    width: 100%;
+    grid-column-end: 4;
+    grid-row-start: 1;
+  }
+  .navigator {
+    width: 82%;
+  }
+  .first-aside {
+    display: unset;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  .main-card {
+    height: 100%;
+    grid-column-start: 2;
+    transition: all ease-in-out 300ms;
+    grid-row-start: 1;
+  }
+  .article-card {
+    grid-column-start: 3;
+    grid-row-start: 1;
+  }
+}
+@media screen and (min-width: 1300px) {
+  body {
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+  }
+  .navigator {
+    width: 68%;
+  }
+  .second-aside {
+    display: unset;
+    order: 5;
+    grid-row-start: 1;
+    grid-column-start: 4;
+    width: 100%;
   }
 }

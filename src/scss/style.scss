@@ -27,7 +27,6 @@
 
 @keyframes preloader {
   from{
-
     transform: rotate(190);
   }
 
@@ -38,6 +37,22 @@
 
 body.js{
   overflow: hidden;
+}
+
+
+aside{
+  display: none;
+  width: 100%;
+  background-color: #f6f6f6;
+
+  z-index: -9;
+  // overflow: hidden;
+    
+  svg{
+    transform: rotate(60deg) scale(300%) translate(-10%, 20%);
+    // filter: inset-shadow(4px 7px  #555);
+    fill: #ffffff;
+  }
 }
 
 header{
@@ -198,7 +213,7 @@ header{
         .pro-price{
           background-color: $myellow;
           color: #0009;
-          box-shadow: 2px 2px 4px $oyellow, -2px -2px 2px 1px $yyellow;
+          box-shadow: 2px 2px 0px $oyellow;
           top: 0;
           margin: -4px -4px;
           border-radius: 3px;
@@ -213,9 +228,11 @@ header{
     height: 96dvh;
     box-shadow: 0 9px 15px #2225;
     background-color: $myellow;
+    overflow-y: auto;
   
     .header-content{
-      transform: scale(100%); 
+      transform: scale(100%);
+      padding: 3rem 0;
     }
   }
 }
@@ -225,7 +242,7 @@ header{
   position: fixed;
   width: 100%;
   bottom: 0;
-  max-width: 650px;
+  // max-width: 650px;
 
   .navi-overlay{
     width: 90%;
@@ -242,15 +259,8 @@ header{
 
     
     &.remove {
-      
-      .navi-nav2{
-        align-self: flex-end;
-      }
-
       .navi-nav1{
-        width: 0;
-        left: 4rem;
-        visibility: hidden;
+        display: none;
       }
     }
     
@@ -274,7 +284,7 @@ header{
       border-radius: 4px;
       box-shadow: 0 0 10px #4445;
       cursor: pointer;
-      transition: all ease-in-out 600ms;
+      transition: all ease-in-out 300ms;
     }
 
     > *:hover{
@@ -496,7 +506,7 @@ header{
   height: 98lvh;
   min-height: 730px;
   max-width: 600px;
-  box-shadow: 0 0 10px #333;
+  box-shadow: 0 0 10px 3px #3334;
   transition: transform ease-in-out 400ms;
   background-image: linear-gradient($tblue, $sblue);
   background-size: 200%, 100%;
@@ -661,6 +671,7 @@ header{
   visibility: hidden;
   opacity: 0;
   transform: scale(60%) translateX(130%);
+  box-shadow: 0 0 10px 3px #3334;
   top: 0;
   padding: 2rem;
   height: 100lvh;
