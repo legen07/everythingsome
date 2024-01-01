@@ -360,7 +360,8 @@ aside {
   display: none;
   width: 100%;
   background-color: #f6f6f6;
-  z-index: -9;
+  z-index: 9;
+  overflow: hidden;
 }
 aside svg {
   transform: rotate(60deg) scale(300%) translate(-10%, 20%);
@@ -778,15 +779,19 @@ header.js .header-content {
   display: grid;
   grid-template-rows: auto auto auto;
   align-items: start;
+  flex-wrap: wrap;
 }
 .main-card .mcard-contents .mcard-price {
-  min-height: 5vh;
-  height: 10vh;
-  align-self: end;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 20% 60%;
   font-weight: 700;
   font-size: 230%;
   align-self: center;
   color: #fdd800;
+}
+.main-card .mcard-contents .mcard-price strong {
+  width: 70%;
 }
 .main-card .mcard-contents .mcard-price hr {
   border: none;
@@ -794,10 +799,12 @@ header.js .header-content {
   margin: 0 0 0 1rem;
   position: relative;
   width: 5rem;
-  align-self: end;
   border-radius: 1rem;
   background-color: #fdb500;
   box-shadow: 0 0 9px #fdb500;
+}
+.main-card .mcard-contents .mcard-price img {
+  width: 60px;
 }
 .main-card .mcard-contents .mcard-images {
   position: relative;

@@ -21,9 +21,7 @@ html(lang="en")
 
     script.
       let p = document.querySelector('.preloader');
-      if (document.readyState === 'loading'){
-        p.classList.remove('js');
-      }
+      document.readyState === 'loading' && p.classList.remove('js');
       window.onload = function(){
         p.classList.add('js');
       }
@@ -102,10 +100,9 @@ html(lang="en")
 
 
     .main-card
-
       .mcard-contents
-
         .mcard-price
+          //- img(src="images/icons/cash.svg", alt="" width="53")
           strong Gh&#8373; 340
           hr
 

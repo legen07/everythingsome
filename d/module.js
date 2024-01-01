@@ -395,12 +395,77 @@ export let productList = {
       proDescription : 'Plastic Cubic Wordrobe offers easy assembly and stackable storage for clothes, shoes, and household items. Suitable for rental houses, bedrooms, living rooms, and entryways, it provides versatile organization and storage solutions for home and dormitory spaces.',
 
       images: ['wordrobe-1.webp', 'wordrobe-2.webp', 'wordrobe-4.webp', 'wordrobe-5.webp', 'wordrobe-6.webp']
+    },
+    /////////////////////////////////////////////////////////////////////////
+
+
+    product  : {
+      proPrice : '&#8373; 550',
+      
+      proBrief : 'Enhance your movie, TV, and gaming experience with the HD Mini Projector. Suitable for outdoor camping and home theater.',
+      
+      proName : 'Led Projector',
+
+      
+      brandNModel : `
+        <div>
+          <h3> Brand | Model </h3>
+          <table>
+          <tr class='ran1'> 
+            <td> Brand </td>
+            <td> PVO Projector </td>
+          </tr>
+          <tr> 
+            <td> Model </td>
+            <td> PVO YG300 pro</td>
+          </tr>
+          </table>
+        </div>
+        `,
+
+      matNTags : `
+        <div>
+          <h3> Materials | Dimensions </h3>
+          <table class='vit-mat-content'>
+            <tr class='ran1'>
+              <td> Dimension (cm) </td>
+              <td>4.77 x 12.64 x 8.55 </td>
+            </tr>
+            <tr class='ran1'>
+              <td> Weight </td>
+              <td> 277grams</td>
+            </tr>
+            <tr class='ran1'>
+              <td>Image brightness </td>
+              <td> 2000-2499 lumen </td>
+            </tr>
+            <tr>
+              <td> Voltage </td>
+              <td> 110V/220V </td>
+            </tr>
+          </table>
+
+          <div class='tags'>
+            <span>indoor/outdoor</span>
+            <span> USB</span>
+            <span> AV</span>
+            <span> speaker</span>
+            <span> HDMI</span>
+            <span> remote</span>
+            <span> SD Card</span>
+            <span> Portable Charge</span>
+          </div>
+        </div>`,
+      
+      proDescription : 'The HD Mini Projector enhances movie, TV, and gaming experiences, suitable for outdoor camping, drive-ins, and home theaters. It offers a high-definition, lightweight, and portable design, providing an unprecedented home theater experience in a pocket-sized package.',
+
+      images: ['projector-1.webp', 'projector-3.webp', 'projector-4.webp', 'projector-7.webp', 'projector-8.webp']
     }
     /////////////////////////////////////////////////////////////////////////
 
     /*
     product  : {
-      proPrice : &#8373;,
+      proPrice : '&#8373';,
       
       proBrief : '',
       
