@@ -20,15 +20,15 @@ html(lang="en")
       div(style='mix-blend-mode: difference; height: 3rem; width: 3rem; border: solid 2px; border-top: solid 2px white; border-radius: 50%;')
 
     script.
-      let p = document.querySelector('.preloader');
-      document.readyState === 'loading' && p.classList.remove('js');
-      window.onload = function(){
-        p.classList.add('js');
-      }
+      //- let p = ;
+      //- document.readyState === 'loading' && p.classList.remove('js');
+      window.addEventListener('load', function(){
+        document.querySelector('.preloader').classList.add('js');
+      })
 
-      setTimeout(function() {
+      /*setTimeout(function() {
         p.classList.add('js');
-      },3000 )
+      },3000 )*/
 
 
     aside.first-aside
@@ -72,10 +72,10 @@ html(lang="en")
 
     header
       .header-overlay
-        img(src="images/graphics/everythingsome-logo.svg", alt="")
+        img(src="images/graphics/everythingsome-logo.svg", alt="nibies")
 
-        a.ho(href="javascript:void(0)")
-          img(src="images/icons/hamburger.svg", class='ho', alt="")  
+        a.ho(href="javascript:void(0)", title="open more products")
+          img(src="images/icons/hamburger.svg", class='ho', alt="more products")  
 
         strong nibies
         
@@ -83,7 +83,8 @@ html(lang="en")
         .bulk-err-msg 
           span Bulk purchase? Complete form first. We’ll discuss quantities during our follow-up call.
 
-      .header-content
+      .header-content-wrapper
+        .header-content
 
       .navigator
         .navi-overlay
@@ -94,9 +95,9 @@ html(lang="en")
             span.nl learn more
             img.nl(src="images/icons/double-down.svg", alt="learn more")
 
-        .navi-bottom
-          .left 
-          .right
+        .navi-bottom 
+          .right 
+          .left
 
 
     .main-card
@@ -108,26 +109,19 @@ html(lang="en")
 
         .mcard-images
           .m-east-west
-            a.m-east(href="javascript:void(0)") 
+            a.m-east(href="javascript:void(0)" title="previous image") 
               img.m-east(src="images/icons/west.svg", alt="")
-            a.m-west(href="javascript:void(0)")
+            a.m-west(href="javascript:void(0)" title="next image")
               img.m-west(src="images/icons/east.svg", alt="")
 
           .mcard-images-overlay
-            div
-              img(src="images/products/car_pump_with_accesories.webp", alt="")
+            dl
 
-            div
-              img(src="images/products/car_pump_mouth.webp", alt="")
+            div.before-index
 
-            div
-              img(src="images/products/car_pump-1.webp", alt="")
+            div.index-js
 
-            div
-              img(src="images/products/car_pump_accessories.webp", alt="")
-
-            div
-              img(src="images/products/car_pump_full_package.webp", alt="car pump" )
+            div.after-index
 
 
         .mcard-description
@@ -137,9 +131,9 @@ html(lang="en")
     
 
     .article-card
-      .article-content 
+      .article-content
 
-        .art-head 
+        .art-head
           h1 Portable Car Pump
 
         .art-vitals
@@ -211,11 +205,11 @@ html(lang="en")
           .form-name-phone
             div
               label(for="name") Full name
-              input#name.di(type="text" name="Name" required autofocus)
+              input#name.di(type="text" name="Name" required autofocus autocomplete="name")
 
             div
               label(for="tel") Phone number
-              input#tel.di(type="tel" name="Phone number" required)
+              input#tel.di(type="tel" name="Phone number" required autocomplete="tel")
 
           //- hr
           .strong-location
@@ -225,10 +219,12 @@ html(lang="en")
           .form-location
             div
               label(for="location") Town/city
-              input#location.di(type="location" name="Location" required)
+              input#location.di(type="location" name="Location" required autocomplete="address-level1")
             div 
               label(for="address") Street Address
-              input#address.di(type="address" name="address")
+              input#address.di(type="address" name="address" autocomplete="street-address")
 
-
-          input(type="submit" value="submit")
+          .done-js
+            input(type="submit" value="submit")
+            .overall-total
+              strong Total = 

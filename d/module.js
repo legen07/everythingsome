@@ -2,7 +2,7 @@ export let productList = {
   products :
   {
     blender :{
-      proPrice : `&#8373; 110`,
+      proPrice : `Gh&#8373; 110`,
       
       proBrief : 'Portable Wireless Blender - USB Rechargeable Mini Juice Maker For Juices, Milk, Fruits, Veggies & Smoothies On-the-Go!',
       
@@ -59,7 +59,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////
 
     clipper : {
-      proPrice : `&#8373; 140`,
+      proPrice : `Gh&#8373; 140`,
       
       proBrief : 'Kemei Professional Electric Hair Clipper Trimmer Corded with Battery.',
       
@@ -116,7 +116,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////
 
     carPump : {
-      proPrice : `&#8373; 340`,
+      proPrice : `Gh&#8373; 340`,
       
       proBrief : 'Air Compressor Electric Car Motorcycle Tire Inflator Pump Portable Emergency Mini 12V 300 PSI for cars, Bicycles, and Motorcycles.',
       
@@ -174,7 +174,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////
 
     inflatableBed :{
-      proPrice :'&#8373; 210',
+      proPrice :'Gh&#8373; 210',
       
       proBrief : 'Portable, waterproof, and suitable for camping and family travel with manual air pump.',
       
@@ -231,7 +231,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////
 
     glassSealant  : {
-      proPrice : '&#8373; 80',
+      proPrice : 'Gh&#8373; 80',
       
       proBrief : 'Professional-grade Glass Repair Glue for effective windshield crack repair and restoring glass integrity.',
       
@@ -284,7 +284,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////////
 
     massager  : {
-      proPrice : '&#8373; 260',
+      proPrice : 'Gh&#8373; 260',
       
       proBrief : 'Portable Fascia Electric Massager Gun with deep tissue percussion, four massage heads, and ultra-quiet brushless motor for muscle tension relief.',
       
@@ -343,7 +343,7 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////////
 
     wordrobe  : {
-      proPrice : '&#8373; 540',
+      proPrice : 'Gh&#8373; 540',
       
       proBrief : 'Versatile wordrobe, easy assembly and stackable storage, ideal for organizing clothes, shoes, and household items.',
       
@@ -399,8 +399,8 @@ export let productList = {
     /////////////////////////////////////////////////////////////////////////
 
 
-    product  : {
-      proPrice : '&#8373; 550',
+    projector  : {
+      proPrice : 'Gh&#8373; 550',
       
       proBrief : 'Enhance your movie, TV, and gaming experience with the HD Mini Projector. Suitable for outdoor camping and home theater.',
       

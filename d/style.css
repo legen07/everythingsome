@@ -8,12 +8,16 @@ body, ::before, ::after, * {
 *:not(.form-brief):-webkit-scrollbar {
   scroll-behavior: smooth;
   display: none;
+  width: 0;
+  background-color: #f44;
+  color: #f44;
 }
 
 *:not(.form-brief) {
   scrollbar-width: none;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
+  scrollbar-width: 0;
 }
 
 * img {
@@ -45,7 +49,6 @@ a {
   text-decoration: none;
   color: #fff;
   border-radius: 4px;
-  transition: color 150ms ease-in-out;
 }
 a:hover {
   color: #333;
@@ -54,6 +57,14 @@ a:hover {
 button {
   border: none;
   cursor: pointer;
+}
+
+.form-card-close,
+.brief-brief *:not(img),
+.overall-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-card {
@@ -66,14 +77,10 @@ button {
   inset: 0;
   opacity: 0;
   background-color: rgba(51, 51, 51, 0.4);
-  transition: all 400ms ease-in-out;
   backdrop-filter: blur(5px);
 }
 .form-card .form-card-close {
-  display: flex;
   height: 50%;
-  justify-content: center;
-  align-items: center;
 }
 .form-card .form-card-close a {
   display: block;
@@ -101,15 +108,20 @@ button {
   background-color: #fff;
   border-radius: 1rem 1rem 0 0;
   padding: 1rem;
-  transition: all 300ms ease-in-out;
   box-shadow: 0px -5px 25px rgba(51, 51, 51, 0.2);
 }
+.form-card .form-content *:not(.form-brief img) {
+  border-radius: 6px;
+}
 .form-card .form-content h2 {
+  display: grid;
+  width: 100%;
+  height: 100%;
   font-size: 2.5rem;
 }
 .form-card .form-content .form-brief {
   width: 100%;
-  height: 150%;
+  height: 130%;
   position: relative;
   align-items: center;
   overflow-x: auto;
@@ -117,7 +129,7 @@ button {
   display: grid;
   grid-auto-flow: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .form-card .form-content .form-brief .form-brief-content {
   width: 230px;
@@ -132,9 +144,6 @@ button {
   background-color: #ddd;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief *:not(img) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   justify-items: center;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief h3 {
@@ -162,7 +171,6 @@ button {
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths button {
   font-size: 1.5rem;
   padding: 0 8px;
-  border-radius: 4px;
   background-color: #eee;
 }
 .form-card .form-content .form-brief .form-brief-content .brief-brief .price-maths .minus {
@@ -212,7 +220,6 @@ button {
   width: 150px !important;
   border: solid 1px #333 !important;
   background-color: #ccc;
-  border-radius: 5px;
   padding: 6px 1rem;
 }
 .form-card .form-content form .form-date input[type=date] {
@@ -242,7 +249,6 @@ button {
 .form-card .form-content form .form-prefer div.js {
   border: solid 2px black;
   transform: scale(110%);
-  transition: transform 200ms ease-in-out;
 }
 .form-card .form-content form .form-name-phone div.js label,
 .form-card .form-content form .form-location div.js label,
@@ -277,7 +283,6 @@ button {
 .form-card .form-content form .form-location div,
 .form-card .form-content form .form-prefer div {
   border: solid 1px rgba(68, 68, 68, 0.1333333333);
-  border-radius: 6px;
   height: 2.7rem;
   background-color: #fbfbfb;
   position: relative;
@@ -287,7 +292,6 @@ button {
 .form-card .form-content form .form-prefer div label {
   position: absolute;
   color: #666;
-  transition: all ease-in-out 200ms;
   transform: scale(100%) translate(15%, 60%);
 }
 .form-card .form-content form input:focus {
@@ -314,263 +318,32 @@ button {
   color: #f72;
   bottom: 0;
 }
-.form-card .form-content form input[type=submit] {
+.form-card .form-content form .done-js {
+  display: flex;
   justify-self: center;
-  border: none;
-  border-radius: 7px;
-  padding: 0.7rem 1rem;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0.1rem 1rem;
   background-color: #fdb500;
-  width: 80%;
-}
-
-@font-face {
-  font-family: PermanentMarker;
-  src: url(images/font/PermanentMarker.ttf);
-}
-.preloader {
-  visibility: visible;
-  position: fixed;
-  transition: all ease-in-out 400ms;
-  transform: unset;
-  opacity: 1;
-}
-.preloader div {
-  animation: preloader ease-in-out 500ms infinite;
-}
-
-.preloader.js {
-  visibility: hidden;
-  transform: translateY(-30%);
-  opacity: 0;
-}
-
-@keyframes preloader {
-  from {
-    transform: rotate(190);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-body.js {
-  overflow: hidden;
-}
-
-aside {
-  display: none;
-  width: 100%;
-  background-color: #f6f6f6;
-  z-index: 9;
-  overflow: hidden;
-}
-aside svg {
-  transform: rotate(60deg) scale(300%) translate(-10%, 20%);
-  fill: #ffffff;
-}
-
-header {
-  overflow: hidden;
-  background-color: #fdc900;
-  position: sticky;
-  top: 0;
-  height: 2rem;
-  width: 100vw;
-  flex-grow: 1;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  z-index: 9;
-  box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
-  transition: height 200ms ease-in-out;
-}
-header .header-overlay {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 1rem;
-  padding: 0.4rem 2rem 0 2rem;
-}
-header .header-overlay a img {
-  width: 2rem;
-}
-header .header-overlay img {
-  width: 4rem;
-  top: 0;
-  filter: drop-shadow(0 0 4px rgba(68, 68, 68, 0.6666666667));
-}
-header .header-overlay strong {
-  display: block;
-  color: #00509D;
-  font-family: "PermanentMarker", Rubik, Helvetica, sans-serif;
-  font-size: 27px;
-  top: 50%;
-  transform: translateY(-30%);
-}
-header .header-content {
-  width: 100%;
-  max-width: 1000px;
-  height: auto;
-  display: grid;
-  position: relative;
-  left: 50%;
-  translate: -50%;
-  grid-template-columns: 45% 45%;
-  justify-content: space-evenly;
-  row-gap: 2rem;
-  transform: scale(130%) translateY(50%);
-  transition: transform 300ms ease-in-out;
-  perspective: 900px;
-}
-header .header-content .product {
-  position: relative;
-  cursor: pointer;
-  transition: all 150ms ease-in-out;
-}
-header .header-content .product:hover {
-  box-shadow: 0 10px 8px -3px rgba(17, 17, 17, 0.2666666667);
-  transform: rotateX(5deg);
-}
-header .header-content .product:active {
-  box-shadow: 0 10px 10px -4px rgba(17, 17, 17, 0.3333333333);
-  transform: rotateX(6deg);
-}
-header .header-content .product.js .product-back .pro-img {
-  box-shadow: 0 9px 16px rgba(68, 68, 68, 0.5333333333);
-}
-header .header-content .product.js .product-back .pro-img img {
-  filter: grayscale(10);
-}
-header .header-content .product .product-back {
-  height: 100%;
-}
-header .header-content .product .product-back .pro-img {
-  border-radius: 6px;
-  height: 20vh;
-  position: relative;
-  overflow: hidden;
-}
-header .header-content .product .product-back .pro-img img {
-  width: 100%;
-  height: 120%;
-}
-header .header-content .product .product-back .pro-name {
-  display: flex;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-color: rgba(51, 51, 51, 0.4666666667);
-  color: #fff;
-  backdrop-filter: blur(3px);
-  padding: 7px 0.5rem;
-}
-header .header-content .product .product-back .pro-name h2 {
-  font-weight: 400;
-  font-size: 12px;
-  border-radius: 0 0 1rem 1rem;
-}
-header .header-content .product .product-back .pro-price, header .header-content .product .product-back .pro-cart {
-  position: absolute;
-}
-header .header-content .product .product-back .pro-cart {
-  padding: 0rem 0.4rem;
-  border-radius: 0.5rem;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.5rem;
-  top: -0.5rem;
-  right: -0.5rem;
-  z-index: 99;
-  background-color: #00509D;
-  transition: background-color ease-in-out 400ms;
-  animation: cartPulse ease-in-out 800ms infinite;
-}
-header .header-content .product .product-back .pro-cart:hover, header .header-content .product .product-back .pro-cart :target {
-  background-color: #fdb500;
-}
-@keyframes cartPulse {
-  from {
-    box-shadow: unset;
-  }
-  50% {
-    box-shadow: 0 0 0px 3px #00509D99;
-    transform: scale(107%);
-  }
-  to {
-    box-shadow: 0 0 0px 5px #00509D55;
-  }
-}
-header .header-content .product .product-back .pro-cart img {
-  width: 1rem;
-}
-header .header-content .product .product-back .pro-price {
-  background-color: #fdc900;
-  color: rgba(0, 0, 0, 0.6);
-  box-shadow: 2px 2px 0px #fdb500;
-  top: 0;
-  margin: -4px -4px;
-  border-radius: 3px;
-  padding: 2px 8px;
-  text-align: center;
-}
-header.js {
-  height: 96dvh;
-  box-shadow: 0 9px 15px rgba(34, 34, 34, 0.3333333333);
-  background-color: #fdc900;
-  overflow-y: auto;
-}
-header.js .header-content {
-  transform: scale(100%);
-  padding: 3rem 0;
-}
-
-.navigator {
-  display: grid;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-.navigator .navi-overlay {
   width: 90%;
-  display: flex;
+}
+.form-card .form-content form .done-js input[type=submit] {
+  border: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
   justify-self: center;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  opacity: 1;
-  visibility: visible;
-  transform: unset;
-  transition: all 200ms ease-in-out;
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+  font-size: 1.2rem;
 }
-.navigator .navi-overlay.remove .navi-nav1 {
-  display: none;
-}
-.navigator .navi-overlay.js {
-  animation: naviJs 700ms ease-in-out;
-}
-.navigator .navi-overlay.go-js {
-  animation: naviRightJs 700ms ease-in-out reverse;
-}
-.navigator .navi-overlay.scroll-js {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-30%) scale(80%);
-}
-.navigator .navi-overlay > * {
-  display: flex;
+.form-card .form-content form .done-js .overall-total {
+  flex-shrink: 0;
   background-color: #fff;
-  padding: 0.3rem 0.8rem;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(68, 68, 68, 0.3333333333);
-  cursor: pointer;
-  transition: all ease-in-out 300ms;
+  height: 95%;
+  padding: 0 0.8rem;
+  margin-left: auto;
 }
-.navigator .navi-overlay > *:hover {
-  transform: scale(104%);
-}
-.navigator .navi-overlay > *:active {
-  background-color: #fff;
-  color: #000;
-}
+
 @keyframes naviJs {
   0% {
     transform: unset;
@@ -659,12 +432,334 @@ header.js .header-content {
     transform: unset;
   }
 }
-.navigator .navi-overlay .settings-nav {
-  width: 30%;
-  background-image: url(images/icons/settings.svg);
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: 2rem;
+@keyframes beforeSliderImg {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(356deg);
+  }
+}
+@keyframes afterSliderImg {
+  from {
+    transform: rotateY(6deg);
+  }
+  to {
+    transform: rotateY(4deg);
+  }
+}
+@keyframes headShake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  6.5% {
+    -webkit-transform: translateX(-6px) rotateY(-9deg);
+    transform: translateX(-6px) rotateY(-9deg);
+  }
+  18.5% {
+    -webkit-transform: translateX(5px) rotateY(7deg);
+    transform: translateX(5px) rotateY(7deg);
+  }
+  31.5% {
+    -webkit-transform: translateX(-3px) rotateY(-5deg);
+    transform: translateX(-3px) rotateY(-5deg);
+  }
+  43.5% {
+    -webkit-transform: translateX(2px) rotateY(3deg);
+    transform: translateX(2px) rotateY(3deg);
+  }
+  50% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes cartPulse {
+  from {
+    box-shadow: unset;
+  }
+  50% {
+    box-shadow: 0 0 0px 3px #00509D99;
+    transform: scale(107%);
+  }
+  to {
+    box-shadow: 0 0 0px 5px #00509D55;
+  }
+}
+@keyframes preloader {
+  from {
+    transform: rotate(190);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@font-face {
+  font-family: PermanentMarker;
+  src: url(images/font/PermanentMarker.ttf);
+}
+.preloader {
+  visibility: visible;
+  position: fixed;
+  transform: unset;
+  opacity: 1;
+}
+.preloader div {
+  animation: preloader ease-in-out 500ms infinite;
+}
+
+.preloader.js {
+  visibility: hidden;
+  transform: translateY(-30%);
+  opacity: 0;
+}
+
+body.js {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+aside {
+  display: none;
+  width: 100%;
+  background-color: #f6f6f6;
+  z-index: 9;
+  overflow: hidden;
+}
+aside svg {
+  transform: rotate(60deg) scale(300%) translate(-10%, 20%);
+  fill: #ffffff;
+}
+
+header {
+  overflow: hidden;
+  background-color: #fdc900;
+  position: sticky;
+  top: 0;
+  height: 2rem;
+  display: grid;
+  width: 100vw;
+  flex-grow: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  z-index: 9;
+  box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
+}
+header.js {
+  height: 97dvh;
+  box-shadow: 0 9px 15px rgba(34, 34, 34, 0.3333333333);
+  background-color: #fdc900;
+}
+header.js .header-content-wrapper {
+  opacity: 1;
+}
+header.js .header-content-wrapper::-webkit-scrollbar {
+  display: none;
+}
+header.js .header-content {
+  transform: scale(100%);
+}
+header .header-content-wrapper {
+  opacity: 0;
+  position: sticky;
+  top: 1rem;
+  overflow-y: auto;
+  background-color: #fdc900;
+  padding: 1rem;
+}
+header .header-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  padding: 0.4rem 2rem 0 2rem;
+}
+header .header-overlay a img {
+  width: 2rem;
+}
+header .header-overlay img {
+  width: 4rem;
+  top: 0;
+  filter: drop-shadow(0 0 4px rgba(68, 68, 68, 0.6666666667));
+}
+header .header-overlay strong {
+  display: block;
+  color: #00509D;
+  font-family: "PermanentMarker", Rubik, Helvetica, sans-serif;
+  font-size: 27px;
+  top: 50%;
+  transform: translateY(-30%);
+}
+header .header-content {
+  display: grid;
+  max-width: 1000px;
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  grid-template-columns: 45% 45%;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+  transform: scale(150%) translateY(50%);
+  perspective: 900px;
+}
+header .header-content * {
+  border-radius: 5px;
+}
+header .header-content .product {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+header .header-content .product:hover {
+  box-shadow: 0 10px 8px -3px rgba(17, 17, 17, 0.2666666667);
+  transform: rotateX(5deg);
+}
+header .header-content .product:active {
+  box-shadow: 0 10px 10px -4px rgba(17, 17, 17, 0.3333333333);
+  transform: rotateX(6deg);
+}
+header .header-content .product.js .product-back .pro-img {
+  box-shadow: 0 9px 16px rgba(68, 68, 68, 0.3333333333);
+}
+header .header-content .product.js .product-back .pro-img img {
+  filter: grayscale(10);
+}
+header .header-content .product .product-back {
+  position: relative;
+  height: 100%;
+}
+header .header-content .product .product-back .pro-img {
+  width: 100%;
+  border-radius: 6px;
+  height: 20vh;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+header .header-content .product .product-back .pro-img img {
+  width: 100%;
+  height: 120%;
+}
+header .header-content .product .product-back .pro-name {
+  left: 50%;
+  translate: -50%;
+  display: flex;
+  width: 95%;
+  position: absolute;
+  bottom: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(13px);
+  padding: 7px 0.5rem;
+}
+header .header-content .product .product-back .pro-name h2 {
+  font-size: 13px;
+  border-radius: 0 0 1rem 1rem;
+}
+header .header-content .product .product-back .pro-price, header .header-content .product .product-back .pro-cart {
+  position: absolute;
+}
+header .header-content .product .product-back .pro-cart {
+  padding: 0rem 0.4rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  top: -0.5rem;
+  right: -0.5rem;
+  z-index: 99;
+  background-color: #00509D;
+}
+header .header-content .product .product-back .pro-cart:hover, header .header-content .product .product-back .pro-cart :target {
+  background-color: #fdb500;
+}
+header .header-content .product .product-back .pro-cart img {
+  width: 1rem;
+}
+header .header-content .product .product-back .pro-price {
+  background-color: #fdc900;
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 0px #fdb500, inset 1px 1px 1px -0.5px #fff;
+  top: 0;
+  margin: -4px -4px;
+  border-radius: 3px;
+  padding: 2px 8px;
+  text-align: center;
+}
+
+.navigator {
+  display: grid;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.navigator.js .navi-overlay {
+  animation: naviRightJs 500ms ease-in-out reverse;
+}
+.navigator.js .navi-overlay .navi-nav2 {
+  order: 1;
+  background-color: #00509D;
+  box-shadow: 0 0 10px #ddd;
+}
+.navigator.js .navi-overlay .navi-nav1 {
+  background-color: #00509D;
+  flex-direction: row-reverse;
+}
+.navigator.js .navi-overlay .navi-nav1 span {
+  color: #fff;
+}
+.navigator.js .navi-overlay .navi-nav1 img {
+  transform: rotate(90deg);
+}
+.navigator.js .left {
+  height: 0.4rem !important;
+  width: 180% !important;
+  background-color: #fdb500 !important;
+  border-radius: 50% 0 0 0 !important;
+}
+.navigator.js .right {
+  width: 100% !important;
+  height: 0.2rem !important;
+  background-color: #fdd800 !important;
+  transition: all ease-in-out 400ms !important;
+}
+.navigator .navi-overlay {
+  width: 90%;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  opacity: 1;
+  visibility: visible;
+  transform: unset;
+  animation: naviJs 500ms ease-in-out;
+}
+.navigator .navi-overlay.remove .navi-nav1 {
+  display: none;
+}
+.navigator .navi-overlay.scroll-js {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-30%) scale(80%);
+}
+.navigator .navi-overlay > * {
+  display: flex;
+  background-color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(68, 68, 68, 0.3333333333);
+  cursor: pointer;
+}
+.navigator .navi-overlay > *:hover {
+  transform: scale(103%);
+}
+.navigator .navi-overlay > *:active {
+  background-color: #fff;
+  color: #000;
 }
 .navigator .navi-overlay .navi-nav1 {
   width: 40%;
@@ -678,16 +773,6 @@ header.js .header-content {
   transform: rotate(270deg);
   margin: -0.2rem;
 }
-.navigator .navi-overlay .navi-nav1.js {
-  background-color: #00509D;
-  flex-direction: row-reverse;
-}
-.navigator .navi-overlay .navi-nav1.js span {
-  color: #fff;
-}
-.navigator .navi-overlay .navi-nav1.js img {
-  transform: rotate(90deg);
-}
 .navigator .navi-overlay .navi-nav2 {
   color: #fff;
   flex-grow: 1;
@@ -696,7 +781,6 @@ header.js .header-content {
   position: relative;
 }
 .navigator .navi-overlay .navi-nav2 > * {
-  transition: left 200ms ease-in-out;
   position: relative;
 }
 .navigator .navi-overlay .navi-nav2.cart img {
@@ -721,10 +805,6 @@ header.js .header-content {
   border-radius: 1rem;
   box-shadow: 0 0 7px #fff;
 }
-.navigator .navi-overlay .navi-nav2.js {
-  background-color: #00509D;
-  box-shadow: 0 0 10px #ddd;
-}
 .navigator .navi-overlay .navi-nav1.js, .navigator .navi-overlay .navi-nav2.js {
   box-shadow: 0 5px 8px -4px #00296B;
 }
@@ -735,19 +815,13 @@ header.js .header-content {
   margin: 0.8rem 0 0 0;
   align-items: end;
 }
-.navigator .navi-bottom * {
+.navigator .navi-bottom .left {
   width: 100%;
   height: 0.2rem;
   background-color: #fdd800;
-  transition: all ease-in-out 600ms;
+  transition: all ease-in-out 400ms;
 }
-.navigator .navi-bottom .right.js {
-  height: 0.4rem;
-  width: 180%;
-  background-color: #fdb500;
-  border-radius: 50% 0 0 0;
-}
-.navigator .navi-bottom .left.js {
+.navigator .navi-bottom .right {
   height: 0.4rem;
   background-color: #fdb500;
   width: 180%;
@@ -755,15 +829,15 @@ header.js .header-content {
 }
 
 .main-card {
-  height: 98lvh;
-  min-height: 730px;
+  height: 98dvh;
+  width: 100vw;
+  overflow-x: hidden;
   max-width: 600px;
   box-shadow: 0 0 10px 3px rgba(51, 51, 51, 0.2666666667);
-  transition: transform ease-in-out 400ms;
   background-image: linear-gradient(#00509D, #003F88);
   background-size: 200%, 100%;
   background-repeat: no-repeat, repeat;
-  background-position: 30dey;
+  background-position: 30deg;
 }
 .main-card.main-go-js {
   visibility: hidden;
@@ -838,15 +912,6 @@ header.js .header-content {
   overflow: hidden;
   align-items: center;
   background-color: rgba(68, 68, 68, 0.4);
-  visibility: hidden;
-  opacity: 0;
-  transform: scale(30%);
-  transition: all 200ms ease-in-out;
-}
-.main-card .mcard-contents .mcard-images .m-east-west > *.hidden-js {
-  visibility: visible;
-  transform: scale(100%);
-  opacity: 1;
 }
 .main-card .mcard-contents .mcard-images .m-east-west a.m-east:hover {
   transform: translateX(-5px);
@@ -856,30 +921,80 @@ header.js .header-content {
 }
 .main-card .mcard-contents .mcard-images .mcard-images-overlay > * {
   position: absolute;
-  align-content: center;
-  margin: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-  border-radius: 6px;
-  width: 80%;
+  width: 100%;
   aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay > * * {
+  left: -7rem;
 }
 .main-card .mcard-contents .mcard-images .mcard-images-overlay > * img {
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: all 500ms linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
-  transform: scale(70%);
+  aspect-ratio: 1;
+  border-radius: 6px;
+  transform: scale(80%);
 }
 .main-card .mcard-contents .mcard-images .mcard-images-overlay > *.index-js {
   z-index: 3;
-  width: 100%;
+  left: 50%;
 }
 .main-card .mcard-contents .mcard-images .mcard-images-overlay > *.index-js img {
+  box-shadow: 0 0 25px rgba(51, 51, 51, 0.5333333333);
   opacity: 1;
   transform: scale(100%);
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .before-index img.js {
+  animation: beforeSliderImg 160ms ease-in-out;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .after-index img.js {
+  animation: afterSliderImg 160ms ease-in-out;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .index-js img.js {
+  animation: headShake 800ms ease-in-out;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .before-index, .main-card .mcard-contents .mcard-images .mcard-images-overlay .after-index {
+  perspective: 100px;
+  filter: blur(2px);
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay dl {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 30%;
+  align-items: flex-end;
+  left: 50%;
+  top: 53%;
+  gap: 4px;
+  width: 90%;
+  z-index: 99;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay dl * {
+  list-style: none;
+  background-color: rgba(170, 170, 170, 0.4);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 0.4rem;
+  border-radius: 4px;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay dl .active {
+  transition: all 80ms ease-in;
+  background-color: #eee;
+  box-shadow: 0 1px 6px rgba(153, 153, 153, 0.6);
+  width: 300%;
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .before-index {
+  right: calc(-50% - 5rem);
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .before-index img {
+  scale: 70%;
+  transform: rotateY(356deg);
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .after-index {
+  left: calc(50% - 5rem);
+}
+.main-card .mcard-contents .mcard-images .mcard-images-overlay .after-index img {
+  scale: 70%;
+  transform: rotateY(4deg);
 }
 .main-card .mcard-contents .mcard-description {
   align-self: flex-start;
@@ -914,7 +1029,6 @@ header.js .header-content {
   height: 100lvh;
   background-color: #fff;
   overflow-y: scroll;
-  transition: all ease-out 400ms;
 }
 .article-card.article-come-js {
   visibility: visible;
@@ -1047,7 +1161,6 @@ header.js .header-content {
   backdrop-filter: blur(45px);
   left: 50%;
   translate: -100%;
-  transition: all ease-in-out 500ms;
   color: #a00;
 }
 .bulk-err-msg.js {
@@ -1077,7 +1190,7 @@ header.js .header-content {
     padding: 0 0.8rem;
   }
   .main-card .article-content, .article-card .article-content {
-    min-width: fit-content;
+    min-width: auto;
   }
   .form-card .form-content {
     padding: 0.4rem;
@@ -1189,7 +1302,6 @@ header.js .header-content {
   .main-card {
     height: 100%;
     grid-column-start: 2;
-    transition: all ease-in-out 300ms;
     grid-row-start: 1;
   }
   .article-card {
@@ -1211,4 +1323,30 @@ header.js .header-content {
     grid-column-start: 4;
     width: 100%;
   }
+}
+.form-card,
+.form-content,
+.preloader,
+.product,
+.pro-cart,
+.navi-overlay,
+.main-card,
+header,
+.header-content-wrapper,
+.header-content,
+.mcard-images-overlay div,
+.mcard-images-overlay div img,
+.article-card,
+.bulk-err-msg {
+  transition: all 250ms ease-in 100ms;
+}
+
+.form-name-phone div.js,
+.form-location div.js,
+.form-prefer div.js,
+label,
+a,
+.navi-overlay.scroll-js > *,
+.navi-nav2 > * {
+  transition: all 120ms ease-in;
 }

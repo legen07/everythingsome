@@ -1,0 +1,160 @@
+@keyframes naviJs {
+  0%{
+    transform: unset;
+  }
+  10%{
+    opacity: .75;
+    transform: translateX(40%);
+  }
+  20%{
+    opacity: .5;
+    transform: translateX(80%);
+  }
+  30%{
+    transform: translateX(120%);
+    opacity: .25;
+  }
+  40%{
+    opacity: 0;
+    transform: translateX(160%);
+  }
+  50%{
+    opacity: 0;
+    transform: translateX(-160%);
+  }
+  60%{
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+  70%{
+    opacity: .25;
+    transform: translateX(-80%);
+  }
+  80%{
+    opacity: .5;
+    transform: translateX(-40%);
+  }
+  90%{
+    opacity: .75;
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: unset;
+  }
+}
+@keyframes naviRightJs {
+  0%{
+    transform: unset;
+  }
+  10%{
+    opacity: .75;
+    transform: translateX(40%);
+  }
+  20%{
+    opacity: .5;
+    transform: translateX(80%);
+  }
+  30%{
+    transform: translateX(120%);
+    opacity: .25;
+  }
+  40%{
+    opacity: 0;
+    transform: translateX(160%);
+  }
+  50%{
+    opacity: 0;
+    transform: translateX(-160%);
+  }
+  60%{
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+  70%{
+    opacity: .25;
+    transform: translateX(-80%);
+  }
+  80%{
+    opacity: .5;
+    transform: translateX(-40%);
+  }
+  90%{
+    opacity: .75;
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: unset;
+  }
+}
+
+
+@keyframes beforeSliderImg {
+  from{ 
+    transform: rotateY(360deg);
+  }
+  to{
+    transform: rotateY(356deg);
+  }
+}
+@keyframes afterSliderImg {
+  from{ 
+    transform: rotateY(6deg);
+  }
+  to{ 
+    transform: rotateY(4deg);
+  }
+}
+@keyframes headShake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  6.5% {
+    -webkit-transform: translateX(-6px) rotateY(-9deg);
+    transform: translateX(-6px) rotateY(-9deg);
+  }
+
+  18.5% {
+    -webkit-transform: translateX(5px) rotateY(7deg);
+    transform: translateX(5px) rotateY(7deg);
+  }
+
+  31.5% {
+    -webkit-transform: translateX(-3px) rotateY(-5deg);
+    transform: translateX(-3px) rotateY(-5deg);
+  }
+
+  43.5% {
+    -webkit-transform: translateX(2px) rotateY(3deg);
+    transform: translateX(2px) rotateY(3deg);
+  }
+
+  50% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes cartPulse {
+  from{
+    box-shadow: unset;
+  }
+  50%{
+    box-shadow: -0 0 0px 3px #{$tblue}99;
+    transform: scale(107%);
+  }
+  to{
+    box-shadow: -0 0 0px 5px #{$tblue}55;
+  }
+}
+
+@keyframes preloader {
+  from{
+    transform: rotate(190);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+}
