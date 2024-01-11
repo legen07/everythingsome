@@ -16,7 +16,7 @@
   }
 
   .main-card, .article-card {
-    padding: 2rem .4rem;
+    padding: 0 .4rem;
 
     .mcard-contents{
       padding: 0 .8rem;
@@ -197,33 +197,4 @@
     grid-column-start: 4;
     width: 100%;
   }
-}
-
-.form-card,
-.form-content,
-.preloader,
-.product,
-.pro-cart,
-.navi-overlay,
-.main-card,
-header,
-.header-content-wrapper,
-.header-content,
-.mcard-images-overlay div,
-.mcard-images-overlay div img,
-.article-card,
-.bulk-err-msg
-{
-  transition: all 250ms ease-in 100ms;
-}
-
-.form-name-phone div.js,
-.form-location div.js,
-.form-prefer div.js,
-label,
-a,
-.navi-overlay.scroll-js > *,
-.navi-nav2 > *
-{
-  transition: all 120ms ease-in;
 }

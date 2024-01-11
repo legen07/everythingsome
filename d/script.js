@@ -94,7 +94,7 @@ function formOpener() {
   form.classList.add("js");
   document.body.classList.add("js");
   if (cartList.length < 1)
-    cartManupulation('', 'plus');
+    cartManupulation();
 // console.log(cartList.indexOf(window.location.hash.replace('#', '')))
 }
 
