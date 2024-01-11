@@ -423,6 +423,9 @@ header {
   height: 2rem;
   display: grid;
   width: 100vw;
+  flex-grow: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
   z-index: 9;
   box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
   transition: all 250ms ease-in 100ms;
@@ -1044,7 +1047,7 @@ header.js .header-content {
   line-height: 1.5;
 }
 .mcard-description h1 {
-  font-size: 1.8rem;
+  font-size: 1.8rem !important;
   text-align: center;
   text-decoration: underline;
   font-weight: 900;
