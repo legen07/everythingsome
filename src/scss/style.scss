@@ -190,7 +190,7 @@ header{
           padding: 7px .5rem;
 
           h2{
-            font-size: 13px;
+            font-size: 12px;
             border-radius: 0 0 1rem 1rem;
           }
         }
@@ -411,7 +411,7 @@ header{
 }
 
 .main-card{
-  height: 98dvh;
+  height: 100dvh;
   width: 100vw;
   overflow-x: hidden;
   max-width: 600px;
@@ -445,7 +445,7 @@ header{
       grid-template-columns: 20% 60%;
       font-weight: 700;
       font-size: calc(100% * 2.3);
-      align-self: center;
+      align-self: start;
       color: $yyellow;
 
       strong{
@@ -646,7 +646,7 @@ header{
   box-shadow: 0 0 10px 3px #3334;
   top: 0;
   padding: 2rem;
-  height: 100lvh;
+  height: 100dvh;
   background-color: #fff;
   overflow-y: scroll;
   
@@ -669,9 +669,12 @@ header{
     justify-content: space-evenly;
 
     .art-head{
+      display: flex;
       align-self: center;
-      text-align: center;
+      justify-content: center;
       min-height: 6rem;
+
+      align-items: center;
     }
 
     .art-vitals{
@@ -816,14 +819,5 @@ header{
     translate: -50%;
   }
 }
-
-
-
-
-
-
-
-
-
 
 @import '_media.scss';

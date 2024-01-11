@@ -1,3 +1,24 @@
+////////////////////////////////////////////////////////////////////
+////////// THE DOINGS WHEN THE PAGE IS LOADED //////////////////////
+////////////////////////////////////////////////////////////////////
+window.onload = function () {
+  switch (true) {
+    case window.location.hash === "":
+      window.location.hash = "blender";
+      break;
+
+    default:
+      break;
+  }
+
+  productOpener(doc(window.location.hash).querySelector("img"));
+  setTimeout(function () {
+    headExpandFoo();
+  }, 300);
+
+  artPricechange();
+};
+
 let cartList, mcardOverlay, form, proPrice_TC, formProName_TC;
 cartList = [];
 let hashLocation = window.location.hash.replace("#", "");
@@ -69,14 +90,11 @@ let divInp = docs("div input");
 divInp = [...divInp];
 divInp.shift();
 
-proPrice_TC = [...doc(".mcard-price strong").textContent];
-proPrice_TC = proPrice_TC.splice(2, Infinity).join("");
-
 function formOpener() {
   form.classList.add("js");
   document.body.classList.add("js");
-
-  cartManupulation(undefined, "plus");
+  if (cartList.length < 1)
+    cartManupulation('', 'plus');
 // console.log(cartList.indexOf(window.location.hash.replace('#', '')))
 }
 
@@ -137,6 +155,10 @@ function headExpandFoo() {
 /////// ADDING FORM BRIEF TO FORM ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 function formBriefCreation(d) {
+  
+  proPrice_TC = [...doc(".mcard-price strong").textContent];
+  proPrice_TC = proPrice_TC.splice(2, Infinity).join("");
+
   let createDivBrief = document.createElement("div");
   createDivBrief.setAttribute("id", `${d?.id ?? hashLocation}`);
   createDivBrief.classList.add("form-brief-content");
@@ -151,22 +173,23 @@ function formBriefCreation(d) {
     proPrice_TC
   }</span></div><div class="price-maths"><button class='minus'>remove</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = &nbsp;Gh&#8373; </b><strong> ${
     d
-      ?.closest(".product")
+    ?.closest(".product")
       .querySelector(".pro-price strong")
       .textContent.replace(/\D/g, "") || proPrice_TC.replace(/\D/g, "")
   } </strong></div>`;
 
   doc(".form-brief").insertAdjacentElement("afterbegin", createDivBrief);
-  !d?.id
-    ? doc(".form-brief-content").classList.add("pro-from-none")
-    : false;
-  // d !== undefined ? document.querySelector('.form-brief-content').classList.add('pro-from-none') : '';
+  if (d?.id)
+    doc(".form-brief-content").classList.add("pro-from-none")
+    
 }
 
+let naviNav2 = doc('.navi-nav2');
 /////////////////////////////////////////////////////////////
 /////////// PLUS AND MINUS OPERATIONS ///////////////////////
 /////////////////////////////////////////////////////////////
 function plus_minus(d, param) {
+  let proFromNone = doc('.pro-from-none');
   let bulkErrMsg = document.querySelector(".bulk-err-msg");
   let index = cartList.indexOf(d?.closest('.form-brief-content')?.id)
   let cost =
@@ -201,7 +224,9 @@ function plus_minus(d, param) {
         bulkErrMsg.classList.remove("js");
       }, 9000);
     }
-    console.log(cartList);
+    if (proFromNone){
+      proFromNone.classList.remove('pro-from-none');
+    }
   } else if (param === "minus") {
     cartList.splice(index, 1);
     if (unit.textContent > 1){
@@ -221,23 +246,24 @@ function plus_minus(d, param) {
         form.classList.remove('js');
       }
     }
-
-  } 
-  console.log(cartList);
-  // if ()
+  }
+  naviNav2.classList.add('cart');
+  naviNav2.lastElementChild.textContent =  cartList.length;
+  let overallAmount = 0;
+  docs('.brief-total strong').forEach(each => {
+    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ''));
+  })
+  doc('.done-js .overall').textContent = overallAmount;
 }
 
 function cartManupulation(d, plus_minus_Param) {
   d = d?.closest(".product")?.id;
   d = document.querySelector(`#${d}`);
+  // console.log(d)
 
   switch (true) {
-    case cartList.length < 1 : 
-      formBriefCreation(d);
-      cartList.push(hashLocation)
-      break;
-      
-    case !cartList.includes(d):
+
+    case !cartList.includes(d?.id):
       formBriefCreation(d);
       cartList.push(d?.id || hashLocation);
       console.log(d?.id || hashLocation)
@@ -249,10 +275,16 @@ function cartManupulation(d, plus_minus_Param) {
       break;
 
     default:
-      formBriefCreation(d);
-      cartList.push(d?.id)
       break;
   }
+
+  naviNav2.classList.add('cart');
+  naviNav2.lastElementChild.textContent =  cartList.length;
+  let overallAmount = 0;
+  docs('.brief-total strong').forEach(each => {
+    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ''));
+  })
+  doc('.done-js .overall').textContent = overallAmount;
 }
 
 function copiedToCart(d) {
@@ -338,7 +370,7 @@ document.addEventListener("click", (e) => {
 //Scroll event Listener ////////////
 
 window.addEventListener("scroll", (scrol) => {
-  let fortyMedia = window.matchMedia("(max-height: 700px)");
+  let fortyMedia = window.matchMedia("(max-height: 900px)");
   if (fortyMedia.matches && window.scrollY > 1) {
     naviNav2.parentElement.classList.add("scroll-js");
   } else if (window.scrollY < 2) {
@@ -369,6 +401,11 @@ function productOpener(d) {
   let clickedId = clickedProduct.getAttribute("id");
 
   let _PPC = productList.products[clickedId];
+
+  
+  proPrice_TC = [...doc(".mcard-price strong").textContent];
+  proPrice_TC = proPrice_TC.splice(2, Infinity).join("");
+
 
   let mCardElements = [
     ...docs(
@@ -414,24 +451,3 @@ function artPricechange() {
     Number(doc(".vit-price .ran2").textContent.replace(/\D/g, "")) + 30
   );
 }
-
-///////////////////////////////////////////////////////////////////////
-////////// THE DOINGS WHEN THE PAGE IS LOADED /////////////////////////
-///////////////////////////////////////////////////////////////////////
-window.onload = function () {
-  switch (true) {
-    case window.location.hash === "":
-      window.location.hash = "blender";
-      break;
-
-    default:
-      break;
-  }
-
-  productOpener(doc(window.location.hash).querySelector("img"));
-  setTimeout(function () {
-    headExpandFoo();
-  }, 300);
-
-  artPricechange();
-};
