@@ -371,7 +371,7 @@ document.addEventListener("click", (e) => {
 
 window.addEventListener("scroll", (scrol) => {
   let fortyMedia = window.matchMedia("(max-height: 900px)");
-  if (fortyMedia.matches && window.scrollY > 1) {
+  if (fortyMedia.matches && window.scrollY > 10) {
     naviNav2.parentElement.classList.add("scroll-js");
   } else if (window.scrollY < 2) {
     try {
