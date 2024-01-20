@@ -1,23 +1,13 @@
 ////////////////////////////////////////////////////////////////////
 ////////// THE DOINGS WHEN THE PAGE IS LOADED //////////////////////
 ////////////////////////////////////////////////////////////////////
+switch (true) {
+  case window.location.hash === "":
+    window.location.hash = "blender";
+}/*
 window.onload = function () {
-  switch (true) {
-    case window.location.hash === "":
-      window.location.hash = "blender";
-      break;
-
-    default:
-      break;
-  }
-
-  productOpener(doc(window.location.hash).querySelector("img"));
-  setTimeout(function () {
-    headExpandFoo();
-  }, 300);
-
-  artPricechange();
-};
+  
+};*/
 
 let cartList, mcardOverlay, form, proPrice_TC, formProName_TC;
 cartList = [];
@@ -38,8 +28,8 @@ let mcardImagesList = doc(".mcard-images-overlay dl");
 
 let j = 0;
 
-let proImgs = productList.products[hashLocation].images;
 
+let proImgs = productList.products[hashLocation].images;
 function carouselplace(prev_next) {
   let popedImg = prev_next === "next" ? proImgs.shift() : proImgs.pop();
   prev_next === "next" ? proImgs.push(popedImg) : proImgs.unshift(popedImg);
@@ -64,6 +54,8 @@ for (let k = 0; k < proImgs.length; k++) {
   mcardImagesList.insertAdjacentElement("afterbegin", li);
 }
 docs(".mcard-images-overlay dl > *")[j].classList.add("active");
+
+carouselplace("prev");
 /*        End or Carousel                                  */
 
 //////////////////////////////////////////////////////////////////
@@ -93,9 +85,8 @@ divInp.shift();
 function formOpener() {
   form.classList.add("js");
   document.body.classList.add("js");
-  if (cartList.length < 1)
-    cartManupulation();
-// console.log(cartList.indexOf(window.location.hash.replace('#', '')))
+  if (cartList.length < 1) cartManupulation();
+  // console.log(cartList.indexOf(window.location.hash.replace('#', '')))
 }
 
 function formCloser() {
@@ -136,26 +127,17 @@ requiredField.forEach((each) => {
 //////////////////////////////////////////////////////////////
 ///////// header expansion function /////////////////////////
 //////////////////////////////////////////////////////////////
-let header = doc("header");
 
 function headExpandFoo() {
-  window.scrollTo({
-    top: -1000,
-    behavior: "instant",
-  });
-
-  setTimeout(function () {
-    header.classList.toggle("js");
-    doc(".navi-nav1").parentElement.classList.toggle("remove");
-    document.body.classList.toggle("js");
-  }, 100);
+  console.log('was runned')
+  doc("header").classList.toggle('js');
+  doc(".navi-nav1").parentElement.classList.toggle("remove");
 }
 
 /////////////////////////////////////////////////////////////////
 /////// ADDING FORM BRIEF TO FORM ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 function formBriefCreation(d) {
-  
   proPrice_TC = [...doc(".mcard-price strong").textContent];
   proPrice_TC = proPrice_TC.splice(2, Infinity).join("");
 
@@ -173,50 +155,48 @@ function formBriefCreation(d) {
     proPrice_TC
   }</span></div><div class="price-maths"><button class='minus'>remove</button><div>1</div><button class="plus">+</button></div></div></div><div class="brief-total"> <b>Total = &nbsp;Gh&#8373; </b><strong> ${
     d
-    ?.closest(".product")
+      ?.closest(".product")
       .querySelector(".pro-price strong")
       .textContent.replace(/\D/g, "") || proPrice_TC.replace(/\D/g, "")
   } </strong></div>`;
 
   doc(".form-brief").insertAdjacentElement("afterbegin", createDivBrief);
-  if (d?.id)
-    doc(".form-brief-content").classList.add("pro-from-none")
-    
+  if (d?.id) doc(".form-brief-content").classList.add("pro-from-none");
 }
 
-let naviNav2 = doc('.navi-nav2');
+let naviNav2 = doc(".navi-nav2");
 /////////////////////////////////////////////////////////////
 /////////// PLUS AND MINUS OPERATIONS ///////////////////////
 /////////////////////////////////////////////////////////////
 function plus_minus(d, param) {
-  let proFromNone = doc('.pro-from-none');
+  let proFromNone = doc(".pro-from-none");
   let bulkErrMsg = document.querySelector(".bulk-err-msg");
-  let index = cartList.indexOf(d?.closest('.form-brief-content')?.id)
+  let index = cartList.indexOf(d?.closest(".form-brief-content")?.id);
   let cost =
     d?.closest(".form-brief-content")?.querySelector(".brief-side .digit") ||
     document.querySelector(`.form-brief #${d?.id} .digit`);
 
   let unit =
     d
-    ?.closest(".form-brief-content")
-    ?.querySelector(".brief-side .price-maths div") ||
+      ?.closest(".form-brief-content")
+      ?.querySelector(".brief-side .price-maths div") ||
     document.querySelector(
       `.form-brief #${d?.id} .brief-side .price-maths div`
-      );
+    );
 
   let total =
     d?.closest(".form-brief-content")?.querySelector(".brief-total strong") ||
     document.querySelector(`.form-brief #${d?.id} .brief-total strong`);
 
   if (param === "plus" && unit.textContent < 4) {
-    cartList.push(d?.closest('.form-brief-content')?.id || d?.id);
+    cartList.push(d?.closest(".form-brief-content")?.id || d?.id);
     unit.textContent = Number(unit.textContent) + 1;
     total.textContent =
       Number(cost.textContent.replace(/\D/g, "")) * Number(unit.textContent);
 
     unit.previousElementSibling.textContent = "-";
     unit.previousElementSibling.style.cssText =
-      "font-size: 1.5rem; padding: 0 6px; color: #111";;
+      "font-size: 1.5rem; padding: 0 6px; color: #111";
     if (unit.textContent > 3) {
       unit.nextElementSibling.style.color = "#aaa";
       bulkErrMsg.classList.add("js");
@@ -224,49 +204,45 @@ function plus_minus(d, param) {
         bulkErrMsg.classList.remove("js");
       }, 9000);
     }
-    if (proFromNone){
-      proFromNone.classList.remove('pro-from-none');
+    if (proFromNone) {
+      proFromNone.classList.remove("pro-from-none");
     }
   } else if (param === "minus") {
     cartList.splice(index, 1);
-    if (unit.textContent > 1){
+    if (unit.textContent > 1) {
       unit.textContent = Number(unit.textContent) - 1;
       total.textContent =
         Number(cost.textContent.replace(/\D/g, "")) * Number(unit.textContent);
-      unit.nextElementSibling.style.color = '#111';
+      unit.nextElementSibling.style.color = "#111";
       if (unit.textContent < 2) {
         unit.previousElementSibling.style.cssText = "#f44";
         unit.previousElementSibling.textContent = "remove";
       }
-    }
-  
-    else if (unit.textContent <= 1) {
-      d.closest('.form-brief-content').remove();
-      if (cartList.length < 1){
-        form.classList.remove('js');
+    } else if (unit.textContent <= 1) {
+      d.closest(".form-brief-content").remove();
+      if (cartList.length < 1) {
+        form.classList.remove("js");
       }
     }
   }
-  naviNav2.classList.add('cart');
-  naviNav2.lastElementChild.textContent =  cartList.length;
+  naviNav2.classList.add("cart");
+  naviNav2.lastElementChild.textContent = cartList.length;
   let overallAmount = 0;
-  docs('.brief-total strong').forEach(each => {
-    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ''));
-  })
-  doc('.done-js .overall').textContent = overallAmount;
+  docs(".brief-total strong").forEach((each) => {
+    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ""));
+  });
+  doc(".done-js .overall").textContent = overallAmount;
 }
 
 function cartManupulation(d, plus_minus_Param) {
   d = d?.closest(".product")?.id;
   d = document.querySelector(`#${d}`);
-  // console.log(d)
 
   switch (true) {
-
     case !cartList.includes(d?.id):
       formBriefCreation(d);
       cartList.push(d?.id || hashLocation);
-      console.log(d?.id || hashLocation)
+      console.log(d?.id || hashLocation);
       break;
 
     case cartList.includes(d?.id):
@@ -278,19 +254,18 @@ function cartManupulation(d, plus_minus_Param) {
       break;
   }
 
-  naviNav2.classList.add('cart');
-  naviNav2.lastElementChild.textContent =  cartList.length;
+  naviNav2.classList.add("cart");
+  naviNav2.lastElementChild.textContent = cartList.length;
   let overallAmount = 0;
-  docs('.brief-total strong').forEach(each => {
-    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ''));
-  })
-  doc('.done-js .overall').textContent = overallAmount;
+  docs(".brief-total strong").forEach((each) => {
+    overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ""));
+  });
+  doc(".done-js .overall").textContent = overallAmount;
 }
 
 function copiedToCart(d) {
   cartManupulation(d, "plus");
 }
-
 
 /////////////////////////////////////////////////
 ///// Click event Listener //////////////////////
@@ -370,7 +345,7 @@ document.addEventListener("click", (e) => {
 //Scroll event Listener ////////////
 
 window.addEventListener("scroll", (scrol) => {
-  let fortyMedia = window.matchMedia("(max-height: 900px)");
+  let fortyMedia = window.matchMedia("(max-height: 800px)");
   if (fortyMedia.matches && window.scrollY > 10) {
     naviNav2.parentElement.classList.add("scroll-js");
   } else if (window.scrollY < 2) {
@@ -381,73 +356,48 @@ window.addEventListener("scroll", (scrol) => {
 });
 
 Object.entries(productList.products).map(([keys, element]) => {
-  let name = element.proName;
-  let price = element.proPrice;
-  let brief = element.proBrief;
-  let images = element.images;
-
   let div = document.createElement("div");
   div.classList.add("product", "po");
   div.setAttribute("id", keys);
-  div.innerHTML = `<div class="product-back"> <div class="pro-img"> <img class="po" src="images/products/${images[0]}" alt="${name}"><div class="pro-name"><h2>${name}</h2></div></div> <div class="pro-price"><strong>${price}</strong></div><div class="pro-cart pc"><div class="pc">+</div></div></div>`;
+  div.innerHTML = `<div class="product-back"> <div class="pro-img"> <img class="po" src="images/products/${element.images[0]}" alt="${element.proName}"></div> <div class="price-cart"><div class="pro-price"><strong>${element.proPrice}</strong></div><div class="pro-cart pc"><div class="pc">+</div></div></div><div class="pro-name"><h2>${element.proName}</h2></div</div>`;
 
   doc(".header-content").appendChild(div);
 });
 
-let product = docs(".header-content .product");
-
 function productOpener(d) {
-  let clickedProduct = d.parentElement.parentElement.parentElement;
-  let clickedId = clickedProduct.getAttribute("id");
-
-  let _PPC = productList.products[clickedId];
-
-  
-  proPrice_TC = [...doc(".mcard-price strong").textContent];
-  proPrice_TC = proPrice_TC.splice(2, Infinity).join("");
-
+  let product = docs(".header-content .product");
+  let clickedId = d.closest('.product').id;
 
   let mCardElements = [
     ...docs(
       ".art-head h1, .mcard-price strong, .mcard-description p, .article-content article p, .vit-material, .vit-brand"
     ),
   ];
-
   for (let i = 0; i < 6; i++) {
-    let eachEle = document.createElement("img");
-    let eachPPC = _PPC.images[i];
-    proImgs = _PPC.images;
-    eachEle.setAttribute("src", `./images/products/${eachPPC}`);
-    eachEle.setAttribute("alt", `${doc(".art-head h1").textContent}`);
-    if (mcardOverlay[i] !== undefined) mcardOverlay[i].replaceChildren(eachEle);
-
-    mCardElements[i].innerHTML = Object.values(_PPC)[i];
+    mCardElements[i].innerHTML = Object.values(productList.products[clickedId])[i];
   }
-  let ghc = [...proPrice_TC];
-  ghc.unshift("Gh");
-  proPrice_TC = ghc.join("");
+  proImgs = Object.values(productList.products[clickedId].images);
+  carouselplace('prev')
   window.location.hash = clickedId;
 
   doc(".mcard-description h1").textContent = doc(".art-head h1").textContent;
-  headExpandFoo();
-  artPricechange();
 
+  doc('header').classList.contains('js') ? headExpandFoo() : console.log('does not');
+  
   product.forEach((each) => {
     if (each.classList.contains("js")) {
       each.classList.remove("js");
     }
   });
-  clickedProduct.classList.add("js");
+  d.closest('.product').classList.add("js");
+
+  artPricechange();
 }
 
-//////////////////////////////////////////////////////////////////////
+productOpener(doc(window.location.hash).querySelector("img"));
 function artPricechange() {
-  doc(".vit-price .ran2").textContent = ` ${proPrice_TC.replace(/Gh/g, "")}`;
+  doc(".vit-price .ran2").textContent = doc('.mcard-price strong').textContent;
 
-  doc(".vit-price span").textContent = doc(
-    ".vit-price span"
-  ).textContent.replace(
-    /\b\d+\b/g,
-    Number(doc(".vit-price .ran2").textContent.replace(/\D/g, "")) + 30
-  );
+  doc(".vit-price .price-delivery").textContent = 
+    Number(doc(".vit-price .ran2").textContent.replace(/\D/g, "")) + 30;
 }

@@ -155,7 +155,7 @@ button {
   overflow: hidden;
   height: 100px;
   box-shadow: 0 5px 6px -2px rgba(136, 136, 136, 0.6);
-  background-color: #ddd;
+  background-color: #d8d8d8;
 }
 .brief-brief *:not(img) {
   justify-items: center;
@@ -417,7 +417,6 @@ aside svg {
 }
 
 header {
-  overflow: hidden;
   background-color: #fdc900;
   position: sticky;
   top: 0;
@@ -453,7 +452,7 @@ header.js .header-content {
   top: 1rem;
   overflow-y: auto;
   background-color: #fdc900;
-  padding: 1rem;
+  padding: 1rem 0 3rem 0;
   transition: all 250ms ease-in 100ms;
 }
 
@@ -486,15 +485,13 @@ header.js .header-content {
   position: relative;
   left: 50%;
   translate: -50%;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: 46% 46%;
   justify-content: space-evenly;
   row-gap: 2rem;
   transform: scale(150%) translateY(50%);
   perspective: 900px;
   transition: all 250ms ease-in 100ms;
-}
-.header-content * {
-  border-radius: 5px;
+  border-radius: 9px;
 }
 .header-content .product {
   display: flex;
@@ -510,23 +507,23 @@ header.js .header-content {
   box-shadow: 0 10px 10px -4px rgba(17, 17, 17, 0.3333333333);
   transform: rotateX(6deg);
 }
-.header-content .product.js .product-back .pro-img {
+.header-content .product.js .product-back {
   box-shadow: 0 9px 16px rgba(68, 68, 68, 0.3333333333);
-}
-.header-content .product.js .product-back .pro-img img {
-  filter: grayscale(10);
+  filter: grayscale(1);
 }
 
 .product-back {
   position: relative;
   height: 100%;
+  border-radius: 9px;
+  overflow: hidden;
+  border: solid 1px #eee;
+  box-shadow: 0 0 15px rgba(68, 68, 68, 0.2666666667);
 }
 .product-back .pro-img {
   width: 100%;
-  border-radius: 6px;
   height: 20vh;
   min-height: 150px;
-  position: relative;
   overflow: hidden;
 }
 .product-back .pro-img img {
@@ -535,34 +532,32 @@ header.js .header-content {
 }
 
 .pro-name {
-  left: 50%;
-  translate: -50%;
+  background-color: #00509D;
   display: flex;
-  width: 95%;
-  position: absolute;
-  bottom: 3px;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(13px);
-  padding: 7px 0.5rem;
+  min-height: 100%;
+  padding: 6px 1rem;
+  color: #fff;
 }
 .pro-name h2 {
-  font-size: 12px;
-  border-radius: 0 0 1rem 1rem;
+  font-size: 0.9rem;
 }
 
-.pro-price, .pro-cart {
-  position: absolute;
+.price-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1rem;
 }
 
 .pro-cart {
-  padding: 0rem 0.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  height: 1.7rem;
   border-radius: 0.5rem;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.5rem;
-  top: -0.5rem;
-  right: -0.5rem;
-  z-index: 99;
   background-color: #00509D;
   transition: all 250ms ease-in 100ms;
   animation: cartPulse 600ms ease-in-out infinite;
@@ -572,11 +567,11 @@ header.js .header-content {
     box-shadow: unset;
   }
   50% {
-    box-shadow: 0 0 0px 3px #00509D99;
+    box-shadow: 0 0 0px 2.5px #00509D99;
     transform: scale(107%);
   }
   to {
-    box-shadow: 0 0 0px 5px #00509D55;
+    box-shadow: 0 0 0px 4px #00509D55;
   }
 }
 .pro-cart:hover, .pro-cart :target {
@@ -587,13 +582,7 @@ header.js .header-content {
 }
 
 .pro-price {
-  background-color: #fdc900;
   color: rgba(0, 0, 0, 0.6);
-  box-shadow: 2px 2px 0px #fdb500, inset 1px 1px 1px -0.5px #fff;
-  top: 0;
-  margin: -4px -4px;
-  border-radius: 3px;
-  padding: 2px 8px;
   text-align: center;
 }
 
@@ -1011,7 +1000,7 @@ header.js .header-content {
   top: 53%;
   gap: 4px;
   width: 90%;
-  z-index: 99;
+  z-index: 98;
 }
 .mcard-images-overlay dl * {
   list-style: none;
@@ -1288,6 +1277,7 @@ header.js .header-content {
   body header .header-content {
     grid-template-columns: 30% 30% 30%;
     gap: 2rem;
+    padding: 1.8rem;
   }
   body .navigator {
     bottom: 1rem;

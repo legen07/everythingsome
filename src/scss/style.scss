@@ -42,7 +42,6 @@ aside{
   }
 }
 header{
-  overflow: hidden;
   background-color: $myellow;
   position: sticky;
   top: 0;
@@ -76,7 +75,7 @@ header.js{
   top: 1rem;
   overflow-y: auto;
   background-color: $myellow;
-  padding: 1rem;
+  padding: 1rem 0 3rem 0;
   transition: all 250ms ease-in 100ms;
 }
 .header-overlay{
@@ -105,15 +104,13 @@ header.js{
   position: relative;
   left: 50%;
   translate: -50%;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: 46% 46%;
   justify-content: space-evenly;
   row-gap: 2rem;
   transform: scale(150%) translateY(50%);
   perspective: 900px;
   transition: all 250ms ease-in 100ms;
-  * {
-    border-radius: 5px;
-  }
+  border-radius: 9px;
   .product{
     display: flex;
     position: relative;
@@ -128,11 +125,9 @@ header.js{
       transform: rotateX(6deg);
     }
     &.js{
-      .product-back .pro-img{
+      .product-back{
         box-shadow: 0 9px 16px #4445;
-        img {
-          filter: grayscale(10);
-        }
+        filter: grayscale(1);
       }
     }
   }
@@ -140,12 +135,15 @@ header.js{
 .product-back{
   position: relative;
   height: 100%;
+  border-radius: 9px;
+  overflow: hidden;
+  border: solid 1px #eee;
+  box-shadow: 0 0 15px #4444;
   .pro-img{
     width: 100%;
-    border-radius: 6px;
+    // border-radius: 6px 6px 0 0;
     height: 20vh;
     min-height: 150px;
-    position: relative;
     overflow: hidden;
     img{
       width: 100%;
@@ -154,32 +152,36 @@ header.js{
   }
 }
 .pro-name{
-  left: 50%;
-  translate: -50%;
+  background-color: $tblue;
   display: flex;
-  width: 95%;
-  position: absolute;
-  bottom: 3px;
-  background-color: #fff9;
-  backdrop-filter: blur(13px);
-  padding: 7px .5rem;
+  min-height: 100%;
+  // border-radius: 0 0 8px 8px;
+  padding: 6px 1rem;
+  color: #fff;
+  // width: 95%;
+  // background-color: #fff9;
+  // backdrop-filter: blur(13px);
   h2{
-    font-size: 12px;
-    border-radius: 0 0 1rem 1rem;
+    font-size: .9rem;
+    // border-radius: 0 0 1rem 1rem;
   }
 }
-.pro-price, .pro-cart{
-  position: absolute;
+.price-cart{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .4rem 1rem;
+  // box-shadow: inset 2px 2px 5px #5559;
 }
 .pro-cart{
-  padding: 0rem .4rem;
+  display: flex;
+  align-items: center;
+  padding:.4rem;
+  height: 1.7rem;
   border-radius: .5rem;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.5rem;
-  top: -.5rem;
-  right: -.5rem;
-  z-index: 99;
   background-color: $tblue;
   transition: all 250ms ease-in 100ms;
   animation: cartPulse 600ms ease-in-out infinite;
@@ -188,11 +190,11 @@ header.js{
       box-shadow: unset;
     }
     50%{
-      box-shadow: -0 0 0px 3px #{$tblue}99;
+      box-shadow: -0 0 0px 2.5px #{$tblue}99;
       transform: scale(107%);
     }
     to{
-      box-shadow: -0 0 0px 5px #{$tblue}55;
+      box-shadow: -0 0 0px 4px #{$tblue}55;
     }
   }
   &:hover, :target{
@@ -203,15 +205,7 @@ header.js{
   }
 }
 .pro-price{
-  background-color: $myellow;
   color: #0009;
-  box-shadow: 
-    2px 2px 0px $oyellow, 
-    inset 1px 1px 1px -.5px #fff ;
-  top: 0;
-  margin: -4px -4px;
-  border-radius: 3px;
-  padding: 2px 8px;
   text-align: center;
 }
 
@@ -626,7 +620,7 @@ header.js{
     top: 53%;
     gap: 4px;
     width: 90%;
-    z-index: 99;
+    z-index: 98;
     *{
       list-style: none;
       background-color: #aaa6;
