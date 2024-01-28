@@ -165,6 +165,7 @@ function formBriefCreation(d) {
 }
 
 let naviNav2 = doc(".navi-nav2");
+
 /////////////////////////////////////////////////////////////
 /////////// PLUS AND MINUS OPERATIONS ///////////////////////
 /////////////////////////////////////////////////////////////
@@ -234,6 +235,10 @@ function plus_minus(d, param) {
   doc(".done-js .overall").textContent = overallAmount;
 }
 
+let headerOverlay = doc('.header-overlay');
+let notifications = document.createElement('div');
+notifications.classList.add('notifications');
+
 function cartManupulation(d, plus_minus_Param) {
   d = d?.closest(".product")?.id;
   d = document.querySelector(`#${d}`);
@@ -242,7 +247,6 @@ function cartManupulation(d, plus_minus_Param) {
     case !cartList.includes(d?.id):
       formBriefCreation(d);
       cartList.push(d?.id || hashLocation);
-      console.log(d?.id || hashLocation);
       break;
 
     case cartList.includes(d?.id):
@@ -261,6 +265,16 @@ function cartManupulation(d, plus_minus_Param) {
     overallAmount += Number(each.textContent.replace(/[^\d.]/gi, ""));
   });
   doc(".done-js .overall").textContent = overallAmount;
+
+  ////// Added to cart notifications
+  notifications.innerHTML = `<span> ${(Object.values(productList.products[d?.id || hashLocation].proName)).join('')} <span style="color: #222">was added to cart</span></span>`;
+  notifications.insertAdjacentHTML('beforeend', `<a href="javascript:void(0)" class="no">x</a>`);
+  headerOverlay.insertAdjacentElement('afterbegin', notifications);
+  headerOverlay.classList.add("noti-added");
+  setTimeout(function(){
+    doc('.notifications')?.remove();
+    headerOverlay.classList.remove('noti-added');
+  }, 3000)
 }
 
 function copiedToCart(d) {
@@ -319,6 +333,11 @@ document.addEventListener("click", (e) => {
     case d.classList.contains("po"):
       productOpener(d);
       break;
+
+    case d.classList.contains('no'):
+      d.parentElement.remove();
+      headerOverlay.classList.remove('noti-added');
+      break
 
     default:
       break;

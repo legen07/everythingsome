@@ -34,42 +34,7 @@
   }
 }
 
-
-@media screen and (max-height: 900px) {
-
-  
-  .mcard-contents{
-    .mcard-description{
-      h1{
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .article-card{
-    // margin: 1.8rem 0;
-    
-    .article-content{
-      display: grid;
-      grid-auto-flow: row;
-
-      .art-head{
-        font-size: 1.7rem;
-      }
-
-      .art-vitals{
-        h3{
-          padding: .2rem .5rem;
-        }
-      }
-    }
-  }
-}
-
 @media screen and (min-height: 740px) {
-  h1 {
-    font-size: 2rem;
-  }
   .form-card{
     .form-card-close{
       opacity: 0;
@@ -90,36 +55,30 @@
     overflow: hidden;
 
     header{
-
       .header-content{
         grid-template-columns: 30% 30% 30%;
         gap: 2rem;
         padding: 1.8rem;
       }
     }
-
+    .main-card.main-go-js{transform: unset;}
     .navigator{
       bottom: 1rem;
-      
       .navi-overlay{
-        justify-content: center; 
-        
+        justify-content: center;
         .navi-nav1{
           visibility: hidden;
           width: 0;
           opacity: 0;
         }
-
         .navi-nav1.settings-nav{
           visibility: visible;
           width: 30%;
           opacity: 1;
         }
-        
         .navi-nav2{
           box-shadow: 0 0 20px #5555;
         }
-        
       }
       .navi-bottom{
         display: none;
@@ -198,4 +157,27 @@
     grid-column-start: 4;
     width: 100%;
   }
+}
+/// The overall accomodatiing screen
+@media screen and (max-width: 380px) {
+  html {
+    font-size: 85%;
+  }
+  .mcard-price {
+    hr{
+      height: .4rem;
+    }
+  }
+  .art-head{
+    align-items: end;
+  }
+  .form-brief-content{
+    min-width: 180px;
+
+    .brief-brief .price-maths{
+      min-width: unset;
+      gap: 5px;
+    }
+  }
+  
 }

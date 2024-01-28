@@ -121,14 +121,14 @@ button {
   display: grid;
   width: 100%;
   height: 100%;
-  font-size: 2.5rem;
+  font-size: 2.5em;
 }
 .form-content p, .form-content span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.8em;
 }
 .form-content strong {
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .form-brief {
@@ -138,14 +138,15 @@ button {
   align-items: center;
   overflow-x: auto;
   margin: 0 -1rem;
-  display: grid;
+  display: flex;
   grid-auto-flow: column;
   gap: 1rem;
   padding: 0 1rem;
 }
 
 .form-brief-content {
-  width: 230px;
+  width: 45%;
+  min-width: 230px;
   position: relative;
 }
 
@@ -153,7 +154,8 @@ button {
   display: flex;
   border-radius: 1rem !important;
   overflow: hidden;
-  height: 100px;
+  width: 100%;
+  aspect-ratio: 9/4;
   box-shadow: 0 5px 6px -2px rgba(136, 136, 136, 0.6);
   background-color: #d8d8d8;
 }
@@ -165,7 +167,7 @@ button {
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   white-space: nowrap;
 }
 .brief-brief img {
@@ -173,7 +175,7 @@ button {
   aspect-ratio: 1;
 }
 .brief-brief .brief-side {
-  padding: 10px;
+  padding: 1%;
   display: grid;
   width: 100%;
 }
@@ -183,7 +185,7 @@ button {
   justify-content: space-between;
 }
 .brief-brief .price-maths button {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   padding: 0 8px;
   background-color: #eee;
 }
@@ -198,7 +200,7 @@ button {
   position: relative;
   background-color: #fdc900;
   width: 90%;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   left: 50%;
   translate: -50%;
   border-radius: 0 0 1rem 1rem !important;
@@ -224,7 +226,7 @@ form input:not(input[type=submit]) {
 }
 form input::placeholder {
   color: #333;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 form hr {
   border: dashed 1px;
@@ -353,7 +355,7 @@ form input:focus {
   justify-self: center;
   color: #fff;
   text-shadow: 0 0 5px #fff;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 .done-js .overall-total {
   flex-shrink: 0;
@@ -363,7 +365,7 @@ form input:focus {
   margin-left: auto;
 }
 .done-js .overall-total strong {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 600;
 }
 
@@ -396,10 +398,6 @@ form input:focus {
   opacity: 0;
 }
 
-body.js {
-  overflow: hidden;
-}
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -423,10 +421,10 @@ header {
   height: 2rem;
   display: grid;
   width: 100vw;
+  z-index: 3;
   flex-grow: 1;
   grid-column-start: 1;
   grid-column-end: 3;
-  z-index: 99;
   box-shadow: inset 0 -5.9px 6px rgba(51, 51, 51, 0.2666666667);
   transition: all 250ms ease-in 100ms;
 }
@@ -434,6 +432,7 @@ header {
 header.js {
   height: 97dvh;
   box-shadow: 0 9px 15px rgba(34, 34, 34, 0.3333333333);
+  font-family: "Fira sans";
   background-color: #fdc900;
 }
 header.js .header-content-wrapper {
@@ -444,6 +443,9 @@ header.js .header-content-wrapper::-webkit-scrollbar {
 }
 header.js .header-content {
   transform: scale(100%);
+}
+header.js .header-content .product {
+  visibility: visible;
 }
 
 .header-content-wrapper {
@@ -460,11 +462,14 @@ header.js .header-content {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  height: 3rem;
   gap: 1rem;
   padding: 0.4rem 2rem 0 2rem;
+  transition: all 100ms ease-in;
 }
 .header-overlay a img {
   width: 2rem;
+  translate: 50%;
 }
 .header-overlay img {
   margin-top: -0.2rem;
@@ -485,16 +490,16 @@ header.js .header-content {
   position: relative;
   left: 50%;
   translate: -50%;
-  grid-template-columns: 46% 46%;
+  grid-template-columns: 47% 47%;
   justify-content: space-evenly;
   row-gap: 2rem;
-  transform: scale(150%) translateY(50%);
+  transform: scale(160%) translateY(60%);
   perspective: 900px;
-  transition: all 250ms ease-in 100ms;
+  transition: all 320ms ease-in 110ms;
   border-radius: 9px;
 }
 .header-content .product {
-  display: flex;
+  visibility: hidden;
   position: relative;
   cursor: pointer;
   transition: all 250ms ease-in 100ms;
@@ -598,7 +603,6 @@ header.js .header-content {
 .navigator.js .navi-overlay .navi-nav2 {
   order: 1;
   background-color: #00509D;
-  box-shadow: 0 0 10px #ddd;
 }
 .navigator.js .navi-overlay .navi-nav1 {
   background-color: #00509D;
@@ -642,7 +646,7 @@ header.js .header-content {
 .navigator .navi-overlay.scroll-js {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-30%) scale(80%);
+  transform: translateY(-20%) scale(80%);
   transition: all 180ms ease-in;
 }
 .navigator .navi-overlay > * {
@@ -650,7 +654,7 @@ header.js .header-content {
   background-color: #fff;
   padding: 0.3rem 0.8rem;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(68, 68, 68, 0.3333333333);
+  transition: all 80ms;
   cursor: pointer;
 }
 .navigator .navi-overlay > *:hover {
@@ -675,7 +679,7 @@ header.js .header-content {
 .navigator .navi-overlay .navi-nav2 {
   color: #fff;
   flex-grow: 1;
-  height: 2.3rem;
+  height: 100%;
   display: flex;
   position: relative;
 }
@@ -705,95 +709,96 @@ header.js .header-content {
   border-radius: 1rem;
   box-shadow: 0 0 7px #fff;
 }
-.navigator .navi-overlay .navi-nav1.js, .navigator .navi-overlay .navi-nav2.js {
-  box-shadow: 0 5px 8px -4px #00296B;
-}
 @keyframes naviJs {
   0% {
-    transform: unset;
+    opacity: 1;
+    translate: 0;
   }
   10% {
     opacity: 0.75;
-    transform: translateX(40%);
+    translate: 40%;
   }
   20% {
     opacity: 0.5;
-    transform: translateX(80%);
+    translate: 80%;
   }
   30% {
-    transform: translateX(120%);
     opacity: 0.25;
+    translate: 120%;
   }
   40% {
     opacity: 0;
-    transform: translateX(160%);
+    translate: 160%;
   }
   50% {
     opacity: 0;
-    transform: translateX(-160%);
+    translate: -160%;
   }
   60% {
     opacity: 0;
-    transform: translateX(-130%);
+    translate: -130%;
   }
   70% {
     opacity: 0.25;
-    transform: translateX(-80%);
+    translate: -80%;
   }
   80% {
     opacity: 0.5;
-    transform: translateX(-40%);
+    translate: -40%;
   }
   90% {
     opacity: 0.75;
-    transform: translateX(-10%);
+    translate: -10%;
   }
   100% {
-    transform: unset;
+    opacity: 1;
+    translate: 0;
   }
 }
 @keyframes naviRightJs {
   0% {
-    transform: unset;
+    opacity: 1;
+    translate: 0;
   }
   10% {
     opacity: 0.75;
-    transform: translateX(40%);
+    translate: 10%;
   }
   20% {
     opacity: 0.5;
-    transform: translateX(80%);
+    translate: 40%;
   }
   30% {
-    transform: translateX(120%);
     opacity: 0.25;
+    translate: 80%;
   }
   40% {
     opacity: 0;
-    transform: translateX(160%);
+    translate: 130%;
   }
   50% {
     opacity: 0;
-    transform: translateX(-160%);
+    translate: 160%;
   }
   60% {
     opacity: 0;
-    transform: translateX(-130%);
+    translate: -160%;
   }
   70% {
     opacity: 0.25;
-    transform: translateX(-80%);
+    translate: -120%;
   }
   80% {
     opacity: 0.5;
-    transform: translateX(-40%);
+    translate: -80%;
   }
   90% {
     opacity: 0.75;
-    transform: translateX(-10%);
+    translate: -40%;
   }
   100% {
-    transform: unset;
+    opacity: 1;
+    translate: 0;
   }
 }
 .navigator .navi-bottom {
@@ -821,19 +826,13 @@ header.js .header-content {
   width: 100vw;
   overflow-x: hidden;
   max-width: 600px;
-  box-shadow: 0 0 10px 3px rgba(51, 51, 51, 0.2666666667);
-  background-image: linear-gradient(#00509D, #003F88);
-  background-size: 200%, 100%;
-  background-repeat: no-repeat, repeat;
-  background-position: 30deg;
-  transition: all 250ms ease-in 100ms;
+  background-color: #00509D;
+  transition: all 200ms ease-in 100ms;
 }
 .main-card.main-go-js {
-  visibility: hidden;
   transform: translateX(-90%) scale(60%);
 }
 .main-card.main-come-js {
-  visibility: visible;
   transform: unset;
 }
 
@@ -867,9 +866,6 @@ header.js .header-content {
   background-color: #fdb500;
   box-shadow: 0 0 9px #fdb500;
 }
-.mcard-price img {
-  width: 60px;
-}
 
 .mcard-images {
   position: relative;
@@ -882,7 +878,7 @@ header.js .header-content {
 }
 
 .m-east-west {
-  z-index: 4;
+  z-index: 1;
   position: absolute;
   inset: 0;
   display: grid;
@@ -892,24 +888,23 @@ header.js .header-content {
   margin: 0 -1rem;
 }
 .m-east-west img {
-  width: 18px;
+  width: 14px;
 }
 .m-east-west > * {
   position: relative;
-  backdrop-filter: blur(10px);
   display: flex;
-  box-shadow: 0 0 10px rgba(17, 17, 17, 0.4666666667);
   padding: 0.5rem;
   border-radius: 4px;
   overflow: hidden;
   align-items: center;
-  background-color: rgba(68, 68, 68, 0.4);
+  background-color: rgba(68, 68, 68, 0.6);
+  transition: transform 100ms ease-in;
 }
 .m-east-west a.m-east:hover {
-  transform: translateX(-5px);
+  transform: translateX(-4px);
 }
 .m-east-west a.m-west:hover {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
 .mcard-images-overlay > * {
@@ -928,7 +923,8 @@ header.js .header-content {
   transition: all 250ms ease-in 100ms;
 }
 .mcard-images-overlay > *.index-js {
-  z-index: 3;
+  z-index: 1;
+  transform: translateZ(2);
   left: 50%;
 }
 .mcard-images-overlay > *.index-js img {
@@ -989,7 +985,6 @@ header.js .header-content {
 }
 .mcard-images-overlay .before-index, .mcard-images-overlay .after-index {
   perspective: 100px;
-  filter: blur(2px);
 }
 .mcard-images-overlay dl {
   display: flex;
@@ -1000,20 +995,19 @@ header.js .header-content {
   top: 53%;
   gap: 4px;
   width: 90%;
-  z-index: 98;
+  z-index: 2;
 }
 .mcard-images-overlay dl * {
   list-style: none;
   background-color: rgba(170, 170, 170, 0.4);
-  backdrop-filter: blur(4px);
   width: 100%;
   height: 0.4rem;
   border-radius: 4px;
 }
 .mcard-images-overlay dl .active {
   transition: all 80ms ease-in;
-  background-color: #eee;
-  box-shadow: 0 1px 6px rgba(153, 153, 153, 0.6);
+  background-color: #fff;
+  box-shadow: 0 1px 3px -1px rgba(153, 153, 153, 0.6);
   width: 300%;
 }
 .mcard-images-overlay .before-index {
@@ -1058,7 +1052,6 @@ header.js .header-content {
   visibility: hidden;
   opacity: 0;
   transform: scale(60%) translateX(130%);
-  box-shadow: 0 0 10px 3px rgba(51, 51, 51, 0.2666666667);
   top: 0;
   padding: 2rem;
   height: 100dvh;
@@ -1200,7 +1193,6 @@ header.js .header-content {
   z-index: 99999;
   padding: 9px;
   background-color: rgba(255, 238, 238, 0.8);
-  backdrop-filter: blur(45px);
   left: 50%;
   translate: -100%;
   color: #a00;
@@ -1211,6 +1203,28 @@ header.js .header-content {
   opacity: 1;
   left: 50%;
   translate: -50%;
+}
+
+.header-overlay.noti-added {
+  height: 5rem;
+  flex-wrap: wrap;
+}
+.header-overlay.noti-added .notifications {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  font-family: "Fira sans";
+}
+.header-overlay.noti-added .notifications > span {
+  color: #fff;
+  font-size: 1rem;
+}
+.header-overlay.noti-added .notifications a {
+  font-size: 1.9rem;
+  line-height: 0.4;
+  color: #000;
 }
 
 @media screen and (max-width: 450px) {
@@ -1239,25 +1253,7 @@ header.js .header-content {
     padding: 0.4rem;
   }
 }
-@media screen and (max-height: 900px) {
-  .mcard-contents .mcard-description h1 {
-    font-size: 1rem;
-  }
-  .article-card .article-content {
-    display: grid;
-    grid-auto-flow: row;
-  }
-  .article-card .article-content .art-head {
-    font-size: 1.7rem;
-  }
-  .article-card .article-content .art-vitals h3 {
-    padding: 0.2rem 0.5rem;
-  }
-}
 @media screen and (min-height: 740px) {
-  h1 {
-    font-size: 2rem;
-  }
   .form-card .form-card-close {
     opacity: 0;
   }
@@ -1278,6 +1274,9 @@ header.js .header-content {
     grid-template-columns: 30% 30% 30%;
     gap: 2rem;
     padding: 1.8rem;
+  }
+  body .main-card.main-go-js {
+    transform: unset;
   }
   body .navigator {
     bottom: 1rem;
@@ -1366,5 +1365,23 @@ header.js .header-content {
     grid-row-start: 1;
     grid-column-start: 4;
     width: 100%;
+  }
+}
+@media screen and (max-width: 380px) {
+  html {
+    font-size: 85%;
+  }
+  .mcard-price hr {
+    height: 0.4rem;
+  }
+  .art-head {
+    align-items: end;
+  }
+  .form-brief-content {
+    min-width: 180px;
+  }
+  .form-brief-content .brief-brief .price-maths {
+    min-width: unset;
+    gap: 5px;
   }
 }
