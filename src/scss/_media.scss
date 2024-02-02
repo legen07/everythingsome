@@ -1,49 +1,37 @@
 @media screen and (max-width: 450px) {
-  h1{
-    font-size: 1.6rem;
-  }
-
-  h3{
-    font-size: 1rem;
-  }
-
-  span{
-    font-size: .9rem;
-  }
-
-  P{
-    letter-spacing: 1;
+  html{
+    font-size: 96%;
   }
 
   .main-card, .article-card {
-    padding: 0 .4rem;
-
+    padding: 0 .5rem;
     .mcard-contents{
       padding: 0 .8rem;
     }
-
     .article-content{
       min-width: auto;
     }
   }
-
-  .form-card{
-    .form-content{
-      padding: .4rem;
-    }
+  .form-content > h2{
+    margin-top: -.7rem;
+  }
+  .form-content > h2::before{
+    content: '';
+    height: .3rem;
+    width: 30%;
+    // translate: -50%;
+    border-radius: 1rem;
+    background-color: #888;
+    color: #555
   }
 }
 
 @media screen and (min-height: 740px) {
   .form-card{
-    .form-card-close{
-      opacity: 0;
-    }
     .form-content{
       height: 85lvh;
-
       form{
-        gap: 2rem;
+        gap: 1.5rem;
       }
     }
   }
@@ -52,7 +40,6 @@
   body{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow: hidden;
 
     header{
       .header-content{
@@ -67,6 +54,7 @@
       .navi-overlay{
         justify-content: center;
         .navi-nav1{
+          display: none;
           visibility: hidden;
           width: 0;
           opacity: 0;
@@ -75,9 +63,6 @@
           visibility: visible;
           width: 30%;
           opacity: 1;
-        }
-        .navi-nav2{
-          box-shadow: 0 0 20px #5555;
         }
       }
       .navi-bottom{
@@ -106,7 +91,7 @@
     .form-card-close{
       transform: scale(1000%);
     }
-    
+
     .form-content{
       justify-self: center;
       max-width: 600px;
@@ -159,9 +144,9 @@
   }
 }
 /// The overall accomodatiing screen
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 385px) {
   html {
-    font-size: 85%;
+    font-size: 90%;
   }
   .mcard-price {
     hr{
@@ -172,12 +157,15 @@
     align-items: end;
   }
   .form-brief-content{
-    min-width: 180px;
+    min-width: 200px;
 
     .brief-brief .price-maths{
       min-width: unset;
       gap: 5px;
     }
+  }
+  .form-content form{
+    gap: 1rem;
   }
   
 }

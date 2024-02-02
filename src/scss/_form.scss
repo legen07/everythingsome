@@ -2,7 +2,8 @@
 /// Position center elements 
 .form-card-close,
 .brief-brief *:not(img),
-.overall-total
+.overall-total,
+.form-contact > *
 {
   display: flex;
   justify-content: center;
@@ -41,7 +42,7 @@
 }
 .form-content{
   display: grid;
-  grid-template-rows: 3.7rem 1fr 6fr;
+  grid-template-rows: 3rem 3fr 2fr 9fr;
   transform: translateY(110%);
   position: absolute;
   height: 92%;
@@ -57,6 +58,7 @@
   }
   h2{
     display: grid;
+    justify-items: center;
     width: 100%;
     height: 100%;
     font-size: 2.5em;
@@ -71,9 +73,9 @@
 }
 .form-brief{
   width: 100%;
-  height: 150%;
+  height: 100%;
   position: relative;
-  align-items: center;
+  align-items: start;
   overflow-x: auto;
   margin: 0 -1rem;
   display: flex;
@@ -84,6 +86,7 @@
 .form-brief-content{
   width: 45%;
   min-width: 230px;
+  max-width: 250px;
   position: relative;
 }
 .brief-brief{
@@ -142,6 +145,42 @@
   box-shadow: inset 0 3px 5px #8886;
   strong{font-size: 1rem;}
 }
+.form-contact--deli-info {
+  display: flex;
+}
+.form-contact{
+  display: grid;
+  gap: .1rem;
+  width: 7rem;
+  max-width: 50px;
+  align-content: center;
+  
+  img {
+    height: 50%;
+    // aspect-ratio: 1;
+  }
+  .form-telegram, .form-whatsapp{
+    aspect-ratio: 3/2;
+  }
+  .form-telegram{
+    background-color: #27f;
+  }
+  .form-whatsapp{
+    background-color: #3c4;
+  }
+}
+.form-deli-info{
+  padding: .3rem 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  align-self: center;
+  line-height: 1.7;
+  img{
+    width: 2.3rem;
+    vertical-align: middle;
+  }
+}
+
 form{
   display: grid;
   align-content: space-evenly;
@@ -282,5 +321,31 @@ form{
       font-size: 1em;
       font-weight: 600;
     }
+  }
+}
+.form-card .notifications{
+  height: 0;
+  opacity: 0;
+  background-color: $myellow;
+  display: flex;
+  color: #a70;
+  padding:.5rem 1rem;
+  justify-content: space-between;
+  box-shadow: inset 0px -4px 5px -2px #2229;
+  transition: all 100ms ease-in;
+
+  &.js{
+    height: unset;
+    max-height: 2rem;
+    opacity: 1;
+  }
+
+  div{
+    flex-grow: 1;
+  }
+  a {
+    color: #000;
+    font-size: 1.9rem;
+    line-height: .4;
   }
 }

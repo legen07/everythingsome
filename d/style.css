@@ -61,7 +61,8 @@ button {
 
 .form-card-close,
 .brief-brief *:not(img),
-.overall-total {
+.overall-total,
+.form-contact > * {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +103,7 @@ button {
 
 .form-content {
   display: grid;
-  grid-template-rows: 3.7rem 1fr 6fr;
+  grid-template-rows: 3rem 3fr 2fr 9fr;
   transform: translateY(110%);
   position: absolute;
   height: 92%;
@@ -119,6 +120,7 @@ button {
 }
 .form-content h2 {
   display: grid;
+  justify-items: center;
   width: 100%;
   height: 100%;
   font-size: 2.5em;
@@ -133,9 +135,9 @@ button {
 
 .form-brief {
   width: 100%;
-  height: 150%;
+  height: 100%;
   position: relative;
-  align-items: center;
+  align-items: start;
   overflow-x: auto;
   margin: 0 -1rem;
   display: flex;
@@ -147,6 +149,7 @@ button {
 .form-brief-content {
   width: 45%;
   min-width: 230px;
+  max-width: 250px;
   position: relative;
 }
 
@@ -208,6 +211,42 @@ button {
 }
 .brief-total strong {
   font-size: 1rem;
+}
+
+.form-contact--deli-info {
+  display: flex;
+}
+
+.form-contact {
+  display: grid;
+  gap: 0.1rem;
+  width: 7rem;
+  max-width: 50px;
+  align-content: center;
+}
+.form-contact img {
+  height: 50%;
+}
+.form-contact .form-telegram, .form-contact .form-whatsapp {
+  aspect-ratio: 3/2;
+}
+.form-contact .form-telegram {
+  background-color: #27f;
+}
+.form-contact .form-whatsapp {
+  background-color: #3c4;
+}
+
+.form-deli-info {
+  padding: 0.3rem 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  align-self: center;
+  line-height: 1.7;
+}
+.form-deli-info img {
+  width: 2.3rem;
+  vertical-align: middle;
 }
 
 form {
@@ -369,6 +408,31 @@ form input:focus {
   font-weight: 600;
 }
 
+.form-card .notifications {
+  height: 0;
+  opacity: 0;
+  background-color: #fdc900;
+  display: flex;
+  color: #a70;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  box-shadow: inset 0px -4px 5px -2px rgba(34, 34, 34, 0.6);
+  transition: all 100ms ease-in;
+}
+.form-card .notifications.js {
+  height: unset;
+  max-height: 2rem;
+  opacity: 1;
+}
+.form-card .notifications div {
+  flex-grow: 1;
+}
+.form-card .notifications a {
+  color: #000;
+  font-size: 1.9rem;
+  line-height: 0.4;
+}
+
 @font-face {
   font-family: PermanentMarker;
   src: url(images/font/PermanentMarker.ttf);
@@ -396,6 +460,10 @@ form input:focus {
   visibility: hidden;
   transform: translateY(-30%);
   opacity: 0;
+}
+
+body.js {
+  overflow: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -442,7 +510,7 @@ header.js .header-content-wrapper::-webkit-scrollbar {
   display: none;
 }
 header.js .header-content {
-  transform: scale(100%);
+  transform: scale(100%) translateY(0%);
 }
 header.js .header-content .product {
   visibility: visible;
@@ -465,7 +533,7 @@ header.js .header-content .product {
   height: 3rem;
   gap: 1rem;
   padding: 0.4rem 2rem 0 2rem;
-  transition: all 100ms ease-in;
+  transition: all 200ms ease-in;
 }
 .header-overlay a img {
   width: 2rem;
@@ -495,7 +563,7 @@ header.js .header-content .product {
   row-gap: 2rem;
   transform: scale(160%) translateY(60%);
   perspective: 900px;
-  transition: all 320ms ease-in 110ms;
+  transition: transform 320ms ease-in 110ms;
   border-radius: 9px;
 }
 .header-content .product {
@@ -629,6 +697,7 @@ header.js .header-content .product {
 .navigator .navi-overlay {
   width: 90%;
   display: flex;
+  max-height: 3rem;
   justify-self: center;
   justify-content: center;
   align-content: center;
@@ -656,6 +725,7 @@ header.js .header-content .product {
   border-radius: 4px;
   transition: all 80ms;
   cursor: pointer;
+  box-shadow: 0 5px 5px -2px #00296B99;
 }
 .navigator .navi-overlay > *:hover {
   transform: scale(103%);
@@ -703,8 +773,12 @@ header.js .header-content .product {
 }
 .navigator .navi-overlay .navi-nav2 span {
   left: 50%;
+  display: flex;
   visibility: hidden;
+  aspect-ratio: 1;
   background-color: #00509D;
+  justify-content: center;
+  align-items: center;
   padding: 0.3rem 0.6rem;
   border-radius: 1rem;
   box-shadow: 0 0 7px #fff;
@@ -1214,10 +1288,13 @@ header.js .header-content .product {
   flex-shrink: 0;
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: center;
   font-family: "Fira sans";
+  border-bottom: solid 2px #fdb500;
+  padding-bottom: 0.5rem;
 }
 .header-overlay.noti-added .notifications > span {
+  text-align: center;
   color: #fff;
   font-size: 1rem;
 }
@@ -1228,20 +1305,11 @@ header.js .header-content .product {
 }
 
 @media screen and (max-width: 450px) {
-  h1 {
-    font-size: 1.6rem;
-  }
-  h3 {
-    font-size: 1rem;
-  }
-  span {
-    font-size: 0.9rem;
-  }
-  P {
-    letter-spacing: 1;
+  html {
+    font-size: 96%;
   }
   .main-card, .article-card {
-    padding: 0 0.4rem;
+    padding: 0 0.5rem;
   }
   .main-card .mcard-contents, .article-card .mcard-contents {
     padding: 0 0.8rem;
@@ -1249,26 +1317,30 @@ header.js .header-content .product {
   .main-card .article-content, .article-card .article-content {
     min-width: auto;
   }
-  .form-card .form-content {
-    padding: 0.4rem;
+  .form-content > h2 {
+    margin-top: -0.7rem;
+  }
+  .form-content > h2::before {
+    content: "";
+    height: 0.3rem;
+    width: 30%;
+    border-radius: 1rem;
+    background-color: #888;
+    color: #555;
   }
 }
 @media screen and (min-height: 740px) {
-  .form-card .form-card-close {
-    opacity: 0;
-  }
   .form-card .form-content {
     height: 85lvh;
   }
   .form-card .form-content form {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 @media screen and (min-width: 640px) {
   body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow: hidden;
   }
   body header .header-content {
     grid-template-columns: 30% 30% 30%;
@@ -1285,6 +1357,7 @@ header.js .header-content .product {
     justify-content: center;
   }
   body .navigator .navi-overlay .navi-nav1 {
+    display: none;
     visibility: hidden;
     width: 0;
     opacity: 0;
@@ -1293,9 +1366,6 @@ header.js .header-content .product {
     visibility: visible;
     width: 30%;
     opacity: 1;
-  }
-  body .navigator .navi-overlay .navi-nav2 {
-    box-shadow: 0 0 20px rgba(85, 85, 85, 0.3333333333);
   }
   body .navigator .navi-bottom {
     display: none;
@@ -1367,9 +1437,9 @@ header.js .header-content .product {
     width: 100%;
   }
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 385px) {
   html {
-    font-size: 85%;
+    font-size: 90%;
   }
   .mcard-price hr {
     height: 0.4rem;
@@ -1378,10 +1448,13 @@ header.js .header-content .product {
     align-items: end;
   }
   .form-brief-content {
-    min-width: 180px;
+    min-width: 200px;
   }
   .form-brief-content .brief-brief .price-maths {
     min-width: unset;
     gap: 5px;
+  }
+  .form-content form {
+    gap: 1rem;
   }
 }

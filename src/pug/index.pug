@@ -78,7 +78,7 @@ html(lang="en")
       .header-content-wrapper
         .header-content
 
-      .navigator
+      .navigator.--fo
         .navi-overlay
           a.fo.navi-nav2(href="javascript:void(0)")
             img.fo(src="images/icons/shopping-cart.svg", alt='cart')
@@ -101,7 +101,7 @@ html(lang="en")
         .mcard-images
 
           .mcard-images-overlay
-            dl
+            dl.ic
 
             div.before-index
 
@@ -115,9 +115,9 @@ html(lang="en")
             a.m-west(href="javascript:void(0)" title="next image")
               img.m-west(src="images/icons/east.svg", alt="")
 
-        .mcard-description
-          h1
-          p
+        .mcard-description.--fo
+          h1.--fo
+          p.--fo
 
     
 
@@ -176,14 +176,24 @@ html(lang="en")
     .form-card
       .form-card-close.fc
         a.fc(href="javascript:void(0)")
-          span.fc x
+          span.fc
       .form-content
-        h2 Order Form
+        h2.--fc Order Form
         .form-brief
+
+        .form-contact--deli-info
+          .form-contact
+            .form-telegram
+              img(src="images/icons/telegram-logo.svg", alt="Telegram Icon" width="40")
+            .form-whatsapp
+              img(src="images/icons/whatsapp_icon.svg", alt="WhatsApp Icon" width="40")
+          .form-deli-info
+            p #[img(src="images/icons/orange-van.svg" width="30")] Pay on delivery in Accra, Kumasi, Sunyani, Tamale, and Obuasi. Full payment first for all other locations. #[img(src="images/icons/orange-rider.svg" width="30")]
 
 
         form(action="https://submit-form.com/T77OrB2V" method="POSt")
-          p We will call you first after your order is place to go over details before delivery.
+          p We will contact you prior to delivery to confirm and review your order details.
+
         
           .form-date
             label(for="date")
@@ -191,6 +201,8 @@ html(lang="en")
               strong select date
             a.fd(href="javascript:void(0)") today
             input#date(type="date" name="date" )
+            .selected-array(style="display: none;")
+              input(type="text" id='array' name='array of products')
 
           //- hr
 
@@ -205,8 +217,7 @@ html(lang="en")
 
           //- hr
           .strong-location
-            strong We deliver throughout Ghana.
-            span indicate your location and we will deliver within 24hours
+            strong We deliver everywhere in Ghana.
 
           .form-location
             div

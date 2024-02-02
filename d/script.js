@@ -4,7 +4,7 @@
 switch (true) {
   case window.location.hash === "":
     window.location.hash = "blender";
-}/*
+} /*
 window.onload = function () {
   
 };*/
@@ -27,7 +27,6 @@ mcardOverlay = docs(".mcard-images-overlay > *:not(dl)");
 let mcardImagesList = doc(".mcard-images-overlay dl");
 
 let j = 0;
-
 
 let proImgs = productList.products[hashLocation].images;
 function carouselplace(prev_next) {
@@ -70,7 +69,6 @@ function changePage() {
 
   doc(".article-card").classList.toggle("article-come-js");
   doc(".main-card").classList.toggle("main-go-js");
-  console.log(naviNav1Content);
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -78,7 +76,7 @@ function changePage() {
 ///////////////////////////////////////////////////////////////////
 
 form = doc(".form-card");
-let divInp = docs("div input");
+let divInp = docs("div input:not(#array)");
 divInp = [...divInp];
 divInp.shift();
 
@@ -90,12 +88,8 @@ function formOpener() {
 }
 
 function formCloser() {
-  if (doc(".pro-from-none")) {
-    cartList.shift();
-    doc(".pro-from-none").remove();
-  }
   form.classList.remove("js");
-  // console.log(cartList);
+  document.body.classList.remove("js");
 }
 
 let dateInput = doc(".form-date input");
@@ -129,9 +123,9 @@ requiredField.forEach((each) => {
 //////////////////////////////////////////////////////////////
 
 function headExpandFoo() {
-  console.log('was runned')
-  doc("header").classList.toggle('js');
+  doc("header").classList.toggle("js");
   doc(".navi-nav1").parentElement.classList.toggle("remove");
+  showNotify();
 }
 
 /////////////////////////////////////////////////////////////////
@@ -144,10 +138,11 @@ function formBriefCreation(d) {
   let createDivBrief = document.createElement("div");
   createDivBrief.setAttribute("id", `${d?.id ?? hashLocation}`);
   createDivBrief.classList.add("form-brief-content");
+  createDivBrief.classList.add("--fc");
   createDivBrief.innerHTML = `<div class="brief-brief"> ${
     d?.closest(".product").querySelector(".pro-img img").outerHTML ||
     doc(".mcard-images-overlay div").innerHTML
-  } <div class="brief-side"><h3>${
+  } <div class="brief-side --fc"><h3>${
     d?.closest(".product").querySelector(".pro-name h2").textContent ||
     doc(".article-content .art-head h1").textContent
   }</h3><div><span class="digit">${
@@ -235,10 +230,19 @@ function plus_minus(d, param) {
   doc(".done-js .overall").textContent = overallAmount;
 }
 
-let headerOverlay = doc('.header-overlay');
-let notifications = document.createElement('div');
-notifications.classList.add('notifications');
-
+let headerOverlay = doc(".header-overlay");
+let notifications = document.createElement("div");
+  notifications.classList.add("notifications");
+let metaColor = document.createElement('meta');
+  metaColor.setAttribute('name', "theme-color")
+  metaColor.setAttribute('content', "#fdbb00");
+  metaColor.classList.add('you');
+function showNotify() {
+  doc(".notifications")?.remove();
+  headerOverlay.classList.remove("noti-added");
+  doc('head .you')?.remove();
+}
+let y, s;
 function cartManupulation(d, plus_minus_Param) {
   d = d?.closest(".product")?.id;
   d = document.querySelector(`#${d}`);
@@ -250,7 +254,6 @@ function cartManupulation(d, plus_minus_Param) {
       break;
 
     case cartList.includes(d?.id):
-      console.log("greater thing is about to happen");
       plus_minus(d, "plus");
       break;
 
@@ -267,14 +270,31 @@ function cartManupulation(d, plus_minus_Param) {
   doc(".done-js .overall").textContent = overallAmount;
 
   ////// Added to cart notifications
-  notifications.innerHTML = `<span> ${(Object.values(productList.products[d?.id || hashLocation].proName)).join('')} <span style="color: #222">was added to cart</span></span>`;
-  notifications.insertAdjacentHTML('beforeend', `<a href="javascript:void(0)" class="no">x</a>`);
-  headerOverlay.insertAdjacentElement('afterbegin', notifications);
-  headerOverlay.classList.add("noti-added");
-  setTimeout(function(){
-    doc('.notifications')?.remove();
-    headerOverlay.classList.remove('noti-added');
-  }, 3000)
+  if (d === null) {
+    notifications.classList.add('js');
+    notifications.innerHTML = `<div> Current product in cart </div> <a href='javascript:void(0)' class='no'>x<a>`;
+    form.insertAdjacentElement("afterbegin", notifications);
+    setTimeout(()=> {notifications.classList.remove('js')}, 3500);
+    setTimeout(() => {
+      notifications.remove();
+    }, 4000);
+  } else {
+    notifications.innerHTML = `<span> '${Object.values(
+      productList.products[d?.id].proName
+    ).join("")}' <span style="color: #a70">added to cart</span></span>`;
+    headerOverlay.classList.add("noti-added");
+    headerOverlay.insertAdjacentElement("afterbegin", notifications);
+
+    document.head.insertAdjacentElement("afterbegin", metaColor);
+    s = setTimeout(showNotify, 9000);
+    if (y) {
+      clearTimeout(s);
+      setTimeout(showNotify, 9000);
+    }
+    y = true
+  }
+
+  doc('.selected-array input').value = cartList;
 }
 
 function copiedToCart(d) {
@@ -288,10 +308,10 @@ document.addEventListener("click", (e) => {
 
   switch (true) {
     case d.classList.contains("m-west"):
-      carouselplace("next");
+      carouselplace("prev");
       break;
     case d.classList.contains("m-east"):
-      carouselplace("prev");
+      carouselplace("next");
       break;
 
     case d.classList.contains("nl"):
@@ -334,10 +354,10 @@ document.addEventListener("click", (e) => {
       productOpener(d);
       break;
 
-    case d.classList.contains('no'):
+    case d.classList.contains("no"):
       d.parentElement.remove();
-      headerOverlay.classList.remove('noti-added');
-      break
+      headerOverlay.classList.remove("noti-added");
+      break;
 
     default:
       break;
@@ -364,6 +384,8 @@ document.addEventListener("click", (e) => {
 //Scroll event Listener ////////////
 
 window.addEventListener("scroll", (scrol) => {
+  // console.log(scrol, 'this is the scroll event ')
+  scrol.preventDefault()
   let fortyMedia = window.matchMedia("(max-height: 800px)");
   if (fortyMedia.matches && window.scrollY > 10) {
     naviNav2.parentElement.classList.add("scroll-js");
@@ -372,7 +394,12 @@ window.addEventListener("scroll", (scrol) => {
       naviNav2.parentElement.classList.remove("scroll-js");
     } catch {}
   }
-});
+}, {passive: false});
+
+document.addEventListener('scroll', function (e) {
+  console.log(e)
+}, )
+
 
 Object.entries(productList.products).map(([keys, element]) => {
   let div = document.createElement("div");
@@ -385,7 +412,7 @@ Object.entries(productList.products).map(([keys, element]) => {
 
 function productOpener(d) {
   let product = docs(".header-content .product");
-  let clickedId = d.closest('.product').id;
+  let clickedId = d.closest(".product").id;
 
   let mCardElements = [
     ...docs(
@@ -393,30 +420,85 @@ function productOpener(d) {
     ),
   ];
   for (let i = 0; i < 6; i++) {
-    mCardElements[i].innerHTML = Object.values(productList.products[clickedId])[i];
+    mCardElements[i].innerHTML = Object.values(productList.products[clickedId])[
+      i
+    ];
   }
   proImgs = Object.values(productList.products[clickedId].images);
-  carouselplace('prev')
+  carouselplace("prev");
   window.location.hash = clickedId;
 
   doc(".mcard-description h1").textContent = doc(".art-head h1").textContent;
 
-  doc('header').classList.contains('js') ? headExpandFoo() : console.log('does not');
-  
+  doc("header").classList.contains("js")
+    ? headExpandFoo()
+    : console.log("does not");
+
   product.forEach((each) => {
     if (each.classList.contains("js")) {
       each.classList.remove("js");
     }
   });
-  d.closest('.product').classList.add("js");
+  d.closest(".product").classList.add("js");
 
   artPricechange();
 }
 
 productOpener(doc(window.location.hash).querySelector("img"));
 function artPricechange() {
-  doc(".vit-price .ran2").textContent = doc('.mcard-price strong').textContent;
+  doc(".vit-price .ran2").textContent = doc(".mcard-price strong").textContent;
 
-  doc(".vit-price .price-delivery").textContent = 
+  doc(".vit-price .price-delivery").textContent =
     Number(doc(".vit-price .ran2").textContent.replace(/\D/g, "")) + 30;
+}
+
+let formHead = document.querySelector(".form-content h2");
+let formContent = document.querySelector(".form-content");
+
+let touchStart = 0;
+let touchtop = 0;
+let touchEnd = 0;
+let touchleft = 0;
+document.ontouchstart = function (e) {
+  touchStart = e.touches[0].pageX
+};
+document.ontouchmove = function (e) {
+  if (e.target.classList.contains("--fc")) {
+    formContent.style.transform = `translateY(${e.target.offsetTop + 10}%)`;
+  }
+  // console.log(e);
+  touchEnd = e.touches[0].pageY;
+  touchleft = e.touches[0].pageX;
+};
+
+document.ontouchend = function (e) {
+  let d = e.target;
+  switch (true) {
+    case d.classList.contains("--fc"):
+      touchEnd >= 320 ? formCloser() : false;
+      formContent.style.transform = "";
+      break;
+
+    case d.classList.contains("--fo"):
+      touchEnd < 460 ? formOpener() : false;
+      break;
+
+    case d.classList.contains('ic'):
+      if ((touchStart + 100) < touchleft){
+        carouselplace('next')
+      } else if ((touchStart - 100) > touchleft) {
+        carouselplace('prev');
+      } else if ((touchtop + 600) < touchEnd) {
+        headExpandFoo()
+      }
+      break;
+  }
+};
+
+var scrollPosition = window.pageYOffset;
+
+// Check if the user has scrolled down far enough to trigger a refresh
+if (scrollPosition > 500) {
+  // Cancel any pending refreshes
+  window.cancelAnimationFrame(refresh);
 }

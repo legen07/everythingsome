@@ -28,7 +28,7 @@
   transform: translateY(-30%);
   opacity: 0;
 }
-// body.js{overflow: hidden;}
+body.js{overflow: hidden}
 body::-webkit-scrollbar{display: none;}
 aside{
   display: none;
@@ -67,7 +67,7 @@ header.js{
     }
   }
   .header-content{
-    transform: scale(100%);
+    transform: scale(100%) translateY(0%);
     .product{visibility: visible;}
   }
 }
@@ -87,7 +87,7 @@ header.js{
   height: 3rem;
   gap: 1rem;
   padding:.4rem 2rem 0 2rem;
-  transition: all 100ms ease-in;
+  transition: all 200ms ease-in;
   a img{
     width: 2rem;
     translate: 50%;
@@ -116,7 +116,7 @@ header.js{
   row-gap: 2rem;
   transform: scale(160%) translateY(60%);
   perspective: 900px;
-  transition: all 320ms ease-in 110ms;
+  transition: transform 320ms ease-in 110ms;
   border-radius: 9px;
   .product{
     visibility: hidden;
@@ -248,6 +248,7 @@ header.js{
   .navi-overlay{
     width: 90%;
     display: flex;
+    max-height: 3rem;
     justify-self: center;
     justify-content: center;
     align-content: center;
@@ -276,6 +277,7 @@ header.js{
       border-radius: 4px;
       transition: all 80ms;
       cursor: pointer;
+      box-shadow: 0 5px 5px -2px #{$fblue}99;
     }
     > *:hover{
       transform: scale(103%);
@@ -325,8 +327,12 @@ header.js{
       }
       span{
         left: 50%;
+        display: flex;
         visibility: hidden;
+        aspect-ratio: 1;
         background-color: $tblue;
+        justify-content: center;
+        align-items: center;
         padding: .3rem .6rem;
         border-radius: 1rem;
         box-shadow: 0 0 7px #fff;
@@ -758,10 +764,14 @@ header.js{
     width: 100%;
     flex-shrink: 0;
     display: flex;
+    
     gap: 1rem;
-    justify-content: space-between;
+    justify-content: center;
     font-family: 'Fira sans';
+    border-bottom: solid 2px $oyellow;
+    padding-bottom: .5rem;
     > span{
+      text-align: center;
       color: #fff;
       font-size: 1rem;
     }
