@@ -494,11 +494,3 @@ document.ontouchend = function (e) {
       break;
   }
 };
-
-var scrollPosition = window.pageYOffset;
-
-// Check if the user has scrolled down far enough to trigger a refresh
-if (scrollPosition > 500) {
-  // Cancel any pending refreshes
-  window.cancelAnimationFrame(refresh);
-}
