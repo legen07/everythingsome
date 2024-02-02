@@ -4,10 +4,7 @@
 switch (true) {
   case window.location.hash === "":
     window.location.hash = "blender";
-} /*
-window.onload = function () {
-  
-};*/
+}
 
 let cartList, mcardOverlay, form, proPrice_TC, formProName_TC;
 cartList = [];
@@ -35,7 +32,7 @@ function carouselplace(prev_next) {
 
   let slicedImgs = proImgs.slice(0, 3);
   for (let i = 0; i < 3; i++) {
-    mcardOverlay[i].innerHTML = `<img src="images/products/${slicedImgs[i]}">`;
+    mcardOverlay[i].innerHTML = `<img src="images/products/${slicedImgs[i]}" alt="${productList.products[hashLocation].proName}">`;
     mcardOverlay[i].firstElementChild.classList.toggle("js");
   }
   docs(".mcard-images-overlay dl > *")[j].classList.remove("active");
@@ -410,6 +407,9 @@ Object.entries(productList.products).map(([keys, element]) => {
   doc(".header-content").appendChild(div);
 });
 
+let proThingsMeta = document.createElement('meta');
+let proDesMeta = document.createElement('meta');
+
 function productOpener(d) {
   let product = docs(".header-content .product");
   let clickedId = d.closest(".product").id;
@@ -439,6 +439,12 @@ function productOpener(d) {
       each.classList.remove("js");
     }
   });
+  proThingsMeta.setAttribute('name', 'description');
+  proDesMeta.setAttribute('name', 'description');
+  proThingsMeta.setAttribute('content', ` product: ${Object.values(productList.products[clickedId].proName).join('')}, category: home appliance, price: ${Object.values(productList.products[clickedId].proPrice).join('')}`)
+  proDesMeta.setAttribute('content', `${Object.values(productList.products[clickedId].proBrief).join('')}`);
+  document.head.appendChild(proThingsMeta)
+  document.head.appendChild(proDesMeta)
   d.closest(".product").classList.add("js");
 
   artPricechange();
