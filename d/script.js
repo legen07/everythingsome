@@ -20,8 +20,8 @@ function docs(param) {
 
 ///////////////////////////////////////////////////////////////
 /////////// Carousel Manupulations ////////////////////////////
-mcardOverlay = docs(".mcard-images-overlay > *:not(dl)");
-let mcardImagesList = doc(".mcard-images-overlay dl");
+mcardOverlay = docs(".mcard-images-overlay > *:not(ul)");
+let mcardImagesList = doc(".mcard-images-overlay ul");
 
 let j = 0;
 
@@ -35,21 +35,21 @@ function carouselplace(prev_next) {
     mcardOverlay[i].innerHTML = `<img src="images/products/${slicedImgs[i]}" alt="${productList.products[hashLocation].proName}">`;
     mcardOverlay[i].firstElementChild.classList.toggle("js");
   }
-  docs(".mcard-images-overlay dl > *")[j].classList.remove("active");
+  docs(".mcard-images-overlay ul > *")[j].classList.remove("active");
   if (j == 0 && prev_next === "prev") {
     j = proImgs.length;
   }
   j =
     (prev_next === "prev" ? j - 1 : j + 1) %
     (prev_next === "prev" ? -proImgs.length : proImgs.length);
-  docs(".mcard-images-overlay dl > *")[j].classList.add("active");
+  docs(".mcard-images-overlay ul > *")[j].classList.add("active");
 }
 for (let k = 0; k < proImgs.length; k++) {
   let li = document.createElement("li");
   li.className = k;
   mcardImagesList.insertAdjacentElement("afterbegin", li);
 }
-docs(".mcard-images-overlay dl > *")[j].classList.add("active");
+docs(".mcard-images-overlay ul > *")[j].classList.add("active");
 
 carouselplace("prev");
 /*        End or Carousel                                  */
@@ -283,10 +283,10 @@ function cartManupulation(d, plus_minus_Param) {
     headerOverlay.insertAdjacentElement("afterbegin", notifications);
 
     document.head.insertAdjacentElement("afterbegin", metaColor);
-    s = setTimeout(showNotify, 9000);
+    s = setTimeout(showNotify, 6000);
     if (y) {
       clearTimeout(s);
-      setTimeout(showNotify, 9000);
+      setTimeout(showNotify,6000);
     }
     y = true
   }
