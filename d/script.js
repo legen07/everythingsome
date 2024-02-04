@@ -487,6 +487,11 @@ document.ontouchend = function (e) {
 
     case d.classList.contains("--fo"):
       touchEnd < 460 ? formOpener() : false;
+      (touchStart - 120) > touchleft ? changePage() : false;
+      break;
+      
+    case d.classList.contains('--cp'):
+      (touchStart + 180) < touchleft ? changePage() : false;
       break;
 
     case d.classList.contains('ic'):

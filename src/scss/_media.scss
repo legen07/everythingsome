@@ -19,7 +19,6 @@
     content: '';
     height: .3rem;
     width: 30%;
-    // translate: -50%;
     border-radius: 1rem;
     background-color: #888;
     color: #555
@@ -33,6 +32,13 @@
       form{
         gap: 1.5rem;
       }
+    }
+  }
+}
+@media screen and (max-height: 500px) {
+  .form-card{
+    .form-content{
+      overflow: auto;
     }
   }
 }

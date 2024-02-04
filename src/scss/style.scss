@@ -5,6 +5,7 @@
   font-family: PermanentMarker;
   src: url(images/font/PermanentMarker.ttf);
 }
+// html{overscroll-behavior: none;}
 .preloader{
   visibility: visible;
   position: fixed;
@@ -28,6 +29,7 @@
   transform: translateY(-30%);
   opacity: 0;
 }
+body{overscroll-behavior: none;}
 body.js{overflow: hidden}
 body::-webkit-scrollbar{display: none;}
 aside{
@@ -88,9 +90,14 @@ header.js{
   gap: 1rem;
   padding:.4rem 2rem 0 2rem;
   transition: all 200ms ease-in;
-  a img{
+  a svg{
     width: 2rem;
-    translate: 50%;
+    transform: translate(50%, 40%);
+    path{
+      fill:#666666;
+      transition: transform 100ms ease-in;
+    }
+
   }
   img{
     margin-top: -.2rem;
@@ -103,6 +110,14 @@ header.js{
     font-family: "PermanentMarker", Rubik, Helvetica, sans-serif;
     font-size: 27px;
     transform: translateY(-30%);
+  }
+}
+/// clicked header animation
+header.js .header-overlay a{
+  svg {
+    .st0{transform: translateY(.5rem);}
+    .st1{transform: translateY(.5rem);}
+    .st2{transform: translateY(-.5rem);}
   }
 }
 .header-content{
@@ -390,7 +405,7 @@ header.js{
   width: 100vw;
   overflow-x: hidden;
   max-width: 600px;
-  background-color: $tblue;
+  background-image: linear-gradient($tblue, $sblue);
   transition: all 200ms ease-in 100ms;
   &.main-go-js{
     transform: translateX(-90%) scale(60%);
@@ -633,7 +648,6 @@ header.js{
     position: relative;
     padding: 2rem;
     margin: 0 -1rem;
-    background-color: #f8f8f8;
   }
 }
 .art-head{
@@ -641,6 +655,7 @@ header.js{
   align-self: center;
   justify-content: center;
   min-height: 6rem;
+  text-align: center;
   align-items: center;
 }
 .art-vitals{
@@ -648,10 +663,10 @@ header.js{
   grid-template-columns: 1fr 1fr;
   gap: .5rem;
   > *{
-    background-color: #f0f0f0;
+    background-color: #f6f6f6;
     padding: 1rem;
     border-radius: 9px;
-    box-shadow: inset 0 0 15px #d8d8d8;
+    box-shadow: inset 0 0 15px #eee;
     h3{
       padding:7px 10px;
       border-radius: 1rem;
