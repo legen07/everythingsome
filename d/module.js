@@ -1,4 +1,4 @@
-export let productList = {
+export const productList = {
   products :
   {
     blender :{

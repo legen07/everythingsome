@@ -1,33 +1,31 @@
-function defaultTask(cb) {
+export function defaultTask(cb) {
   cb();
 }
 
-exports.default = defaultTask;
 
-const {src, dest, watch } = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+import gulp from "gulp";
 
-function css() {
-  return src('./src/scss/*.scss')
+import * as dartSass from "sass";
+import gulpSass from "gulp-sass";
+const sass = gulpSass(dartSass);
+
+import pug from "gulp-pug";
+
+export function css() {
+  return gulp.src('./src/scss/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest('./d/'));
+    .pipe(gulp.dest('./d/'));
 }
 
-exports.css = css;
-
-const pug = require('gulp-pug');
-
-function html() {
-  return src('./src/pug/*.pug')
-    .pipe(pug())
-    .pipe(dest('./d'));
+export function html() {
+  return gulp.src('./src/pug/*.pug')
+    .pipe(pug({"pretty" : true}))
+    .pipe(gulp.dest('./d'));
 }
-
-exports.html = html;
 
 function watchFiles() {
-  watch('./src/scss/*.scss', css);
-  watch(['./src/pug/*.pug', './src/pug/*/*.pug'], html);
+  gulp.watch('./src/scss/*.scss', css);
+  gulp.watch(['./src/pug/*.pug', './src/pug/*/*.pug'], html);
 }
 
-exports.watch = watchFiles;
+export const watch = watchFiles;
