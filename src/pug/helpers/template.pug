@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  include head.pug
+
+  
+  body
+    include preloader.pug
+
+    aside.first-aside
+      svg(icon='aside-dwinnemmen')
+    aside.second-aside
+      svg(icon="aside-dwinnemmen")
+
+    include header.pug
+
+    block body
+
+    include order.pug

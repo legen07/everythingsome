@@ -1,177 +1,187 @@
-@media screen and (max-width: 450px) {
-  html{
-    font-size: 96%;
+html body{
+  @media screen and (max-width: 450px) {
+    // html {
+      // font-size: 96%;
+    // }
+
+    .main-card,
+    .article-card {
+      padding: 0 0.5rem;
+      .mcard-contents {
+        padding: 0 0.8rem;
+      }
+      .article-content {
+        min-width: auto;
+      }
+    }
+    .form-content > h2 {
+      margin-top: -0.7rem;
+    }
+    .form-content > h2::before {
+      content: "";
+      height: 0.3rem;
+      width: 30%;
+      border-radius: 1rem;
+      background-color: #888;
+      color: #555;
+    }
   }
 
-  .main-card, .article-card {
-    padding: 0 .5rem;
-    .mcard-contents{
-      padding: 0 .8rem;
-    }
-    .article-content{
-      min-width: auto;
-    }
-  }
-  .form-content > h2{
-    margin-top: -.7rem;
-  }
-  .form-content > h2::before{
-    content: '';
-    height: .3rem;
-    width: 30%;
-    border-radius: 1rem;
-    background-color: #888;
-    color: #555
-  }
-}
-
-@media screen and (min-height: 740px) {
-  .form-card{
-    .form-content{
-      height: 85lvh;
-      form{
-        gap: 1.5rem;
+  @media screen and (min-height: 740px) {
+    .form-card {
+      .form-content {
+        height: 85lvh;
+        form {
+          gap: 1.5rem;
+        }
       }
     }
   }
-}
-@media screen and (max-height: 500px) {
-  .form-card{
-    .form-content{
-      overflow: auto;
-    }
-  }
-}
-@media screen and (min-width: 640px) {
-  body{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
 
-    header{
-      .header-content{
-        grid-template-columns: 30% 30% 30%;
-        gap: 2rem;
-        padding: 1.8rem;
+  @media screen and (max-height: 500px) {
+    .form-card {
+      .form-content {
+        overflow: auto;
       }
     }
-    .main-card.main-go-js{transform: unset;}
-    .navigator{
-      bottom: 1rem;
-      .navi-overlay{
-        justify-content: center;
-        .navi-nav1{
+  }
+  @media screen and (min-width: 640px) {
+    & {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      header {
+        .header-content {
+          grid-template-columns: 30% 30% 30%;
+          gap: 2rem;
+          padding: 1.8rem;
+        }
+      }
+      .main-card.main-go-js {
+        transform: unset;
+      }
+      .navigator {
+        bottom: 1rem;
+        .navi-overlay {
+          justify-content: center;
+          .navi-nav1 {
+            display: none;
+            visibility: hidden;
+            width: 0;
+            opacity: 0;
+          }
+          .navi-nav1.settings-nav {
+            visibility: visible;
+            width: 30%;
+            opacity: 1;
+          }
+        }
+        .navi-bottom {
           display: none;
-          visibility: hidden;
-          width: 0;
-          opacity: 0;
-        }
-        .navi-nav1.settings-nav{
-          visibility: visible;
-          width: 30%;
-          opacity: 1;
         }
       }
-      .navi-bottom{
-        display: none;
+    }
+
+    .main-card {
+      position: relative;
+      max-width: unset;
+      width: auto;
+    }
+
+    .article-card {
+      position: relative;
+      width: auto;
+      visibility: visible;
+      opacity: 1;
+      transform: scale(100%) translateX(0%);
+    }
+
+    .form-card {
+      display: grid;
+
+      .form-card-close {
+        transform: scale(1000%);
+      }
+
+      .form-content {
+        justify-self: center;
+        max-width: 600px;
       }
     }
   }
 
-  .main-card{
-    position: relative;
-    max-width: unset;
-    width: auto;
-  }
-
-  .article-card{
-    position: relative;
-    width: auto;
-    visibility: visible;
-    opacity: 1;
-    transform: scale(100%) translateX(0%);
-  }
-
-  .form-card{
-    display: grid;
-
-    .form-card-close{
-      transform: scale(1000%);
+  @media screen and (min-width: 1000px) {
+    & {
+      grid-template-columns: 1fr 2fr 2fr;
     }
-
-    .form-content{
-      justify-self: center;
-      max-width: 600px;
+    header {
+      grid-column-start: 2;
+      width: 100%;
+      grid-column-end: 4;
+      grid-row-start: 1;
     }
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  body{
-    grid-template-columns: 1fr 2fr 2fr;
-  }
-  header{
-    grid-column-start: 2;
-    width: 100%;
-    grid-column-end: 4;
-    grid-row-start: 1;
-  }
-  .navigator{
-    width: 82%;
-  }
-  .first-aside{
-    display: unset;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .main-card{
-    height: 100%;
-    grid-column-start: 2;
-    grid-row-start: 1;
-  }
-  .article-card{
-    grid-column-start: 3;
-    grid-row-start: 1;
-  }
-}
-@media screen and (min-width: 1300px) {
-  body{
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-  }
-  .navigator{
-    width: 68%;
-  }
-  .second-aside{
-    display: unset;
-    order: 5;
-    grid-row-start: 1;
-    grid-column-start: 4;
-    width: 100%;
-  }
-}
-/// The overall accomodatiing screen
-@media screen and (max-width: 385px) {
-  html {
-    font-size: 90%;
-  }
-  .mcard-price {
-    hr{
-      height: .4rem;
+    .navigator {
+      width: 82%;
+    }
+    .first-aside {
+      display: unset;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    .main-card {
+      height: 100%;
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+    .article-card {
+      grid-column-start: 3;
+      grid-row-start: 1;
     }
   }
-  .art-head{
-    align-items: end;
-  }
-  .form-brief-content{
-    min-width: 200px;
+  @media screen and (min-width: 1300px) {
+    & {
+      grid-template-columns: 1fr 2fr 2fr 1fr;
+    }
 
-    .brief-brief .price-maths{
-      min-width: unset;
-      gap: 5px;
+    .navigator {
+      width: 68%;
+    }
+
+    .second-aside {
+      display: unset;
+      order: 5;
+      grid-row-start: 1;
+      grid-column-start: 4;
+      width: 100%;
     }
   }
-  .form-content form{
-    gap: 1rem;
+  /// The overall accomodatiing screen
+  @media screen and (max-width: 385px) {
+    html {
+      font-size: 90%;
+    }
+
+    .mcard-price {
+      hr {
+        height: 0.4rem;
+      }
+    }
+
+    .art-head {
+      align-items: end;
+    }
+
+    .form-brief-content {
+      min-width: 200px;
+
+      .brief-brief .price-maths {
+        min-width: unset;
+        gap: 5px;
+      }
+    }
+    .form-content form {
+      gap: 1rem;
+    }
   }
-  
 }

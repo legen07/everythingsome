@@ -1,0 +1,78 @@
+
+.form-card
+  .form-card-close.fc
+    a.fc(href="javascript:void(0)", rel="nofollow")
+      span.fc
+  .form-content
+    h2.--fc Order Form
+    .form-brief
+
+    .form-contact--deli-info
+      .form-contact
+        a(href="https://t.me/nibiesdotcom", class="form-telegram"  target="_blank")
+          img(src="images/icons/telegram-logo.svg", alt="Telegram Icon" width="40")
+        a(href="https://wa.me/+233593861032", class="form-whatsapp" target="_blank")
+          img(src="images/icons/whatsapp_icon.svg", alt="WhatsApp Icon" width="40")
+      .form-deli-info
+        p #[img(src="images/icons/orange-van.svg" width="30")] Pay on delivery in Accra, Kumasi, Sunyani, Tamale, and Obuasi. Full payment first for all other locations. #[img(src="images/icons/orange-rider.svg" width="30")]
+
+
+    form(action="/submit" method="POSt" id="myForm")
+      p We will contact you prior to delivery to confirm and review your order details.
+
+    
+      .form-date
+        label(for="date")
+          span Same-day delivery.
+          strong select date
+        .date_today
+          button.fd(rel="nofollow" type="button") Today
+
+          .date 
+            - const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            .event-select(modal="session-month")
+              span(modal="session-month") Month
+              //- a.close(close="session-month")
+              ul#session-month
+                each month in months
+                  li.atd= month
+            hr
+
+            .event-select(modal="session-date")
+              span(modal="session-date") Date
+              //- a.close(close="session-date")
+              ul#session-date
+                - let n = 1;
+                  while n < 32
+                    li.atd= n++
+
+
+      .form-name-phone
+        div
+          label(for="name") Full name
+          input#name.di(type="text" name="Name" autofocus autocomplete="name")
+
+        div
+          label(for="tel") Phone number
+          input#tel.di(type="tel" name="Phone number" autocomplete="tel")
+
+      //- hr
+      .strong-location
+        strong We deliver everywhere in Ghana.
+
+      .form-location
+        div
+          label(for="location") Town/city
+          input#location.di(type="location" name="Location" autocomplete="address-level1")
+        div 
+          label(for="address") Street Address
+          input#address.di(type="address" name="address" autocomplete="street-address")
+
+      .done-js
+        input(type="submit" value="Submit")
+        .overall-total
+          strong Total = Gh&#8373;
+          strong.overall
+
+button.close-click
+  .icon

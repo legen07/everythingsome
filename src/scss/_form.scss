@@ -1,15 +1,16 @@
-/////////////////////////////////////////////////////
-/// Position center elements 
+@use "variables" as var;
+
+/// Position center elements
 .form-card-close,
 .brief-brief *:not(img),
 .overall-total,
-.form-contact > *
-{
+.form-contact > * {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.form-card{
+
+.form-card {
   width: 100%;
   text-align: center;
   visibility: hidden;
@@ -21,26 +22,29 @@
   background-color: #3336;
   backdrop-filter: blur(5px);
   transition: all 250ms ease-in 100ms;
-  &.js{
+
+  &.js {
     visibility: visible;
     opacity: 1;
-    .form-content{
+
+    .form-content {
       transform: unset;
     }
   }
 }
-.form-card-close{
+
+.form-card-close {
   height: 50%;
-  a{
+  a {
     display: block;
     height: 100%;
-    span{
+    span {
       font-size: 2rem;
       color: #fff;
     }
   }
 }
-.form-content{
+.form-content {
   display: grid;
   grid-template-rows: 3rem 3fr 2fr 9fr;
   transform: translateY(110%);
@@ -54,25 +58,26 @@
   padding: 1rem;
   box-shadow: 0px -5px 25px #3333;
   transition: all 250ms ease-in 100ms;
-  *:not(.form-brief img){
+  *:not(.form-brief img) {
     border-radius: 6px;
   }
-  h2{
+  h2 {
     display: grid;
     justify-items: center;
     width: 100%;
     height: 100%;
     font-size: 2.5em;
   }
-  p, span{
+  p,
+  span {
     display: block;
-    font-size: .8em;
+    font-size: 0.9em;
   }
-  strong{
+  strong {
     font-size: 1.2em;
   }
 }
-.form-brief{
+.form-brief {
   width: 100%;
   height: 100%;
   position: relative;
@@ -84,269 +89,475 @@
   gap: 1rem;
   padding: 0 1rem;
 }
-.form-brief-content{
+.form-brief-content {
   width: 45%;
   min-width: 230px;
   max-width: 250px;
   position: relative;
 }
-.brief-brief{
+
+.brief-add-to-cart {
+  display: grid;
+  justify-items: center;
+  width: 6rem;
+  max-width: 40%;
+  height: unset;
+  position: relative;
+  cursor: pointer;
+  
+  .remove-batc{
+    position: absolute;
+    z-index: 99;
+    right: -0.3rem;
+    color: #fff;
+    background-color: #222;
+    padding: .1rem .3rem;
+  }
+
+  .image {
+    width: 90%;
+    
+    strong {
+      position: absolute;
+      height: 80%;
+      font-size: 4rem;
+      font-weight: 100;
+      color: #fff;
+      background-color: #0002;
+      inset: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .text {
+    background-color: #999b;
+    box-shadow: 0 -3px 5px -2px #9999;
+    position: relative;
+    font-size: .8rem;
+    padding: .1rem;
+    top: -.6rem;
+    // transform: translateX(-50%);
+    width: 110%;
+    span{color: #fff !important;}
+  }
+  
+}
+
+.brief-brief {
   display: flex;
   border-radius: 1rem !important;
   overflow: hidden;
   width: 100%;
   aspect-ratio: 9/4;
-  box-shadow: 0 5px 6px -2px  #8889;
+  box-shadow: 0 5px 6px -2px #8889;
   background-color: #d8d8d8;
   *:not(img) {
     justify-items: center;
   }
-  h3{
+  h3 {
     display: inline-block;
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: .9em;
+    font-size: 0.9em;
     white-space: nowrap;
+    cursor: pointer;
   }
-  img{
+  img {
     width: 40%;
     aspect-ratio: 1;
+    cursor: pointer;
   }
-  .brief-side{
+  .brief-side {
     padding: 1%;
     display: grid;
     width: 100%;
   }
-  .price-maths{
+  .price-maths {
     min-width: 110px;
     width: 90%;
     justify-content: space-between;
-    button{
+    button {
       font-size: 1.5em;
       padding: 0 8px;
       background-color: #eee;
     }
-    .minus{
+    .minus {
       color: #f44;
       padding: 5px;
-      font-size: .9rem;
+      font-size: 0.9rem;
       letter-spacing: -1px;
     }
   }
 }
-.brief-total{
+.brief-total {
   position: relative;
-  background-color: $myellow;
+  background-color: var.$myellow;
   width: 90%;
-  font-size: .9em;
+  font-size: 0.9em;
   left: 50%;
   translate: -50%;
   border-radius: 0 0 1rem 1rem !important;
   box-shadow: inset 0 3px 5px #8886;
-  strong{font-size: 1rem;}
+  strong {
+    font-size: 1rem;
+  }
 }
 .form-contact--deli-info {
   display: flex;
 }
-.form-contact{
+.form-contact {
   display: grid;
-  gap: .1rem;
+  gap: 0.1rem;
   width: 7rem;
   max-width: 50px;
   align-content: center;
-  
+
   img {
     height: 50%;
-    // aspect-ratio: 1;
   }
-  .form-telegram, .form-whatsapp{
+  .form-telegram,
+  .form-whatsapp {
     aspect-ratio: 3/2;
   }
-  .form-telegram{
+  .form-telegram {
     background-color: #27f;
   }
-  .form-whatsapp{
+  .form-whatsapp {
     background-color: #3c4;
   }
 }
-.form-deli-info{
-  padding: .3rem 1rem;
+.form-deli-info {
+  padding: 0.3rem 1rem;
   text-align: center;
   font-size: 1.1rem;
   align-self: center;
   line-height: 1.7;
-  img{
+  img {
     width: 2.3rem;
     vertical-align: middle;
   }
 }
 
-form{
+form {
   display: grid;
   align-content: space-evenly;
   align-self: end;
   gap: 1.2rem;
-  input:not(input[type='submit']){
+  input:not(input[type="submit"]) {
     width: 100%;
-    height: 1.8rem;
-    padding: 5px 1rem;
+    // height: 1.8rem;
+    // padding: 5px .4rem;
     border: none;
     font-size: 1.1rem;
     background-color: #0000;
   }
-  input::placeholder{
+  input::placeholder {
     color: #333;
     font-size: 1.1em;
   }
-  hr{
-    border: dashed 1px ;
-  }
-  input:focus{
+  input:focus {
     border: #0000;
     outline: #0000;
   }
 }
-.form-date{
-  display: grid;
-  grid-template-columns: auto auto ;
+.form-date {
+  display: flex;
   justify-content: space-evenly;
-  gap:5px 1rem;
-  label{
-    grid-row-start: 1;
-    grid-row-end: 3;
-    align-self: center;
+  align-items: center;
+  gap: 5px;
+
+  button {
+    background-color: var.$tblue;
+    color: white;
+    padding: var(--rad-1) var(--rad-2);
+    border-radius: 0.4rem 0 0 0.4rem !important;
   }
-  input{
-    width: 150px !important;
-    border: solid 1px #333 !important; 
-    background-color: #ccc ;
-    padding: 6px 1rem;
+
+  .date_today {
+    display: flex;
   }
-  input[type='date']{
-    width: 70px;
-  }
-  a{
-    background-color: $tblue;
-    padding: 4px 1rem;
+
+  .date {
+    display: flex;
+    border: solid 1px #9996;
+    padding: var(--rad-1) calc(var(--rad-2) * 0.7);
+    border-radius: 0 0.4rem 0.4rem 0 !important;
+    gap: calc(var(--rad-1) * 1.2);
   }
 }
-.form-name-phone div.js,
-.form-location div.js,
-.form-prefer div.js
-{
-  border: solid 2px black;
-  transform: scale(110%);
-  transition: all 120ms ease-in;
-  label{
-    transform: scale(65%) translate(-20%, -25%) ;
-    color: #4449;
-    transition: all 120ms ease-in;
+
+#select_month {
+  visibility: hidden;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 3px 5px #8886;
+  padding: 1rem;
+  transform: scale(50%) translate(40%, -120%);
+  transition: all 200ms ease-in-out;
+  z-index: 99;
+
+  &.js {
+    visibility: visible;
+    transform: scale(100%) translateY(-100%);
   }
-  input{
+}
+
+/// Focused input styles
+
+div:has(> input:focus) {
+  border: solid 1px #6667;
+  transform: scale(105%);
+
+  label {
+    bottom: unset;
+    top: -0.6rem;
+    right: unset;
+    background-image: linear-gradient(#fff, #f9f9f9);
+    transform: scale(80%);
+    color: #999;
+  }
+}
+
+.event-select {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  border-radius: var(--rad-2);
+  position: relative;
+
+  > div {
+    display: flex;
+    gap: var(--pad-2);
+    width: 100%;
+
+    span {
+      flex-grow: 1;
+      flex-shrink: 0;
+      display: block;
+    }
+    div {
+      background-color: #3333;
+      justify-self: right;
+      align-self: stretch;
+      margin: var(--rad-2) var(--rad-2);
+      padding: 0 var(--rad-2);
+      border-radius: 0 var(--rad-2) var(--rad-2) 0;
+      color: #fff;
+      flex-shrink: 1;
+      cursor: pointer;
+    }
+  }
+  a.close {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    border: none;
     position: absolute;
-    bottom: 0;
+
+    &.js {
+      height: 200lvh;
+      width: 200lvw;
+    }
   }
+
+  ul {
+    overflow-y: auto;
+    scrollbar-width: none;
+    max-height: 50dvh;
+    visibility: hidden;
+    background-color: #fff;
+    position: absolute;
+    box-shadow: 0 0 5px #3333;
+    border-radius: var(--rad-3);
+    padding: var(--rad-2);
+    bottom: 2.3rem;
+    transition: all 180ms ease-in-out;
+    transform: scaleY(60%) translateY(-25%);
+    opacity: 0;
+    z-index: 9;
+
+    li {
+      font-size: 90%;
+      border-bottom: dashed 1px #5555;
+      padding: var(--rad-2) var(--rad-2) var(--rad-2) var(--rad-2);
+      text-wrap: nowrap;
+      cursor: pointer;
+      list-style-type: none;
+      transition: all 1s ease-in-out;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.js {
+        background-color: #3333;
+      }
+    }
+
+    &.js {
+      transform: scaleY(100%);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.close {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  transform: scale(1000%);
 }
 .form-name-phone div.done-js,
 .form-location div.done-js,
-.form-prefer div.done-js
-{
+.form-prefer div.done-js {
   border: solid 2px #07f;
   transform: scale(100%);
-  label{
+  label {
     transform: scale(65%) translate(-20%, -25%);
   }
-  input{
+  input {
     position: absolute;
     bottom: 0;
   }
 }
-.form-name-phone div,
-.form-location div,
-.form-prefer div{
-  border: solid 1px  #4442;
+.form-name-phone > div,
+.form-location > div,
+.form-prefer > div {
+  border: solid 1px #4442;
   height: 2.7rem;
   background-color: #fbfbfb;
   position: relative;
-  label{
+  transition: all 150ms;
+
+  &.js label {
+    bottom: unset;
+    top: -0.6rem;
+    right: unset;
+    background-image: linear-gradient(#fff, #f9f9f9);
+    transform: scale(80%);
+    color: #999;
+  }
+
+  &.fine {
+    border: solid 1px #07f;
+  }
+
+  &.bad {
+    border: solid 1px #f00;
+  }
+
+  > * {
     position: absolute;
-    color: #666;
-    transform: scale(100%) translate(15%, 60%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.4rem;
+  }
+
+  label {
+    color: #9999;
+    transition: all 150ms;
   }
 }
-.strong-location{
+.strong-location {
   margin-top: 2rem;
 }
-.form-name-phone, .form-location{
+.form-name-phone,
+.form-location {
   display: flex;
   text-align: start;
   gap: 1rem;
-  div{
+  div {
     flex-grow: 1;
     display: grid;
     width: 50%;
   }
 }
-.required-field{
+.required-field {
   display: block;
   position: absolute;
   translate: 1rem 1.2rem;
   color: #f72;
   bottom: 0;
 }
-.done-js{
+.done-js {
   display: flex;
   justify-self: center;
   align-items: center;
   height: 2.5rem;
-  padding: .1rem .5rem;
-  background-color: $oyellow;
+  padding: 0.1rem 0.5rem;
+  background-color: var.$oyellow;
   width: 90%;
+
   input[type="submit"] {
     border: 0;
     width: 100%;
     background-color: #0000;
     justify-self: center;
     color: #fff;
-    text-shadow: 0 0 5px#fff;
+    text-shadow: 0 0 3px#fff;
+    font-weight: 100;
+    letter-spacing: 2px;
     font-size: 1.2em;
+    cursor: pointer;
   }
-  .overall-total{
+
+  .overall-total:not(.overall-total.js) {
+    animation: total-pulse 100ms ease-in 2 alternate;
+  }
+
+  @keyframes total-pulse {
+    to {
+      transform: scale(110%);
+      filter: blur(4px);
+    }
+  }
+
+  .overall-total {
     flex-shrink: 0;
     background-color: #fefaee;
     height: 95%;
-    padding:0 .5rem;
+    padding: 0 0.5rem;
     margin-left: auto;
-    strong{
+    transition: all 1s ease-in-out;
+
+    strong {
       font-size: 1em;
       font-weight: 600;
     }
   }
 }
-.form-card .notifications{
+.form-card .notifications {
   height: 0;
   opacity: 0;
-  background-color: $myellow;
+  background-color: var.$myellow;
   display: flex;
   color: #a70;
-  padding:.5rem 1rem;
+  padding: 0.5rem 1rem;
   justify-content: space-between;
   box-shadow: inset 0px -4px 5px -2px #2229;
   transition: all 100ms ease-in;
 
-  &.js{
+  &.js {
     height: unset;
     max-height: 2rem;
     opacity: 1;
   }
 
-  div{
+  div {
     flex-grow: 1;
   }
   a {
     color: #000;
     font-size: 1.9rem;
-    line-height: .4;
+    line-height: 0.4;
   }
 }

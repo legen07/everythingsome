@@ -1,0 +1,9 @@
+.preloader(style='background-image: linear-gradient(#fdc900 50%, #003F88 50%); inset: -60%; z-index: 9999; display: flex; justify-content: center; align-items: center;')
+  div(style='mix-blend-mode: difference; height: 3rem; width: 3rem; border: solid 2px; border-top: solid 2px white; border-radius: 50%;')
+
+script.
+  window.addEventListener('load', function(){
+    document.querySelector('.preloader').classList.add('js');
+
+  window.dispatchEvent(new Event("preloaderDone"))
+  });

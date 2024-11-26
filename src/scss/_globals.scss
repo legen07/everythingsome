@@ -3,6 +3,7 @@ body, ::before, ::after, *{
   padding: 0;
   box-sizing: border-box;
   font-family: 'rubik', Arial, Helvetica, sans-serif;
+  transition: all 130ms;
 }
 
 *:not(.form-brief):-webkit-scrollbar{

@@ -1,13 +1,27 @@
 // colors and background colors and $$$$
 
-$fblue: #00296B;
+$fblue: #00296b;
 
-$sblue: #003F88;
+$sblue: #003f88;
 
-$tblue: #00509D;
+$tblue: #00509d;
 
 $oyellow: #fdb500;
 
 $myellow: #fdc900;
 
 $yyellow: #fdd800;
+
+:root {
+  //!booths
+  --rad-0: 0.1rem;
+  --rad-1: 0.35rem;
+  --rad-2: 0.75rem;
+  --rad-3: 1.3rem;
+  --rad-4: 1.9rem;
+  --rad-5: 2.3rem;
+  --rad-6: 3rem;
+  --rad-7: 5rem;
+  --rad-8: 6rem;
+  --rad-9: 9rem;
+}
